@@ -29,9 +29,18 @@ class app_login extends REST_Controller {
         $password = $this->input->post('password');
         $result = $this->mapp_login->login_api($username, $password);
         
-        $data['login'] = $result;
-        $data['message'] = "success";
-        echo json_encode($data);
+        if (empty($result)) 
+        {    
+            $data['login'] = "Not Found";
+            $data['message'] = "Failed";
+            echo json_encode($data);
+        }
+        else
+        {
+            $data['login'] = $result;
+            $data['message'] = "Success";
+            echo json_encode($data);
+        }
     }
 }
 ?>
