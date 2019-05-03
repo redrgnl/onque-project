@@ -1,56 +1,37 @@
 <?php
-class app_login extends CI_Controller {
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+require APPPATH . '/libraries/REST_Controller.php';
+use Restserver\Libraries\REST_Controller;
+
+class app_login extends REST_Controller {
 
     function __construct($config = 'rest') {
         parent::__construct($config);
+        $this->load->model('mapp_login');
     }
 
-    public function index_post()
-    {
-        
-if ($_SERVER['REQUEST_METHOD']=='POST') {
-    $username = $_POST['pass_index'];
-    $password = $_POST['pass_nik'];
-
-    $conn = mysqli_connect("localhost","root","","p_sumbersari"); 
-
-    $sql = "SELECT * FROM pasien WHERE pas_index='$username'";
-
-    $response = mysqli_query($conn, $sql);
-
-    $result = array();
-    $result['login'] = array();
-    
-    if ( mysqli_num_rows($response) === 1 ) {
-        
-        $row = mysqli_fetch_assoc($response);
-
-        if ( password_verify($password, $row['pas_nik']) ) {
-            
-            $index['username'] = $row['pas_index'];
-            $index['nama'] = $row['pas_nama'];
-
-            array_push($result['login'], $index);
-
-            $result['success'] = "1";
-            $result['message'] = "success";
-            echo json_encode($result);
-
-            mysqli_close($conn);
-
+    //Load API Data Pasien
+    function index_get() {
+        $pas_index = $this->get('pas_index');
+        if ($pas_index == '') {
+            $app_api = $this->db->get('pasien')->result();
         } else {
-
-            $result['success'] = "0";
-            $result['message'] = "error";
-            echo json_encode($result);
-
-            mysqli_close($conn);
-
+            $this->db->where('pas_index', $pas_index);
+            $app_api = $this->db->get('pasien')->result();
         }
-
+        $this->response($app_api, 200);
     }
-
-}
+    //Tambah Pasien
+    function index_post() {
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $result = $this->mapp_login->login_api($username, $password);
+        
+        $data['login'] = $result;
+        $data['message'] = "success";
+        echo json_encode($data);
     }
 }
 ?>
