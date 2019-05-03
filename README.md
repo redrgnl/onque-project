@@ -1,4 +1,10 @@
-# ci-restserver
-Check the recent version at https://github.com/chriskacerguis/codeigniter-restserver
+# onque-project
 
-My alternate version https://github.com/ardisaurus/old-rest-ci
+-- Puskesmas Sumbersari --
+Sistem informasi Antrian
+
+Teknik Informatika C 2017
+- Maulana Malik Ibrahim (E41171104)
+- Muhammad Arief Rachman Muttaqien (E41171120)
+- M. Avicenna Maula (E41171541)
+- Ady Bagus Sugih Susanto (E41171452)
