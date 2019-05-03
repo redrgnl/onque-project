@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Puskesmas Sumbersari</string>
+    <string name="btn_login">btn_login</string>
+    <string name="login_app">login_app</string>
+    <string name="registrasi_user">registrasi_user</string>
+    <string name="btn_register">btn_register</string>
+    <string name="id_user">id_user</string>
+    <string name="registrasi_pasien">registrasi_pasien</string>
+    <string name="password">password</string>
+    <string name="id_pasien">id_pasien</string>
+    <string name="konfirmasi_password">konfirmasi_password</string>
+    <string name="nama_pasien">nama_pasien</string>
+    <string name="username">username</string>
+</resources>
