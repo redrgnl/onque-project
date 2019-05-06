@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBg1"
+    android:padding="10dp"
     tools:context="com.example.puskesmassumbersari.controllers.RegisterActivity">
 
     <View
@@ -22,20 +23,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="22dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="Registrasi Pasien"
+        android:text="REGISTRASI PASIEN"
         android:textAlignment="center"
+        android:textSize="20dp"
         android:textColor="@color/colorAccent" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/validasiIDPasien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="62dp"
+        android:layout_below="@id/textView"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorHint"
         app:errorEnabled="true">
