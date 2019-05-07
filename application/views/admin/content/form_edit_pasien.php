@@ -15,12 +15,19 @@
         <div class="form-label-group">
           <select type="text" id="edpasienagama" name="edpasienagama" class="form-control" required="required" value="" style="height: 50px;">
             <option value="">-- Agama --</option>
-            <option>Islam</option>
-			<option>Kristen</option>
-			<option>Katolik</option>
-			<option>Hindu</option>
-			<option>Budha</option>
-			<option>Konghucu</option>
+            <?php
+            $agama = $data->pas_agama;
+            if ($agama == "Islam") echo "<option value='Islam' selected>Islam</option>";
+            else echo "<option value='Islam'>Islam</option>";
+            if ($agama == "Kristen") echo "<option value='Kristen' selected>Kristen</option>";
+            else echo "<option value='Kristen'>Kristen</option>";
+            if ($agama == "Hindu") echo "<option value='Hindu' selected>Hindu</option>";
+            else echo "<option value='Hindu'>Hindu</option>";
+            if ($agama == "Budha") echo "<option value='Budha' selected>Budha</option>";
+            else echo "<option value='Budha'>Budha</option>";
+            if ($agama == "Konghucu") echo "<option value='Konghucu' selected>Konghucu</option>";
+            else echo "<option value='Konghucu'>Konghucu</option>";                      
+            ?>
           </select>
         </div>
       </div>
@@ -38,10 +45,17 @@
         <div class="form-label-group">
           <select type="text" id="edpasienpendidikan" name="edpasienpendidikan" class="form-control" required="required" value="" style="height: 50px;">
             <option value="">-- Pendidikan --</option>
-            <option>Sarjana</option>
-			<option>SMA / SMK / MAN</option>
-			<option>SD / MI</option>
-			<option> - </option>
+            <?php
+            $pendidikan = $data->pas_pendidikan;
+            if ($pendidikan == "Sarjana") echo "<option value='Sarjana' selected>Sarjana</option>";
+            else echo "<option value='Sarjana'>Sarjana</option>";
+            if ($pendidikan == "SMA / SMK / MAN") echo "<option value='SMA / SMK / MAN' selected>SMA / SMK / MAN</option>";
+            else echo "<option value='SMA / SMK / MAN'>SMA / SMK / MAN</option>";
+            if ($pendidikan == "SD / MI") echo "<option value='SD / MI' selected>SD / MI</option>";
+            else echo "<option value='SD / MI'>SD / MI</option>";
+            if ($pendidikan == " - ") echo "<option value=' - ' selected> - </option>";
+            else echo "<option value=' - '> - </option>";
+            ?>
           </select>
         </div>
       </div>
@@ -59,8 +73,13 @@
         <div class="form-label-group">
           <select type="text" id="edpasienkelamin" name="edpasienkelamin" class="form-control" required="required" value="" style="height: 50px;">
             <option value="">-- Jenis Kelamin --</option>
-            <option>Laki - Laki</option>
-			<option>Perempuan</option>
+            <?php
+            $kelamin = $data->pas_kelamin;
+            if ($kelamin == "Laki - Laki") echo "<option value='Laki - Laki' selected>Laki - Laki</option>";
+            else echo "<option value='Laki - Laki'>Laki - Laki</option>";
+            if ($kelamin == "Perempuan") echo "<option value='Perempuan' selected>Perempuan</option>";
+            else echo "<option value='Perempuan'>Perempuan</option>";  
+            ?>
           </select>
         </div>
       </div>
@@ -94,15 +113,27 @@
         <div class="form-label-group">
           <select type="text" id="edpasienpekerjaan" name="edpasienpekerjaan" class="form-control" required="required" value="" style="height: 50px;">
             <option value="">-- Pekerjaan --</option>
-            <option>ASN</option>
-			<option>TNI</option>
-			<option>Polri</option>
-			<option>Swasta</option>
-			<option>Tani</option>
-			<option>Buruh</option>
-			<option>Wiraswasta</option>
-			<option>Pelajar</option>
-			<option> - </option>
+            <?php
+            $pekerjaan = $data->pas_pekerjaan;
+            if ($pekerjaan == "ASN") echo "<option value='ASN' selected>ASN</option>";
+            else echo "<option value='ASN'>ASN</option>";
+            if ($pekerjaan == "TNI") echo "<option value='TNI' selected>TNI</option>";
+            else echo "<option value='TNI'>TNI</option>";
+            if ($pekerjaan == "Polri") echo "<option value='Polri' selected>Polri</option>";
+            else echo "<option value='Polri'>Polri</option>";
+            if ($pekerjaan == "Swasta") echo "<option value='Swasta' selected>Swasta</option>";
+            else echo "<option value='Swasta'>Swasta</option>";
+            if ($pekerjaan == "Tani") echo "<option value='Tani' selected>Tani</option>";
+            else echo "<option value='Tani'>Tani</option>";
+            if ($pekerjaan == "Buruh") echo "<option value='Buruh' selected>Buruh</option>";
+            else echo "<option value='Buruh'>Buruh</option>";
+            if ($pekerjaan == "Wiraswasta") echo "<option value='Wiraswasta' selected>Wiraswasta</option>";
+            else echo "<option value='Wiraswasta'>Wiraswasta</option>";
+            if ($pekerjaan == "Wiraswasta") echo "<option value='Wiraswasta' selected>Wiraswasta</option>";
+            else echo "<option value='Wiraswasta'>Wiraswasta</option>";
+            if ($pekerjaan == " - ") echo "<option value=' - ' selected> - </option>";
+            else echo "<option value=' - '> - </option>";  
+            ?>
           </select>
         </div>
       </div>
