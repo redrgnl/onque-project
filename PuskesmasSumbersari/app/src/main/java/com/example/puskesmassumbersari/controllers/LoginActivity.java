@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // deklarasi variabel alamat host
     // setting terlebih dahulu supaya antara laptop dan android jadi satu jaringan
-    public static String URL = "http://192.168.56.1/api_android/sumbersarisehat/Pasien/loginPasien.php";
+    public static String URL = "http://192.168.56.1/onque/app_login/index_login";
 
     SessionManager sessionManager;
 
@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (success.equals("1")) {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            String nama_pasien = jsonObject1.getString("nama_pasien").trim();
+                            String nama_pasien = jsonObject1.getString("pas_nama").trim();
                             sessionManager.createSession(username, nama_pasien);
                             Toast.makeText(LoginActivity.this, "Login berhasil ! \n Nama : " + nama_pasien, Toast.LENGTH_SHORT).show();
                         }
