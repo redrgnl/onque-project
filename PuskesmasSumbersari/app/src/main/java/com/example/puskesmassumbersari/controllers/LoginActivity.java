@@ -29,13 +29,13 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     // deklarasi objek
-    TextInputLayout validasiIDPasien, validasiPassword;
-    EditText txtIDPasien, txtPassword;
+    TextInputLayout validasiUsername, validasiPassword;
+    EditText txtUsername, txtPassword;
     Button btnLogin;
     TextView txtRegistrasi;
 
     // deklarasi variabel
-    String id_pasien, password;
+    String username, password;
 
     // deklarasi variabel alamat host
     // setting terlebih dahulu supaya antara laptop dan android jadi satu jaringan
@@ -51,9 +51,9 @@ public class LoginActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
 
         // inisialisasi variabel objek
-        validasiIDPasien = findViewById(R.id.validasiIDPasien);
+        validasiUsername = findViewById(R.id.validasiUsername);
         validasiPassword = findViewById(R.id.validasiPassword);
-        txtIDPasien = findViewById(R.id.txtIDPasien);
+        txtUsername = findViewById(R.id.txtUsername);
         txtPassword = findViewById(R.id.txtPassword);
         btnLogin = findViewById(R.id.btnLogin);
         txtRegistrasi = findViewById(R.id.txtRegister);
@@ -62,15 +62,15 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                id_pasien = txtIDPasien.getText().toString().trim();
+                username = txtUsername.getText().toString().trim();
                 password = txtPassword.getText().toString().trim();
 
                 if ( id_pasien.isEmpty() ) {
-                    validasiIDPasien.setError("ID Pasien harus diisi!");
+                    validasiUsername.setError("Username harus diisi!");
                 } else if ( password.isEmpty() ) {
-                    validasiIDPasien.setError("Password harus diisi!");
+                    validasiUsername.setError("Password harus diisi!");
                 } else {
-                    auth_pasien(id_pasien, password);
+                    auth_pasien(username, password);
                 }
             }
         });
@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // method login
-    private void auth_pasien(final String id_pasien, final String password){
+    private void auth_pasien(final String username, final String password){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -98,11 +98,11 @@ public class LoginActivity extends AppCompatActivity {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String nama_pasien = jsonObject1.getString("nama_pasien").trim();
-                            sessionManager.createSession(id_pasien, nama_pasien);
+                            sessionManager.createSession(username, nama_pasien);
                             Toast.makeText(LoginActivity.this, "Login berhasil ! \n Nama : " + nama_pasien, Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(LoginActivity.this, "ID Pasien dan Password tidak ditemukan! ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Username dan Password tidak ditemukan! ", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError { Map<String, String> params = new HashMap<>();
-            params.put("id_pasien", id_pasien);
+            params.put("username", username);
             // sesuaikan dengan $_POST pada PHP
             params.put("password", password);
             return params;
