@@ -41,6 +41,44 @@ class app_login extends REST_Controller {
             $data['message'] = "Success";
             echo json_encode($data);
         }
+
+        //$username = $this->input->post('username');
+        //$password = $this->input->post('password');
+
+
+        //$data = $this->mapp_login->login_api($username, $password);
+
+        // $result = array();
+        // $result['login'] = array();
+        
+        // if ( mysqli_num_rows($response) === 1 ) {
+            
+        //     $row = mysqli_fetch_assoc($response);
+
+        //     if ( $password == $data['pas_nik'] ) {
+                
+        //         $index['pas_nama'] = $data['pas_nama'];
+        //         $index['pas_index'] = $data['pas_index'];
+
+        //         array_push($result['login'], $index);
+
+        //         $result['success'] = "1";
+        //         $result['message'] = "success";
+        //         echo json_encode($result);
+
+        //         mysqli_close($conn);
+
+        //     } else {
+
+        //         $result['success'] = "0";
+        //         $result['message'] = "error";
+        //         echo json_encode($result);
+
+        //         mysqli_close($conn);
+
+        //     }
+
+        //}
     }
 }
 ?>

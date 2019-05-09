@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.puskesmassumbersari.R;
+import com.example.puskesmassumbersari.config.Server;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // deklarasi variabel alamat host
     // setting terlebih dahulu supaya antara laptop dan android jadi satu jaringan
-    public static String URL = "http://192.168.56.1/onque/app_login/index_login";
+    public static String URL = Server.URL + "app_login/index_login";
 
     SessionManager sessionManager;
 
@@ -65,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 username = txtUsername.getText().toString().trim();
                 password = txtPassword.getText().toString().trim();
 
-                if ( id_pasien.isEmpty() ) {
+                if ( username.isEmpty() ) {
                     validasiUsername.setError("Username harus diisi!");
                 } else if ( password.isEmpty() ) {
                     validasiPassword.setError("Password harus diisi!");
