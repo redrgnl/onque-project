@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                 if ( id_pasien.isEmpty() ) {
                     validasiUsername.setError("Username harus diisi!");
                 } else if ( password.isEmpty() ) {
-                    validasiUsername.setError("Password harus diisi!");
+                    validasiPassword.setError("Password harus diisi!");
                 } else {
                     auth_pasien(username, password);
                 }
