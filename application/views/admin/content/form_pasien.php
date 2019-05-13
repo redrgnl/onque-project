@@ -69,14 +69,24 @@
     <div class="form-row">
       <div class="col-md-6">
         <div class="form-label-group">
-          <input type="text" id="pasiennamakk" name="pasiennamakk" autocomplete="off" class="form-control" placeholder="Nama KK / Penanggung Jawab" required="required" value="">
+          <input type="text" id="pasiennamakk" name="pasiennamakk" autocomplete="off" class="form-control" placeholder="Nama KK / Penanggung Jawab" required="required" value="" maxlength="30">
           <label for="pasiennamakk">Nama KK / Penanggung Jawab</label>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-label-group">
-          <input type="text" id="pasiendarah" name="pasiendarah" autocomplete="off" class="form-control" placeholder="Golongan Darah" required="required" value="" maxlength="2">
-          <label for="pasiendarah">Golongan Darah</label>
+          <select type="text" id="pasiendarah" name="pasiendarah" class="form-control" required="required" value="" style="height: 50px;">
+            <option value="">-- Darah --</option>
+            <option>O-</option>
+            <option>O+</option>
+            <option>A-</option>
+            <option>A+</option>
+            <option>AB-</option>
+            <option>AB+</option>
+            <option>B-</option>
+            <option>B+</option>
+			<option> - </option>
+          </select>
         </div>
       </div>
     </div>
@@ -115,9 +125,11 @@
           <label for="pasientelepon">Telepon / HP</label>
         </div>
       </div>
-      <div class="col-md-2 d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-0 my-2 my-md-0">
+      <div class="col-md-2 d-md-inline-block form-inline ml-auto mr-0 mr-md-0 my-2 my-md-0">
         <div class="form-label-group">
-          <button class="btn btn-primary btn-block" href="" type="submit">Simpan</button>
+          <div class="checkbox">
+            <label><input type="checkbox" required> &ensp;Konfirmasi Perubahan</label>
+          </div>
         </div>
       </div>
     </div>
@@ -133,8 +145,21 @@
           <label for="pasienlahir">Tanggal Lahir</label>
         </div>
       </div>
+      <div class="col-md-2 d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-0 my-2 my-md-0">
+        <div class="form-label-group">
+          <a class="btn btn-danger btn-block" href="<?php echo base_url('pasien')?>">Batal</a>
+        </div>
+      </div>
+      <div class="col-md-2 d-none d-md-inline-block form-inline">
+        <div class="form-label-group">
+          <button class="btn btn-primary btn-block" href="" type="submit">Simpan</button>
+        </div>
+      </div>
     </div>
   </div>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" style="color: black">- Data yang dimasukkan benar adanya sesuai dengan data diri sebenar-benarnya</li>
+  </ol>
 </form>
 </div>
 </div>

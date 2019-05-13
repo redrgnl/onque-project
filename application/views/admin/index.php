@@ -12,9 +12,27 @@
       <div id="content-wrapper">
         <div class="container-fluid">
           <!-- Breadcrumbs-->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item active"><?php echo $breadcrumb?></li>
-          </ol>
+          <div class="row">
+            <div class="col-md-10">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><?php echo $breadcrumb?></li>
+              </ol>
+            </div>
+            <div class="col-md-2">
+              <ol class="breadcrumb bg-info">
+                  <?php if($permission == 'super')
+                        { 
+                            $privilege = 'super admin';
+                        } 
+                        else if($permission == 'admin')
+                        {
+                            $privilege = 'admin';
+                        }
+                  ?>
+                <li class="breadcrumb-item active" style="color: white">&ensp;<?php echo $privilege?></li>
+              </ol>
+            </div>
+          </div>
           <!-- Icon Cards-->
             <?php $this->load->view($content)?>
           <!-- DataTables Example -->

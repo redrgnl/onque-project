@@ -15,7 +15,12 @@ class pasien extends CI_Controller {
 			redirect(base_url("admin"));
 		}
         else if($this->session->userdata('status') == "login"){
+            $permission = $this->session->userdata('permission');
+            foreach ($permission as $perm){
+                $mission = $perm->status;
+            }
 			$data = [   
+                'permission' => $mission,
                 'pasien' => $this->m_pasien->getAll(), 
                 'breadcrumb' => "Daftar Pasien",
                 'content' => 'admin/content/man_pasien'
@@ -30,7 +35,12 @@ class pasien extends CI_Controller {
 			redirect(base_url("admin"));
 		}
         else if($this->session->userdata('status') == "login"){
+            $permission = $this->session->userdata('permission');
+            foreach ($permission as $perm){
+                $mission = $perm->status;
+            }
 			$data = [   
+                'permission' => $mission,
                 'breadcrumb' => "Tambah Pasien Baru",
                 'content' => 'admin/content/form_pasien'
                 ];
@@ -57,7 +67,12 @@ class pasien extends CI_Controller {
 		}
         else if($this->session->userdata('status') == "login"){
           $where = array('pas_index' => $id);
+          $permission = $this->session->userdata('permission');
+            foreach ($permission as $perm){
+                $mission = $perm->status;
+            }
           $data = [   
+                'permission' => $mission,
                 'pasien' => $this->m_pasien->edit_data($where,'pasien')->result(),
                 'breadcrumb' => "Edit Pasien",
                 'content' => 'admin/content/form_edit_pasien'

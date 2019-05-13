@@ -1,52 +1,86 @@
-<div class="form-row">
-<div class="card-pict mb-3">
-  <img src="<?php echo base_url('assets/admin/img/logo.png')?>" alt="IMG">
+<div class="row">
+  <div class="col-xl-3 col-sm-6 mb-3">
+    <div class="card text-white bg-success o-hidden h-100">
+      <div class="card-body">
+        <div class="card-body-icon">
+          <i class="fas fa-fw fa-user"></i>
+        </div>
+        <div class="mr-5">Admin</div>
+      </div> 
+      <?php 
+        if($permission == 'super'){
+            $href = base_url("admin/formadmin");
+            $info = "";
+        }
+        else if($permission == 'admin'){
+            $href = "#";
+            $info = "<div class='nav-item'><i class='fas fa-fw fa-info-circle'></i><span>Anda Tidak Mempunyai Hak Akses Untuk Menambah Ataupun Merubah Data Admin</span></div>";
+        }
+      ?>
+      <a class="card-footer text-white clearfix small z-1" href="<?php echo $href?>">
+        <span class="float-left">Tambah Admin Baru</span>
+        <span class="float-right">
+          <i class="fas fa-angle-right"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+  <?php echo $info?>
 </div>
-<div class="card-body">
-<?php foreach ($data_admin as $admin):?>
-<form method="post" action="<?php echo base_url('admin/editadmin/'.$admin->id_admin)?>">
-  <div class="form-group">
-    <input type="hidden" name="idadmin" id="idadmin" value="<?php echo $admin->id_admin?>">
-    <div class="form-row">
-      <div class="col-md-5">
-        <div class="form-label-group">
-          <input type="text" id="adminusername" name="adminusername" autocomplete="off" class="form-control" placeholder="Username" required="required" value="<?php echo $admin->username?>">
-          <label for="adminusername">Username</label>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-row">
-      <div class="col-md-5">
-        <div class="form-label-group">
-          <input type="password" id="adminpassword" name="adminpassword" class="form-control" placeholder="Password" required="required" value="<?php echo $admin->password?>">
-          <label for="adminpassword">Password</label>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-row">
-      <div class="col-md-5">
-        <div class="form-label-group">
-          <div class="checkbox">
-            <label><input type="checkbox" required> Konfirmasi Perubahan</label>
+<div class="row">
+  <div class="col-xl-12 col-sm-12 mb-12">
+    <div class="card mb-3">
+          <div class="card-header bg-success" style="color: white">
+            <i class="fas fa-table"></i>
+              Tabel Admin Terdaftar
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Nama</th>
+                    <th style="width: 70px">Update</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Nama</th>
+                    <th style="width: 70px">Update</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <?php foreach($admin as $adm):?>
+                    <tr>
+                        <?php 
+                            if($permission == 'super'){
+                                $perm = base_url("admin/formeditadmin/").$adm->id_admin;
+                                $deladm = base_url("admin/deleteadmin/").$adm->id_admin;
+                                $modals = "deleteadmin";
+                            }
+                            else if($permission == 'admin'){
+                                $perm = "#";
+                                $deladm = "";
+                                $modals = "";
+                            }
+                        ?>
+                        <td><?php echo $adm->id_admin?></td>
+                        <td><?php echo $adm->username?></td>
+                        <td><?php echo $adm->nama?></td>
+                        <td style="width: 70px">
+                          <a class="btn btn-info" href="<?php echo $perm?>"><i class="fa fa-gear"></i></a>  
+                          <button class="btn btn-danger" onclick="<?php echo $modals?>('<?php echo $deladm?>')"><i class="fa fa-trash"></i></button>  
+                        </td>
+                    </tr>
+                  <?php endforeach;?>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
   </div>
-  <div class="form-group">
-    <div class="form-row">
-      <div class="col-md-5">
-        <div class="form-label-group">
-          <button class="btn btn-primary btn-block" href="" type="submit">Simpan</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
-<?php endforeach; ?>
-</div>
 </div>
