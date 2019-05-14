@@ -139,7 +139,7 @@ class admin extends CI_Controller {
                 'permission' => $mission,
                 'admin' => $this->m_admin->edit_admin($where,'admin')->result(),
                 'breadcrumb' => "Manajemen Admin",
-                'content' => 'admin/content/man_edit_admin'
+                'content' => 'admin/content/form_edit_admin'
                 ];
             $this->load->view("admin/index", $data);
 		}

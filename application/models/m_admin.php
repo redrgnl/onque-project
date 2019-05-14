@@ -32,20 +32,24 @@ class m_admin extends CI_Model {
         $password = $post["adminpassword"];
         $result = $this->db->query("INSERT INTO admin (id_admin, nama, username, password, status) VALUES (DEFAULT, '$nama', '$username', '$password', 'admin')");
     }
+    
     public function daftar_admin()
     {
         $result = $this->db->query("SELECT * FROM admin WHERE status='admin'");
         return $result->result();
     }
+    
     public function check_super($username)
     {
         $checks = $this->db->query("SELECT status FROM admin WHERE username='$username'");
         return $checks->result();
     }
+    
     public function edit_admin($where,$table)
     {
         return $this->db->get_where($table,$where);
     }
+    
     public function delete($id)
     {
         return $this->db->delete($this->_table, array("id_admin" => $id));

@@ -9,135 +9,313 @@
     android:padding="10dp"
     tools:context="com.example.puskesmassumbersari.controllers.RegisterActivity">
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="22dp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="REGISTRASI PASIEN"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:textColor="@color/colorAccent" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/validasiIDPasien"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorHint"
-        app:errorEnabled="true">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtIDPasien"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/id_pasien"
-            android:inputType="text"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorHint" />
+            android:orientation="vertical">
 
-    </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/validasiNamaPasien"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/validasiIDPasien"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorHint"
-        app:errorEnabled="true">
+            <View
+                android:id="@+id/view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtNamaPasien"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/nama_pasien"
-            android:inputType="text"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorHint" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="22dp"
+                android:layout_marginLeft="120dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="REGISTRASI PASIEN"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textColor="@color/colorAccent" />
 
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiIndexPasien"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint"
+                app:errorEnabled="true">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/validasiPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/validasiNamaPasien"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorHint"
-        app:errorEnabled="true"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/colorAccent"
-        tools:ignore="UnknownId">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtIndexPasien"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Index Pasien : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorHint" />
+            </android.support.design.widget.TextInputLayout>
 
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiNIK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/validasiIndexPasien"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint"
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorAccent"
+                tools:ignore="UnknownId">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/validasiKonfirmasiPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/validasiPassword"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorHint"
-        app:errorEnabled="true"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/colorAccent">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtNIK"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="NIK : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtKonfirmasiPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/konfirmasi_password"
-            android:inputType="textPassword"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorHint" />
+            </android.support.design.widget.TextInputLayout>
 
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/validasiNIK"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint">
 
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_marginTop="30dp"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtNama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="344dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
-        android:text="Daftar"
-        android:textColor="@color/colorAccent" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiKepalaKeluarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/validasiNama"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtKepalaKeluarga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Kepala Keluarga : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/validasiKepalaKeluarga"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Alamat : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiNomorTelepon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/validasiAlamat"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtNomorTelepon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nomor Telepon : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiTglLahir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/validasiNomorTelepon"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtTglLahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tanggal Lahir : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiAgama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/validasiTglLahir"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtAgama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Agama : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiPendidikan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/validasiAgama"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtPendidikan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pendidikan : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiJenisKelamin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/validasiPendidikan"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtJenisKelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Kepala Keluarga : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiGolDarah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/validasiJenisKelamin"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtGolDarah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Golongan Darah : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiPekerjaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/validasiGolDarah"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtPekerjaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Kepala Keluarga : "
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_marginTop="30dp"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/validasiPekerjaan"
+                android:layout_marginBottom="28dp"
+                android:text="Daftar"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

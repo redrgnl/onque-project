@@ -39,17 +39,17 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>ID</th>
                     <th>Username</th>
                     <th>Nama</th>
+                    <th>Status</th>
                     <th style="width: 70px">Update</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>ID</th>
                     <th>Username</th>
                     <th>Nama</th>
+                    <th>Status</th>
                     <th style="width: 70px">Update</th>
                   </tr>
                 </tfoot>
@@ -68,9 +68,9 @@
                                 $modals = "";
                             }
                         ?>
-                        <td><?php echo $adm->id_admin?></td>
                         <td><?php echo $adm->username?></td>
                         <td><?php echo $adm->nama?></td>
+                        <td><?php echo $adm->status?></td>
                         <td style="width: 70px">
                           <a class="btn btn-info" href="<?php echo $perm?>"><i class="fa fa-gear"></i></a>  
                           <button class="btn btn-danger" onclick="<?php echo $modals?>('<?php echo $deladm?>')"><i class="fa fa-trash"></i></button>  
