@@ -39,15 +39,15 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        txtIDPasien = findViewById(R.id.txtIDPasien);
-        txtNamaPasien = findViewById(R.id.txtNamaPasien);
-        txtPassword = findViewById(R.id.txtPassword);
-        txtKonfirmasiPassword = findViewById(R.id.txtKonfirmasiPassword);
+        txtIDPasien = findViewById(R.id.txtIndexPasien);
+        txtNamaPasien = findViewById(R.id.txtNIK);
+        txtPassword = findViewById(R.id.txtNama);
+        txtKonfirmasiPassword = findViewById(R.id.txtKepalaKeluarga);
 
-        validasiIDPasien = findViewById(R.id.validasiIDPasien);
-        validasiNamaPasien = findViewById(R.id.validasiNamaPasien);
-        validasiPassword = findViewById(R.id.validasiPassword);
-        validasiKonfirmasiPassword = findViewById(R.id.validasiKonfirmasiPassword);
+        validasiIDPasien = findViewById(R.id.validasiIndexPasien);
+        validasiNamaPasien = findViewById(R.id.validasiNIK);
+        validasiPassword = findViewById(R.id.validasiNama);
+        validasiKonfirmasiPassword = findViewById(R.id.validasiKepalaKeluarga);
 
         btnRegister = findViewById(R.id.btnRegister);
         loading = findViewById(R.id.loading);

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -17,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.puskesmassumbersari.MainActivity;
 import com.example.puskesmassumbersari.R;
 import com.example.puskesmassumbersari.config.Server;
 
@@ -100,7 +102,9 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String nama_pasien = jsonObject1.getString("pas_nama").trim();
                             sessionManager.createSession(username, nama_pasien);
-                            Toast.makeText(LoginActivity.this, "Login berhasil ! \n Nama : " + nama_pasien, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LoginActivity.this, "Login berhasil ! \n Nama : " + nama_pasien, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
                         }
                     } else {
                         Toast.makeText(LoginActivity.this, "Username dan Password tidak ditemukan! ", Toast.LENGTH_SHORT).show();

@@ -98,7 +98,8 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorHint" />
+            android:textColorHint="@color/colorHint"
+            tools:ignore="RtlCompat" />
 
     </android.support.design.widget.TextInputLayout>
 
