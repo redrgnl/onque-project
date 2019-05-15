@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBg1"
     android:padding="10dp"
+    android:orientation="vertical"
     tools:context="com.example.puskesmassumbersari.controllers.LoginActivity">
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
+        android:layout_marginLeft="90dp"
         android:contentDescription="@android:string/ok"
         app:srcCompat="@drawable/dinkes" />
 
@@ -49,16 +43,6 @@
         android:textColorHint="@color/colorWhite"
         android:textSize="22dp" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="344dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="65dp"
-        android:text="Login"
-        android:textColor="@color/colorAccent" />
-
     <android.support.design.widget.TextInputLayout
         android:id="@+id/validasiUsername"
         android:layout_width="match_parent"
@@ -72,7 +56,7 @@
             android:id="@+id/txtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username"
+            android:hint="Username"
             android:inputType="text"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorHint" />
@@ -84,7 +68,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/validasiUsername"
-        android:layout_marginTop="-30dp"
         android:textColor="@color/colorWhite"
         app:errorEnabled="true"
         app:passwordToggleEnabled="true"
@@ -95,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/validasiPassword"
-            android:hint="@string/password"
+            android:hint="Password"
             android:inputType="textPassword"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorHint"
@@ -103,16 +86,38 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <TextView android:id="@+id/txtRegister"
-        android:layout_width="400dp"
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp"
-        android:layout_marginLeft="250dp"
-        android:text="Registrasi Pasien"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorWhite" />
+        android:layout_marginBottom="65dp"
+        android:text="Login"
+        android:textColor="@color/colorAccent" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="80dp">
+
+        <TextView
+            android:id="@+id/txtQ1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum mendaftar? "
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/txtRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrasi Pasien"
+            android:textColor="@color/colorLink"
+            android:textColorHint="@color/colorWhite" />
+
+    </LinearLayout>
+
+</LinearLayout>

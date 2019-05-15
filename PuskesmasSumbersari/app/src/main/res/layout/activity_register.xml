@@ -150,7 +150,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/validasiNomorTelepon"
+                android:id="@+id/validasiNoTelp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -160,7 +160,7 @@
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/txtNomorTelepon"
+                    android:id="@+id/txtNoTelp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nomor Telepon : "
@@ -176,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/validasiNomorTelepon"
+                android:layout_below="@+id/validasiNoTelp"
                 android:textColor="@color/colorAccent"
                 android:textColorHint="@color/colorHint">
 
@@ -247,7 +247,7 @@
                     android:id="@+id/txtJenisKelamin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Kepala Keluarga : "
+                    android:hint="Jenis Kelamin : "
                     android:inputType="text"
                     android:textColor="@color/colorAccent"
                     android:textColorHint="@color/colorHint" />
@@ -290,7 +290,7 @@
                     android:id="@+id/txtPekerjaan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Kepala Keluarga : "
+                    android:hint="Pekerjaan : "
                     android:inputType="text"
                     android:textColor="@color/colorAccent"
                     android:textColorHint="@color/colorHint" />

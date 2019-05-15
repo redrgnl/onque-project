@@ -3,7 +3,7 @@ package com.example.puskesmassumbersari;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.puskesmassumbersari.R;
+
 
 public class MainActivity extends AppCompatActivity {
 

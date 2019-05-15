@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.puskesmassumbersari.R;
+import com.example.puskesmassumbersari.config.Server;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,29 +26,51 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText txtIDPasien, txtNamaPasien, txtPassword, txtKonfirmasiPassword;
-    private TextInputLayout validasiIDPasien, validasiNamaPasien, validasiPassword, validasiKonfirmasiPassword;
+    private EditText txtIndexPasien, txtNIK, txtNama, txtKepalaKeluarga, txtAlamat, txtNoTelp,
+            txtTglLahir, txtAgama, txtPendidikan, txtJenisKelamin, txtGolDarah, txtPekerjaan;
+    private TextInputLayout validasiIndexPasien, validasiNIK, validasiNama, validasiKepalaKeluarga,
+            validasiAlamat, validasiNoTelp, validasiTglLahir, validasiAgama, validasiPendidikan,
+            validasiJenisKelamin, validasiGolDarah, validasiPekerjaan;
     private ProgressBar loading;
     private Button btnRegister;
 
-    private static String URL = "http://10.10.3.60/api_android/sumbersarisehat/Pasien/registerPasien.php";
+    private static String URL = Server.URL + "app_api/index_post";
 
-    private String id_pasien, nama_pasien, password, konfirmasi_password;
+    private String indexPasien, NIK, nama, kepalaKeluarga, alamat, noTelp, tglLahir, agama,
+            pendidikan, jenisKelamin, golDarah, pekerjaan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        txtIDPasien = findViewById(R.id.txtIndexPasien);
-        txtNamaPasien = findViewById(R.id.txtNIK);
-        txtPassword = findViewById(R.id.txtNama);
-        txtKonfirmasiPassword = findViewById(R.id.txtKepalaKeluarga);
+        // Inisiasi variabel-variabel edit text dengan id edit text dari layout activity_register.xml
+        txtIndexPasien = findViewById(R.id.txtIndexPasien);
+        txtNIK = findViewById(R.id.txtNIK);
+        txtNama = findViewById(R.id.txtNama);
+        txtKepalaKeluarga = findViewById(R.id.txtKepalaKeluarga);
+        txtAlamat = findViewById(R.id.txtAlamat);
+        txtNoTelp = findViewById(R.id.txtNoTelp);
+        txtTglLahir = findViewById(R.id.txtTglLahir);
+        txtAgama = findViewById(R.id.txtAgama);
+        txtPendidikan = findViewById(R.id.txtPendidikan);
+        txtJenisKelamin = findViewById(R.id.txtJenisKelamin);
+        txtGolDarah = findViewById(R.id.txtGolDarah);
+        txtPekerjaan = findViewById(R.id.txtPekerjaan);
 
-        validasiIDPasien = findViewById(R.id.validasiIndexPasien);
-        validasiNamaPasien = findViewById(R.id.validasiNIK);
-        validasiPassword = findViewById(R.id.validasiNama);
-        validasiKonfirmasiPassword = findViewById(R.id.validasiKepalaKeluarga);
+        // Inisiasi variabel-variabel validasi dengan id validasi dari layout activity_register.xml
+        validasiIndexPasien = findViewById(R.id.validasiIndexPasien);
+        validasiNIK = findViewById(R.id.validasiNIK);
+        validasiNama = findViewById(R.id.validasiNama);
+        validasiKepalaKeluarga = findViewById(R.id.validasiKepalaKeluarga);
+        validasiAlamat = findViewById(R.id.validasiAlamat);
+        validasiNoTelp = findViewById(R.id.validasiNoTelp);
+        validasiTglLahir = findViewById(R.id.validasiTglLahir);
+        validasiAgama = findViewById(R.id.validasiAgama);
+        validasiPendidikan = findViewById(R.id.validasiPendidikan);
+        validasiJenisKelamin = findViewById(R.id.validasiJenisKelamin);
+        validasiGolDarah = findViewById(R.id.validasiGolDarah);
+        validasiPekerjaan = findViewById(R.id.validasiPekerjaan);
 
         btnRegister = findViewById(R.id.btnRegister);
         loading = findViewById(R.id.loading);
@@ -55,19 +78,41 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                id_pasien = txtIDPasien.getText().toString().trim();
-                nama_pasien = txtNamaPasien.getText().toString().trim();
-                password = txtPassword.getText().toString().trim();
-                konfirmasi_password = txtKonfirmasiPassword.getText().toString().trim();
+                indexPasien = txtIndexPasien.getText().toString().trim();
+                NIK = txtNIK.getText().toString().trim();
+                nama = txtNama.getText().toString().trim();
+                kepalaKeluarga = txtKepalaKeluarga.getText().toString().trim();
+                alamat = txtAlamat.getText().toString().trim();
+                noTelp = txtNoTelp.getText().toString().trim();
+                tglLahir = txtTglLahir.getText().toString().trim();
+                agama = txtAgama.getText().toString().trim();
+                pendidikan = txtPendidikan.getText().toString().trim();
+                jenisKelamin = txtJenisKelamin.getText().toString().trim();
+                golDarah = txtGolDarah.getText().toString().trim();
+                pekerjaan = txtPekerjaan.getText().toString().trim();
 
-                if ( id_pasien.isEmpty() ) {
-                    validasiIDPasien.setError("ID Pasien harus diisi!");
-                } else if( nama_pasien.isEmpty() ) {
-                    validasiNamaPasien.setError("Nama Pasien harus diisi!");
-                } else if( password.isEmpty() ) {
-                    validasiPassword.setError("Password harus diisi");
-                } else if( !konfirmasi_password.equals(password) ) {
-                    validasiPassword.setError("Konfirmasi password harus sama");
+                if ( indexPasien.isEmpty() ) {
+                    validasiIndexPasien.setError("Index pasien harus diisi!");
+                } else if( NIK.isEmpty() ) {
+                    validasiNIK.setError("NIK harus diisi!");
+                } else if( nama.isEmpty() ) {
+                    validasiNama.setError("Nama harus diisi");
+                } else if( kepalaKeluarga.isEmpty() ) {
+                    validasiKepalaKeluarga.setError("Kepala keluarga harus diisi!");
+                } else if( alamat.isEmpty() ) {
+                    validasiAlamat.setError("Alamat harus diisi");
+                } else if( noTelp.isEmpty() ) {
+                    validasiNoTelp.setError("Nomor telepon harus diisi!");
+                } else if( tglLahir.isEmpty() ) {
+                    validasiTglLahir.setError("Tanggal lahir harus diisi");
+                } else if( agama.isEmpty() ) {
+                    validasiAgama.setError("Agama harus diisi!");
+                } else if( pendidikan.isEmpty() ) {
+                    validasiPendidikan.setError("Pendidikan harus diisi");
+                } else if( golDarah.isEmpty() ) {
+                    validasiGolDarah.setError("Golongan darah harus diisi!");
+                } else if( pekerjaan.isEmpty() ) {
+                    validasiPekerjaan.setError("Pekerjaan harus diisi");
                 } else {
                     Registrasi();
                 }
@@ -78,10 +123,18 @@ public class RegisterActivity extends AppCompatActivity {
     private void Registrasi() {
         loading.setVisibility(View.VISIBLE);
         btnRegister.setVisibility(View.GONE);
-        id_pasien = this.txtIDPasien.getText().toString().trim();
-        nama_pasien = this.txtNamaPasien.getText().toString().trim();
-        password = this.txtPassword.getText().toString().trim();
-        konfirmasi_password = this.txtKonfirmasiPassword.getText().toString().trim();
+        indexPasien = txtIndexPasien.getText().toString().trim();
+        NIK = txtNIK.getText().toString().trim();
+        nama = txtNama.getText().toString().trim();
+        kepalaKeluarga = txtKepalaKeluarga.getText().toString().trim();
+        alamat = txtAlamat.getText().toString().trim();
+        noTelp = txtNoTelp.getText().toString().trim();
+        tglLahir = txtTglLahir.getText().toString().trim();
+        agama = txtAgama.getText().toString().trim();
+        pendidikan = txtPendidikan.getText().toString().trim();
+        jenisKelamin = txtJenisKelamin.getText().toString().trim();
+        golDarah = txtGolDarah.getText().toString().trim();
+        pekerjaan = txtPekerjaan.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(StringRequest.Method.POST, URL, new Response.Listener<String>() {
             @Override
@@ -111,9 +164,18 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams () throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("id_pasien", id_pasien);
-                params.put("nama_pasien", nama_pasien);
-                params.put("password", password);
+                params.put("pas_index", indexPasien);
+                params.put("pas_nik", NIK);
+                params.put("pas_nama", nama);
+                params.put("pas_kk", kepalaKeluarga);
+                params.put("pas_alamat", alamat);
+                params.put("pas_telepon", noTelp);
+                params.put("pas_lahir", tglLahir);
+                params.put("pas_agama", agama);
+                params.put("pas_pendidikan", pendidikan);
+                params.put("pas_kelamin", jenisKelamin);
+                params.put("pas_darah", golDarah);
+                params.put("pas_pekerjaan", pekerjaan);
                 return  params;
             }
         };
