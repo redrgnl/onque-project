@@ -40,9 +40,15 @@ class app_api extends REST_Controller {
                     'pas_pekerjaan' => $this->post('pas_pekerjaan'));
         $insert = $this->db->insert('pasien', $data);
         if ($insert) {
-            $this->response($data, 200);
+            $data["success"] = "1";
+            $data["message"] = "success";
+            
+            echo json_encode($data);
         } else {
-            $this->response(array('status' => 'fail', 502));
+            $data["success"] = "0";
+            $data["message"] = "error";
+
+            echo json_encode($data);
         }
     }
 
