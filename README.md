@@ -1,4 +1,4 @@
-- Sistem Informasi Antrian Puskesmas Sumbersari
+Sistem Informasi Antrian Puskesmas Sumbersari
 
 Kelompok 2 :
 
