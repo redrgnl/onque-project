@@ -27,12 +27,12 @@ public class SessionManager {
     private static final String IS_LOGIN = "IsLoggedIn";
 
     // ID Pasien (make variable public to access from outside class)
-    public static final String KEY_ID_PASIEN = "id_pasien";
+    public static final String KEY_INDEX_PASIEN = "pas_index";
 
     // Nama pasien
     //? private
     //? password?
-    public static final String KEY_NAMA_PASIEN = "nama_pasien";
+    public static final String KEY_NAMA_PASIEN = "pas_nama";
 
     // Constructor
     public SessionManager(Context context){
@@ -52,12 +52,12 @@ public class SessionManager {
     /**
      * Create login session
      * */
-    public void createSession(String id_pasien, String nama_pasien){
+    public void createSession(String index_pasien, String nama_pasien){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
         // Storing id_pasien in pref
-        editor.putString(KEY_ID_PASIEN, id_pasien);
+        editor.putString(KEY_INDEX_PASIEN, index_pasien);
 
         // Storing nama_pasien in pref
         editor.putString(KEY_NAMA_PASIEN, nama_pasien);
@@ -96,7 +96,7 @@ public class SessionManager {
     public HashMap<String, String> getUserDetails(){
         HashMap<String, String> user = new HashMap<String, String>();
         // id pasien
-        user.put(KEY_ID_PASIEN, pref.getString(KEY_ID_PASIEN, null));
+        user.put(KEY_INDEX_PASIEN, pref.getString(KEY_INDEX_PASIEN, null));
 
         // password
         user.put(KEY_NAMA_PASIEN, pref.getString(KEY_NAMA_PASIEN, null));
