@@ -9,115 +9,129 @@
     android:orientation="vertical"
     tools:context="com.example.puskesmassumbersari.controllers.LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
-        android:layout_marginLeft="90dp"
-        android:contentDescription="@android:string/ok"
-        app:srcCompat="@drawable/dinkes" />
-
-    <TextView
-        android:id="@+id/txtJudul"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
-        android:text="Sistem Informasi Antrian"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorWhite"
-        android:textSize="22dp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtJudul1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtJudul"
-        android:layout_marginBottom="22dp"
-        android:text="Puskesmas Sumbersari"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorWhite"
-        android:textSize="22dp" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/validasiUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtJudul1"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorHint"
-        app:errorEnabled="true">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtUsername"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Username"
-            android:inputType="text"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorHint" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </android.support.design.widget.TextInputLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="@android:string/ok"
+                app:srcCompat="@drawable/dinkes" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/validasiPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/validasiUsername"
-        android:textColor="@color/colorWhite"
-        app:errorEnabled="true"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/colorAccent">
+            <TextView
+                android:id="@+id/txtJudul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView"
+                android:text="Sistem Informasi Antrian"
+                android:layout_marginLeft="57dp"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="22dp" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/validasiPassword"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorHint"
-            tools:ignore="RtlCompat" />
+            <TextView
+                android:id="@+id/txtJudul1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtJudul"
+                android:layout_marginBottom="22dp"
+                android:text="Puskesmas Sumbersari"
+                android:layout_marginLeft="64dp"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="22dp" />
 
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtJudul1"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorHint"
+                app:errorEnabled="true">
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="65dp"
-        android:text="Login"
-        android:textColor="@color/colorAccent" />
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="80dp">
+            </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:id="@+id/txtQ1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Belum mendaftar? "
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorWhite" />
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/validasiPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/validasiUsername"
+                android:textColor="@color/colorWhite"
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorAccent">
 
-        <TextView
-            android:id="@+id/txtRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registrasi Pasien"
-            android:textColor="@color/colorLink"
-            android:textColorHint="@color/colorWhite" />
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/validasiPassword"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorHint"
+                    tools:ignore="RtlCompat" />
 
-    </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:text="Login"
+                android:textColor="@color/colorAccent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="80dp">
+
+                <TextView
+                    android:id="@+id/txtQ1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Belum mendaftar? "
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/txtRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrasi Pasien"
+                    android:textColor="@color/colorLink"
+                    android:textColorHint="@color/colorWhite" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

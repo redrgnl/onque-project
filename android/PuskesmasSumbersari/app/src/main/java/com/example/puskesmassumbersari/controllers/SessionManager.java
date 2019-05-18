@@ -27,12 +27,12 @@ public class SessionManager {
     private static final String IS_LOGIN = "IsLoggedIn";
 
     // ID Pasien (make variable public to access from outside class)
-    public static final String KEY_ID_PASIEN = "id_pasien";
+    public static final String KEY_PAS_INDEX = "pas_index";
 
     // Nama pasien
     //? private
     //? password?
-    public static final String KEY_NAMA_PASIEN = "nama_pasien";
+    public static final String KEY_PAS_NAMA = "pas_nama";
 
     // Constructor
     public SessionManager(Context context){
@@ -44,15 +44,15 @@ public class SessionManager {
     /**
      * Create login session
      * */
-    public void createSession(String id_pasien, String nama_pasien){
+    public void createSession(String pas_index, String pas_nama){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
         // Storing id_pasien in pref
-        editor.putString(KEY_ID_PASIEN, id_pasien);
+        editor.putString(KEY_PAS_INDEX, pas_index);
 
         // Storing nama_pasien in pref
-        editor.putString(KEY_NAMA_PASIEN, nama_pasien);
+        editor.putString(KEY_PAS_NAMA, pas_nama);
 
         // commit changes
         editor.commit();
@@ -74,7 +74,7 @@ public class SessionManager {
             // Add new Flag to start new Activity
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-            // Staring Login Activity
+            // Starting Login Activity
             _context.startActivity(i);
         }
 
@@ -87,11 +87,11 @@ public class SessionManager {
      * */
     public HashMap<String, String> getUserDetails(){
         HashMap<String, String> user = new HashMap<String, String>();
-        // id pasien
-        user.put(KEY_ID_PASIEN, pref.getString(KEY_ID_PASIEN, null));
+        // index pasien
+        user.put(KEY_PAS_INDEX, pref.getString(KEY_PAS_INDEX, null));
 
-        // password
-        user.put(KEY_NAMA_PASIEN, pref.getString(KEY_NAMA_PASIEN, null));
+        // nama pasien
+        user.put(KEY_PAS_NAMA, pref.getString(KEY_PAS_NAMA, null));
 
         // return user
         return user;
