@@ -9,7 +9,7 @@ import android.content.SharedPreferences.Editor;
 
 public class SessionManager {
     // Shared Preferences
-    SharedPreferences pref;
+    private static SharedPreferences pref;
 
     // Editor for Shared preferences
     Editor editor;
@@ -27,12 +27,12 @@ public class SessionManager {
     private static final String IS_LOGIN = "IsLoggedIn";
 
     // ID Pasien (make variable public to access from outside class)
-    public static final String KEY_PAS_INDEX = "pas_index";
+    public static final String KEY_ID_PASIEN = "id_pasien";
 
     // Nama pasien
     //? private
     //? password?
-    public static final String KEY_PAS_NAMA = "pas_nama";
+    public static final String KEY_NAMA_PASIEN = "nama_pasien";
 
     // Constructor
     public SessionManager(Context context){
@@ -41,18 +41,26 @@ public class SessionManager {
         editor = pref.edit();
     }
 
+    public static synchronized SessionManager getInstance(Context _context){
+        if (pref == null) {
+            pref = (SharedPreferences) new SessionManager(_context);
+        }
+        return (SessionManager) pref;
+    }
+
+
     /**
      * Create login session
      * */
-    public void createSession(String pas_index, String pas_nama){
+    public void createSession(String id_pasien, String nama_pasien){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
         // Storing id_pasien in pref
-        editor.putString(KEY_PAS_INDEX, pas_index);
+        editor.putString(KEY_ID_PASIEN, id_pasien);
 
         // Storing nama_pasien in pref
-        editor.putString(KEY_PAS_NAMA, pas_nama);
+        editor.putString(KEY_NAMA_PASIEN, nama_pasien);
 
         // commit changes
         editor.commit();
@@ -74,7 +82,7 @@ public class SessionManager {
             // Add new Flag to start new Activity
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-            // Starting Login Activity
+            // Staring Login Activity
             _context.startActivity(i);
         }
 
@@ -87,11 +95,11 @@ public class SessionManager {
      * */
     public HashMap<String, String> getUserDetails(){
         HashMap<String, String> user = new HashMap<String, String>();
-        // index pasien
-        user.put(KEY_PAS_INDEX, pref.getString(KEY_PAS_INDEX, null));
+        // id pasien
+        user.put(KEY_ID_PASIEN, pref.getString(KEY_ID_PASIEN, null));
 
-        // nama pasien
-        user.put(KEY_PAS_NAMA, pref.getString(KEY_PAS_NAMA, null));
+        // password
+        user.put(KEY_NAMA_PASIEN, pref.getString(KEY_NAMA_PASIEN, null));
 
         // return user
         return user;
