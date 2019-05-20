@@ -100,8 +100,17 @@ public class LoginActivity extends AppCompatActivity {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String nama_pasien = jsonObject1.getString("pas_nama").trim();
-                            sessionManager.createSession(username, nama_pasien);
-                            //Toast.makeText(LoginActivity.this, "Login berhasil ! \n Nama : " + nama_pasien, Toast.LENGTH_SHORT).show();
+                            String nik_pasien = jsonObject1.getString("pas_nik").trim();
+                            String kk_pasien = jsonObject1.getString("pas_kk").trim();
+                            String alamat_pasien = jsonObject1.getString("pas_alamat");
+                            String telepon_pasien = jsonObject1.getString("pas_telepon").trim();
+                            String lahir_pasien = jsonObject1.getString("pas_lahir").trim();
+                            String agama_pasien = jsonObject1.getString("pas_agama").trim();
+                            String pendidikan_pasien = jsonObject1.getString("pas_pendidikan").trim();
+                            String kelamin_pasien = jsonObject1.getString("pas_kelamin").trim();
+                            String darah_pasien = jsonObject1.getString("pas_darah").trim();
+                            String pekerjaan_pasien = jsonObject1.getString("pas_pekerjaan").trim();
+                            sessionManager.createSession(username, nama_pasien, nik_pasien, kk_pasien, alamat_pasien, telepon_pasien, lahir_pasien, agama_pasien, pendidikan_pasien, kelamin_pasien, darah_pasien, pekerjaan_pasien);
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
