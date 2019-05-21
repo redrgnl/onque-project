@@ -24,6 +24,7 @@
     <string name="menu_profil">Profil</string>
     <string name="menu_antrian_anda">Antrian Anda</string>
     <string name="menu_logout">Logout</string>
+    <string name="title_activity_ambil_antrian">AmbilAntrian</string>
 
 
 </resources>

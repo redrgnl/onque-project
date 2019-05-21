@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.content.Intent;
 
 import android.support.design.widget.TextInputLayout;
 import com.android.volley.AuthFailureError;
@@ -144,7 +145,10 @@ public class RegisterActivity extends AppCompatActivity {
                     String success = jsonObject.getString("success");
 
                     if( success.equals("1") ) {
-                        Toast.makeText(RegisterActivity.this, "Registrasi Sukses!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Registrasi Sukses!", Toast.LENGTH_LONG).show();
+                        loading.setVisibility(View.GONE);
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
