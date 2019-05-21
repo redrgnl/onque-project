@@ -14,12 +14,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.example.puskesmassumbersari.controllers.LoginActivity;
 import com.example.puskesmassumbersari.controllers.SessionManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    SessionManager SessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +32,16 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        SessionManager = new SessionManager(getApplicationContext());
+
+        Toast.makeText(getApplicationContext(), "User Login Status: " + SessionManager.isLoggedIn(), Toast.LENGTH_LONG).show();
+
+        SessionManager.checkLogin();
     }
 
     @Override
@@ -55,8 +61,13 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.logout:
-                SessionManager.getInstance(this).logoutUser();
-                finish();
+                SessionManager.logoutUser();
+                break;
+            case R.id.antrian_anda:
+                startActivity(new Intent(this, AntrianAndaActivity.class));
+                break;
+            case R.id.profil:
+                startActivity(new Intent(this, ProfilActivity.class));
                 break;
 
         }

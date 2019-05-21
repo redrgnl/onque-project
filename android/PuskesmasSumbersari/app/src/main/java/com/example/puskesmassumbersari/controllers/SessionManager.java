@@ -28,6 +28,16 @@ public class SessionManager {
 
     // ID Pasien (make variable public to access from outside class)
     public static final String KEY_INDEX_PASIEN = "pas_index";
+    public static final String KEY_NIK_PASIEN = "pas_nik";
+    public static final String KEY_KK_PASIEN = "pas_kk";
+    public static final String KEY_ALAMAT_PASIEN = "pas_alamat";
+    public static final String KEY_TELEPON_PASIEN = "pas_telepon";
+    public static final String KEY_LAHIR_PASIEN = "pas_lahir";
+    public static final String KEY_AGAMA_PASIEN = "pas_agama";
+    public static final String KEY_PENDIDIKAN_PASIEN = "pas_pendidikan";
+    public static final String KEY_KELAMIN_PASIEN = "pas_kelamin";
+    public static final String KEY_DARAH_PASIEN = "pas_darah";
+    public static final String KEY_PEKERJAAN_PASIEN = "pas_pekerjaan";
 
     // Nama pasien
     //? private
@@ -41,18 +51,13 @@ public class SessionManager {
         editor = pref.edit();
     }
 
-    public static synchronized SessionManager getInstance(Context _context){
-        if (pref == null) {
-            pref = (SharedPreferences) new SessionManager(_context);
-        }
-        return (SessionManager) pref;
-    }
+
 
 
     /**
      * Create login session
      * */
-    public void createSession(String index_pasien, String nama_pasien){
+    public void createSession(String index_pasien, String nama_pasien, String nik_pasien, String kk_pasien, String alamat_pasien, String telepon_pasien, String lahir_pasien, String agama_pasien, String pendidikan_pasien, String kelamin_pasien, String darah_pasien, String pekerjaan_pasien){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
@@ -61,6 +66,16 @@ public class SessionManager {
 
         // Storing nama_pasien in pref
         editor.putString(KEY_NAMA_PASIEN, nama_pasien);
+        editor.putString(KEY_NIK_PASIEN, nik_pasien);
+        editor.putString(KEY_KK_PASIEN, kk_pasien);
+        editor.putString(KEY_ALAMAT_PASIEN, alamat_pasien);
+        editor.putString(KEY_TELEPON_PASIEN, telepon_pasien);
+        editor.putString(KEY_LAHIR_PASIEN, lahir_pasien);
+        editor.putString(KEY_AGAMA_PASIEN, agama_pasien);
+        editor.putString(KEY_PENDIDIKAN_PASIEN, pendidikan_pasien);
+        editor.putString(KEY_KELAMIN_PASIEN, kelamin_pasien);
+        editor.putString(KEY_DARAH_PASIEN, darah_pasien);
+        editor.putString(KEY_PEKERJAAN_PASIEN, pekerjaan_pasien);
 
         // commit changes
         editor.commit();
@@ -100,6 +115,17 @@ public class SessionManager {
 
         // password
         user.put(KEY_NAMA_PASIEN, pref.getString(KEY_NAMA_PASIEN, null));
+        user.put(KEY_NIK_PASIEN, pref.getString(KEY_NIK_PASIEN, null));
+        user.put(KEY_KK_PASIEN, pref.getString(KEY_KK_PASIEN, null));
+        user.put(KEY_ALAMAT_PASIEN, pref.getString(KEY_ALAMAT_PASIEN, null));
+        user.put(KEY_TELEPON_PASIEN, pref.getString(KEY_TELEPON_PASIEN, null));
+        user.put(KEY_LAHIR_PASIEN, pref.getString(KEY_LAHIR_PASIEN, null));
+        user.put(KEY_AGAMA_PASIEN, pref.getString(KEY_AGAMA_PASIEN, null));
+        user.put(KEY_PENDIDIKAN_PASIEN, pref.getString(KEY_PENDIDIKAN_PASIEN, null));
+        user.put(KEY_KELAMIN_PASIEN, pref.getString(KEY_KELAMIN_PASIEN, null));
+        user.put(KEY_DARAH_PASIEN, pref.getString(KEY_DARAH_PASIEN, null));
+        user.put(KEY_PEKERJAAN_PASIEN, pref.getString(KEY_PEKERJAAN_PASIEN, null));
+
 
         // return user
         return user;
@@ -132,4 +158,7 @@ public class SessionManager {
     public boolean isLoggedIn(){
         return pref.getBoolean(IS_LOGIN, false);
     }
+
+
+
 }
