@@ -15,15 +15,16 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Puskesmas Sumbersari</string>
-    <string name="nav_header_subtitle1">Jl. Letjen Panjaitan NO. 42 Kelurahan Kebonsari</string>
+    <string name="nav_header_subtitle1">Jl. Letjen Panjaitan No. 42 Kelurahan Kebonsari</string>
     <string name="nav_header_subtitle2">Kecamatan Sumbersari - Jember</string>
     <string name="nav_header_subtitle3">Telp. (0331) 337344</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_profil">Profil</string>
+    <string name="menu_profil">Data Diri</string>
     <string name="menu_antrian_anda">Antrian Anda</string>
     <string name="menu_logout">Logout</string>
+    <string name="menu_antrian">Antrian</string>
 
 
 </resources>
