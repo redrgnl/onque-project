@@ -41,6 +41,24 @@
     <div class="form-row">
       <div class="col-md-5">
         <div class="form-label-group">
+          <select type="text" id="editadminstatus" name="editadminstatus" class="form-control" required="required" value="" style="height: 50px;">
+            <option value="">-- Status --</option>
+            <?php
+            $status = $data->status;
+            if ($status == "admin") echo "<option value='admin' selected>admin</option>";
+            else echo "<option value='admin'>admin</option>";
+            if ($status == "non-aktif") echo "<option value='non-aktif' selected>non-aktif</option>";
+            else echo "<option value='non-aktif'>non-aktif</option>";                      
+            ?>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col-md-5">
+        <div class="form-label-group">
           <div class="checkbox">
             <label><input type="checkbox" required> Konfirmasi Perubahan</label>
           </div>

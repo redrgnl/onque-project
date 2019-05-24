@@ -183,7 +183,7 @@
   <div class="form-group">
     <div class="form-row">
       <div class="col-md-6">
-        <div class="form-label-group input-group date" data-provide="datepicker">
+        <div class="form-label-group input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
           <input type="text" class="form-control" id="edpasienlahir" name="edpasienlahir" required style="height: 50px;" placeholder="Tanggal Lahir" value="<?php echo $data->pas_lahir?>" maxlength="10">
           <div class="input-group-addon">
             <span class="glyphicon glyphicon-th"></span>

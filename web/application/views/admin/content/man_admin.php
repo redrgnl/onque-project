@@ -25,6 +25,22 @@
       </a>
     </div>
   </div>
+  <div class="col-xl-3 col-sm-6 mb-3">
+    <div class="card text-white bg-danger o-hidden h-100">
+      <div class="card-body">
+        <div class="card-body-icon">
+          <i class="fas fa-fw fa-chart-area"></i>
+        </div>
+        <div class="mr-5">Dashboard Antrian</div>
+      </div>
+      <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url("admin/dashboard")?>">
+        <span class="float-left">Antrian</span>
+        <span class="float-right">
+          <i class="fas fa-angle-right"></i>
+        </span>
+      </a>
+    </div>
+  </div>
   <?php echo $info?>
 </div>
 <div class="row">
@@ -40,17 +56,17 @@
                 <thead>
                   <tr>
                     <th>Username</th>
-                    <th>Nama</th>
-                    <th>Status</th>
-                    <th style="width: 70px">Update</th>
+                    <th>Nama Petugas</th>
+                    <th style="width: 80px">Status</th>
+                    <th style="width: 50px">Update</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
                     <th>Username</th>
-                    <th>Nama</th>
-                    <th>Status</th>
-                    <th style="width: 70px">Update</th>
+                    <th>Nama Petugas</th>
+                    <th style="width: 80px">Status</th>
+                    <th style="width: 50px">Update</th>
                   </tr>
                 </tfoot>
                 <tbody>
@@ -68,12 +84,20 @@
                                 $modals = "";
                             }
                         ?>
+                        <?php
+                            $status = $adm->status;
+                            if($status == 'non-aktif'){
+                                $button = "btn btn-danger";
+                            } 
+                            else {
+                                $button = "btn btn-success";
+                            }
+                        ?>
                         <td><?php echo $adm->username?></td>
                         <td><?php echo $adm->nama?></td>
-                        <td><?php echo $adm->status?></td>
-                        <td style="width: 70px">
-                          <a class="btn btn-info" href="<?php echo $perm?>"><i class="fa fa-gear"></i></a>  
-                          <button class="btn btn-danger" onclick="<?php echo $modals?>('<?php echo $deladm?>')"><i class="fa fa-trash"></i></button>  
+                        <td><label class="<?php echo $button?>"><?php echo $adm->status?></label></td>
+                        <td>
+                          <a class="btn btn-info" href="<?php echo $perm?>"><i class="fa fa-gear"></i></a>
                         </td>
                     </tr>
                   <?php endforeach;?>
