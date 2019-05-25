@@ -82,6 +82,8 @@
         android:layout_marginLeft="80dp"
         android:text="AMBIL ANTRIAN"
         android:textSize="20dp"
+        android:background="#2298FF"
+        android:textColor="@color/colorWhite"
         style="@style/button"/>
 
 </LinearLayout>

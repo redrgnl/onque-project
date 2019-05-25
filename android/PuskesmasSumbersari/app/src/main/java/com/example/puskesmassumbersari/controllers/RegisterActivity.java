@@ -146,7 +146,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                     if( success.equals("1") ) {
                         Toast.makeText(RegisterActivity.this, "Registrasi Sukses!", Toast.LENGTH_LONG).show();
-                        loading.setVisibility(View.GONE);
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
                     }
@@ -180,7 +179,7 @@ public class RegisterActivity extends AppCompatActivity {
                 params.put("pas_kelamin", jenisKelamin);
                 params.put("pas_darah", golDarah);
                 params.put("pas_pekerjaan", pekerjaan);
-                return  params;
+                return params;
             }
         };
 
