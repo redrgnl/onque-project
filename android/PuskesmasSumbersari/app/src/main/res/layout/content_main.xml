@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
-    tools:showIn="@layout/app_bar_main"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:showIn="@layout/app_bar_main">
 
     <TextView
         android:layout_marginTop="10dp"
@@ -83,7 +83,6 @@
         android:text="AMBIL ANTRIAN"
         android:textSize="20dp"
         android:background="#2298FF"
-        android:textColor="@color/colorWhite"
-        style="@style/button"/>
+        android:textColor="@color/colorWhite"/>
 
 </LinearLayout>

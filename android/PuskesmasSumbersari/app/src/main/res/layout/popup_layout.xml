@@ -5,7 +5,6 @@
     android:layout_width="350dp"
     android:id="@+id/popup"
     android:layout_height="350dp"
-    android:background="@drawable/popup_bg"
     android:orientation="vertical" >
 
     <TextView

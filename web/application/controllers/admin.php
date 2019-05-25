@@ -20,29 +20,36 @@ class admin extends CI_Controller {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         
-        $checks = $this->m_admin->check_super($username);
+        $checkstatus = $this->m_admin->check_status($username)->num_rows();
         
-        $where = array(
-            'username' => $username,
-            'password' => $password
-        );
+        if($checkstatus > 0){
+ 
+			$checks = $this->m_admin->check_super($username);
+        	$where = array(
+            	'username' => $username,
+            	'password' => $password
+        	);
         
-        $check = $this->m_login->check_login("admin",$where)->num_rows();
-        if($check > 0){
+        	$check = $this->m_login->check_login("admin",$where)->num_rows();
+        	if($check > 0){
  
-			$data_session = array(
-                'permission' => $checks,
-				'username' => $username,
-				'status' => "login"
-				);
+				$data_session = array(
+                	'permission' => $checks,
+					'username' => $username,
+					'status' => "login"
+					);
  
-			$this->session->set_userdata($data_session);
-			redirect(base_url("admin/dashboard"));
+				$this->session->set_userdata($data_session);
+				redirect(base_url("antrian"));
  
+			} else {
+				redirect(base_url("admin"));
+			} 
 		} else {
 			redirect(base_url("admin"));
 		}
     }
+    //logout
     function logout()
     {
         $this->session->sess_destroy();
@@ -70,6 +77,7 @@ class admin extends CI_Controller {
 		} 
     }
     
+    //manajemen admin
     function manajemenadmin()
     {
         if($this->session->userdata('status') != "login"){
@@ -91,6 +99,7 @@ class admin extends CI_Controller {
             $this->load->view("admin/index", $data);
         }   
     }
+    
     //halaman tambah admin
     function formadmin()
     {
@@ -110,6 +119,7 @@ class admin extends CI_Controller {
             $this->load->view("admin/index", $data);
         }
     }
+    
     //function tambah admin to database
     function tambah_admin()
     {
@@ -124,6 +134,18 @@ class admin extends CI_Controller {
         }
     }
     
+    function redirect()
+    {
+        if($this->session->userdata('status') != "login"){
+            redirect(base_url("admin"));
+        }
+        else if($this->session->userdata('status') == "login"){
+            redirect(base_url("admin/manajemenadmin"));
+        }
+    }
+
+
+    //form edit admin
     function formeditadmin($id)
     {
         if($this->session->userdata('status') != "login"){
@@ -145,6 +167,7 @@ class admin extends CI_Controller {
 		}
     }
     
+    //form edit admin
     function updateadmin()
     {
         $modeladmin = $this->m_admin;
@@ -155,34 +178,6 @@ class admin extends CI_Controller {
         }
         else if($this->session->userdata('status') == "login"){
             redirect(base_url("admin/manajemenadmin"));
-        }
-    }
-    
-    function deleteadmin($id = null)
-    {
-        if (!isset($id)) manajemenadmin();
-        
-        if ($this->m_admin->delete($id)) {
-            redirect(base_url('admin/manajemenadmin'));
-        }
-    }
-    
-    function laporan()
-    {
-        if($this->session->userdata('status') != "login"){
-            redirect(base_url("admin"));
-        }
-        else if($this->session->userdata('status') == "login"){
-            $permission = $this->session->userdata('permission');
-            foreach ($permission as $perm){
-                $mission = $perm->status;
-            }
-            $data = [   
-                'permission' => $mission,
-                'breadcrumb' => "Laporan Riwayat Antrian",
-                'content' => 'admin/content/laporan'
-                ];
-            $this->load->view("admin/index", $data);
         }
     }
 }

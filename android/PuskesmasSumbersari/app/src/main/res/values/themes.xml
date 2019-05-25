@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="PuskesmasSumbersari" parent="android:style/Theme.NoTitleBar">
-        <item name="android:buttonStyle">@style/button</item>
-    </style>
-    <style name="PuskesmasSumbersari1" parent="android:style/Theme.NoTitleBar">
-        <item name="android:buttonStyle">@style/button2</item>
-    </style>
-</resources>

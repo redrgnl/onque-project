@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBg1"
-    android:padding="10dp"
-
     tools:context="com.example.puskesmassumbersari.controllers.LoginActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="20dp"
+
         android:orientation="vertical">
     <ImageView
         android:id="@+id/imageView"
@@ -18,7 +17,6 @@
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-
         android:contentDescription="@android:string/ok"
         app:srcCompat="@drawable/dinkes" />
 
@@ -91,12 +89,15 @@
 
     </android.support.design.widget.TextInputLayout>
 
+
+
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="65dp"
         android:text="Login"
         android:textColor="@color/colorAccent" />
@@ -104,24 +105,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
         >
 
         <TextView
             android:id="@+id/txtQ1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Apakah Anda Belum Mendaftar? "
-            android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorWhite" />
 
         <TextView
             android:id="@+id/txtRegister"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Registrasi Pasien"
-            android:textAlignment="center"
+
             android:textColor="@color/colorLink"
             android:textColorHint="@color/colorWhite" />
 

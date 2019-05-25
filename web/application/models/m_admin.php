@@ -20,7 +20,7 @@ class m_admin extends CI_Model {
         $this->nama = $post["editadminnama"];
         $this->username = $post["editadminusername"];
         $this->password = $post["editadminpassword"];
-        $this->status = $post["editadminstatus"];   
+        $this->status = $post["editadminstatus"];
         $this->db->update($this->_table, $this, array('id_admin' => $post['editadminid']));
     }
     
@@ -35,7 +35,7 @@ class m_admin extends CI_Model {
     
     public function daftar_admin()
     {
-        $result = $this->db->query("SELECT * FROM admin WHERE status='admin'");
+        $result = $this->db->query("SELECT * FROM admin WHERE status !='super'");
         return $result->result();
     }
     
@@ -45,13 +45,13 @@ class m_admin extends CI_Model {
         return $checks->result();
     }
     
+    public function check_status($username)
+    {
+        return $this->db->query("SELECT * FROM admin WHERE username='$username' AND status != 'non-aktif'");   
+    }
+    
     public function edit_admin($where,$table)
     {
         return $this->db->get_where($table,$where);
-    }
-    
-    public function delete($id)
-    {
-        return $this->db->delete($this->_table, array("id_admin" => $id));
     }
 }
