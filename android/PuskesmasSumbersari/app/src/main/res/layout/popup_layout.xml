@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="100dp"
+    android:layout_marginLeft="30dp"
+    android:layout_width="350dp"
+    android:id="@+id/popup"
+    android:layout_height="350dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Apakah Anda yakin?"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/antri"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Antri"
+        android:textSize="10pt"
+        android:textColor="@color/colorWhite"
+        android:background="#E04B4B"/>
+
+    <Button
+        android:id="@+id/batal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Batal"
+        android:textSize="10pt"
+        android:textColor="@color/colorWhite"
+        android:background="#2298FF"/>
+
+</LinearLayout>

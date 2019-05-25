@@ -1,5 +1,6 @@
 package com.example.puskesmassumbersari.controllers;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -144,7 +145,13 @@ public class RegisterActivity extends AppCompatActivity {
                     String success = jsonObject.getString("success");
 
                     if( success.equals("1") ) {
+
+                        Toast.makeText(RegisterActivity.this, "Registrasi Sukses!", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+
                         Toast.makeText(RegisterActivity.this, "Registrasi Sukses!", Toast.LENGTH_SHORT).show();
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -176,7 +183,7 @@ public class RegisterActivity extends AppCompatActivity {
                 params.put("pas_kelamin", jenisKelamin);
                 params.put("pas_darah", golDarah);
                 params.put("pas_pekerjaan", pekerjaan);
-                return  params;
+                return params;
             }
         };
 

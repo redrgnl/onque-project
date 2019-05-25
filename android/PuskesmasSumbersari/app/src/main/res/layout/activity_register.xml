@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBg1"
-    android:padding="10dp"
+    android:background="@drawable/background"
+    android:layout_centerInParent="true"
+
     tools:context="com.example.puskesmassumbersari.controllers.RegisterActivity">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,18 +37,45 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="22dp"
                 android:fontFamily="sans-serif-condensed"
-                android:text="REGISTRASI PASIEN"
+                android:text="Puskesmas Sumbersari"
+                android:textAlignment="center"
+                android:textSize="14pt"
+                android:textColor="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="-25dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Kecamatan Sumbersari - Jember"
+                android:textAlignment="center"
+                android:textSize="7pt"
+                android:textColor="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Registrasi Pasien"
                 android:textAlignment="center"
                 android:textSize="20dp"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorWhite" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/validasiIndexPasien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textView"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorHint"
+                android:layout_below="@id/textView3"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+
                 >
 
                 <android.support.design.widget.TextInputEditText
@@ -55,8 +84,8 @@
                     android:layout_height="wrap_content"
                     android:hint="Index Pasien : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
-                    android:textColorHint="@color/colorHint" />
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorWhite" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -67,7 +96,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/validasiIndexPasien"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint"
                 tools:ignore="UnknownId">
 
@@ -77,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:hint="NIK : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -89,7 +118,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/validasiNIK"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
@@ -98,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Nama : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -110,7 +139,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/validasiNama"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
@@ -119,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Kepala Keluarga : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -131,7 +160,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/validasiKepalaKeluarga"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
@@ -140,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Alamat : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -152,7 +181,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/validasiAlamat"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
@@ -161,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Nomor Telepon : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -173,7 +202,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/validasiNoTelp"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
@@ -182,7 +211,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Tanggal Lahir : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -194,7 +223,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/validasiTglLahir"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
@@ -203,7 +232,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Agama : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -215,7 +244,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/validasiAgama"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
@@ -224,7 +253,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Pendidikan : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -236,7 +265,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/validasiPendidikan"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
@@ -245,7 +274,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Jenis Kelamin : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -257,7 +286,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/validasiJenisKelamin"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
@@ -266,7 +295,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Golongan Darah : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -279,7 +308,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/validasiGolDarah"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorHint">
 
                 <android.support.design.widget.TextInputEditText
@@ -288,7 +317,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Pekerjaan : "
                     android:inputType="text"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint" />
 
             </android.support.design.widget.TextInputLayout>
@@ -312,6 +341,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>
