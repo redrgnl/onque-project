@@ -1,9 +1,9 @@
 <?php 
   if($nomor == "Antrian Tuntas")
     { 
-        $antri = "";
+        $antri = "#";
         $text = "Tuntas";
-        $skip = "";
+        $skip = "#";
     }
   else if($nomor != "Antrian Tuntas")
     { 
@@ -109,7 +109,7 @@
                 <th>Tanggal Antri</th>
                 <th>Poli</th>
                 <th>Status</th>
-                <th style="width: 70px">Update</th>
+                <th style="width: 50px">Update</th>
               </tr>
             </thead>
             <tbody>
@@ -122,7 +122,14 @@
                 <td><?php echo $antrian->tanggal_antrian?></td>
                 <td><?php echo $antrian->poli?></td>
                 <td><?php echo $antrian->status?></td>
-                <td></td>
+                <?php 
+                    if($antrian->status == "tunda"){ $update = base_url('antrian/update/').$antrian->id_antrian; }
+                    else if($antrian->status == "antri"){ $update = "#"; }
+                    else if($antrian->status == "selesai"){ $update = "#"; }
+                ?>
+                <td>
+                    <a class="btn btn-primary" href="<?php echo $update?>"><i class="fa fa-sync"></i></a>
+                </td>
               </tr>
             <?php }; ?>
             </tbody>
