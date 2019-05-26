@@ -39,30 +39,5 @@ class app_register extends REST_Controller {
             echo json_encode($data);
         }
     }
-
-//    Edit Pasien
-//    function index_put() {
-//        $pass_index = $this->put('pass_index');
-//        $data = array(
-//                    'pas_index' => $this->put('pass_index'),
-//                    'pas_nik' => $this->put('pass_nik'),
-//                    'pas_nama' => $this->put('pass_nama'),
-//                    'pas_kk' => $this->put('pass_kk'),
-//                    'pas_alamat' => $this->put('pass_alamat'),
-//                    'pas_telepon' => $this->put('pass_telepon'),
-//                    'pas_lahir' => $this->put('pass_lahir'),
-//                    'pas_agama' => $this->put('pass_agama'),
-//                    'pas_pendidikan' => $this->put('pass_pendidikan'),
-//                    'pas_kelamin' => $this->put('pass_kelamin'),
-//                    'pas_darah' => $this->put('pass_darah'),
-//                    'pas_pekerjaan' => $this->put('pass_pekerjaan'));
-//        $this->db->where('pas_index', $pass_index);
-//        $update = $this->db->update('pasien', $data);
-//        if ($update) {
-//            $this->response($data, 200);
-//        } else {
-//            $this->response(array('status' => 'fail', 502));
-//        }
-//    }
 }
 ?>
