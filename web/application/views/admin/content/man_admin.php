@@ -33,8 +33,40 @@
         </div>
         <div class="mr-5">Dashboard Antrian</div>
       </div>
-      <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url("admin/dashboard")?>">
+      <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url("antrian")?>">
         <span class="float-left">Antrian</span>
+        <span class="float-right">
+          <i class="fas fa-angle-right"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+  <div class="col-xl-3 col-sm-6 mb-3">
+    <div class="card text-white bg-primary o-hidden h-100">
+      <div class="card-body">
+        <div class="card-body-icon">
+          <i class="fas fa-fw fa-user"></i>
+        </div>
+        <div class="mr-5">Pasien</div>
+      </div> 
+      <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url("pasien")?>">
+        <span class="float-left">Manajemen Pasien</span>
+        <span class="float-right">
+          <i class="fas fa-angle-right"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+  <div class="col-xl-3 col-sm-6 mb-3">
+    <div class="card text-white bg-warning o-hidden h-100">
+      <div class="card-body">
+        <div class="card-body-icon">
+          <i class="fas fa-fw fa-file-text"></i>
+        </div>
+        <div class="mr-5">Laporan</div>
+      </div>
+      <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url("laporan")?>">
+        <span class="float-left">Manajemen Laporan</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>
         </span>
