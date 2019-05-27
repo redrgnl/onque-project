@@ -1,9 +1,9 @@
 <?php 
   if($nomor == "Antrian Tuntas")
     { 
-        $antri = "";
+        $antri = "#";
         $text = "Tuntas";
-        $skip = "";
+        $skip = "#";
     }
   else if($nomor != "Antrian Tuntas")
     { 
@@ -102,18 +102,23 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th style="width: 80px">No. Antrian</th>
+                <th style="width: 50px">No. Antrian</th>
                 <th>Index</th>
                 <th>Nama</th>
                 <th>Alamat</th>
                 <th>Tanggal Antri</th>
                 <th>Poli</th>
                 <th>Status</th>
-                <th style="width: 70px">Update</th>
+                <th style="width: 50px">Update</th>
               </tr>
             </thead>
             <tbody>
             <?php foreach($daftar_antrian as $antrian){ ?>
+              <?php 
+                if($antrian->status == "tunda"){ $update = base_url('antrian/update/').$antrian->id_antrian; $class = "btn btn-warning"; }
+                else if($antrian->status == "antri"){ $update = "#"; $class = "btn btn-info"; }
+                else if($antrian->status == "selesai"){ $update = "#"; $class = "btn btn-success"; }
+              ?>
               <tr>
                 <td><?php echo $antrian->nomor_urut?></td>
                 <td><?php echo $antrian->pas_index?></td>
@@ -121,8 +126,14 @@
                 <td><?php echo $antrian->pas_alamat?></td>
                 <td><?php echo $antrian->tanggal_antrian?></td>
                 <td><?php echo $antrian->poli?></td>
-                <td><?php echo $antrian->status?></td>
-                <td></td>
+                <td>
+                    <label class="<?php echo $class?>">
+                        <?php echo $antrian->status?>
+                    </label>
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="<?php echo $update?>"><i class="fa fa-sync"></i></a>
+                </td>
               </tr>
             <?php }; ?>
             </tbody>

@@ -23,7 +23,7 @@
         </div>
         <div class="mr-5">Antrian</div>
       </div>
-      <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url("admin/dashboard")?>">
+      <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url("antrian")?>">
         <span class="float-left">Antrian</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>

@@ -59,6 +59,10 @@ class m_antrian extends CI_Model {
     {
         $result = $this->db->query("UPDATE antrian SET status='tunda' WHERE id_antrian='$id'");
     }
+    public function update($id)
+    {
+        $result = $this->db->query("UPDATE antrian SET status='selesai' WHERE id_antrian='$id'");
+    }
 }
 
 ?>

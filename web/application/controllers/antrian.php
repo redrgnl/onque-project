@@ -112,6 +112,17 @@ class antrian extends CI_Controller {
             redirect(base_url("antrian"));
         }
     }
+    
+    function update($id)
+    {
+        $this->m_antrian->update($id);
+        if($this->session->userdata('status') != "login"){
+            redirect(base_url("admin"));
+        }
+        else if($this->session->userdata('status') == "login"){
+            redirect(base_url("antrian"));
+        }
+    }
 
 }
 

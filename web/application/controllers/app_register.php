@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/libraries/REST_Controller.php';
 use Restserver\Libraries\REST_Controller;
 
-class app_api extends REST_Controller {
+class app_register extends REST_Controller {
 
     function __construct($config = 'rest') {
         parent::__construct($config);
@@ -40,7 +40,7 @@ class app_api extends REST_Controller {
                     'pas_pekerjaan' => $this->post('pas_pekerjaan'));
         $insert = $this->db->insert('pasien', $data);
         if ($insert) {
-            $this->response($data, 200);
+            $this->response(array('success' => '1', 200));
         } else {
             $this->response(array('status' => 'fail', 502));
         }

@@ -1,5 +1,5 @@
     <nav class="navbar navbar-expand navbar-dark bg-info static-top">
-      <a class="navbar-brand mr-1" href="<?php echo base_url('admin/home')?>">Dashboard</a>
+      <a class="navbar-brand mr-1" href="<?php echo base_url('antrian')?>">Dashboard</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
