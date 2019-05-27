@@ -1,89 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:showIn="@layout/app_bar_main"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
-    android:orientation="vertical"
-    tools:showIn="@layout/app_bar_main">
+    tools:context=".MainActivity">
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="40dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textColor="@color/colorAccent"
-        android:textAlignment="center"
-        android:text="SILAKAN AMBIL ANTRIAN ANDA"/>
-
-    <TextView
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="120dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textColor="@color/colorAccent"
-        android:textAlignment="center"
-        android:text="Antrian Sekarang"/>
-
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="75dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
-            android:src="@drawable/rectangle"/>
+    <TextView
+        android:id="@+id/textViewAntrian1"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="@color/colorAccent"
+        android:textAlignment="center"
+        android:text="SILAKAN AMBIL ANTRIAN ANDA"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:id="@+id/textViewAntrian2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textColor="@color/colorAccent"
+        android:textAlignment="center"
+        android:text="Antrian Sekarang"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:id="@+id/Linier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/rectangle">
 
         <TextView
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="140dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:textSize="100dp"
+            android:textSize="160dp"
             android:textColor="@color/colorWhite"
-            android:textAlignment="center"
-            android:text="7"/>
+            android:text="7"
+            android:id="@+id/textView4"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="110dp"
-            android:layout_marginLeft="190dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginBottom="100dp"
             android:textColor="@color/colorWhite"
             android:text="/"
-            android:textSize="35dp" />
+            android:textSize="40dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20"
-            android:textSize="35dp"
+            android:textSize="40dp"
             android:textColor="@color/colorWhite"
-            android:layout_marginTop="110dp"
-            android:layout_marginLeft="210dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginBottom="100dp"/>
-
-    </RelativeLayout>
+    </LinearLayout>
 
     <Button
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="30dp"
         android:text="AMBIL ANTRIAN"
         android:textSize="20dp"
         android:background="#2298FF"
         android:textColor="@color/colorWhite"/>
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
