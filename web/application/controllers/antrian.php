@@ -82,12 +82,21 @@ class antrian extends CI_Controller {
 
     function antrianpasien()
     {
-        $this->m_antrian->tambahantrian();
-        if($this->session->userdata('status') != "login"){
-            redirect(base_url("admin"));
-        }
-        else if($this->session->userdata('status') == "login"){
-            redirect(base_url("antrian"));
+        $post = $this->input->post();
+        $index = $post["pasIndex"];
+        
+        $check = $this->m_antrian->checkantrian($index);
+        
+        if(empty($check)){
+            $this->m_antrian->tambahantrian();
+            if($this->session->userdata('status') != "login"){
+                redirect(base_url("admin"));
+            }
+            else if($this->session->userdata('status') == "login"){
+                redirect(base_url("antrian"));
+            }   
+        } else {
+            redirect(base_url("antrian/form_antrian"));
         }
     }
 
