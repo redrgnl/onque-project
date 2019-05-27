@@ -31,11 +31,9 @@ class app_register extends REST_Controller {
         
         if ($insert) {
             $data['success'] = "1";
-            $data['message'] = "success";
             echo json_encode($data);
         } else {
             $data['success'] = "0";
-            $data['message'] = "error";
             echo json_encode($data);
         }
     }
