@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressBar loading;
     private Button btnRegister;
 
-    private static String URL = Server.URL + "app_api/index_post";
+    private static String URL = Server.URL + "app_register/index_post";
 
     private String indexPasien, NIK, nama, kepalaKeluarga, alamat, noTelp, tglLahir, agama,
             pendidikan, jenisKelamin, golDarah, pekerjaan;
@@ -145,13 +145,9 @@ public class RegisterActivity extends AppCompatActivity {
                     String success = jsonObject.getString("success");
 
                     if( success.equals("1") ) {
-
                         Toast.makeText(RegisterActivity.this, "Registrasi Sukses!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
-
-                        Toast.makeText(RegisterActivity.this, "Registrasi Sukses!", Toast.LENGTH_SHORT).show();
-
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

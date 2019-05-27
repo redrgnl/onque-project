@@ -19,7 +19,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textColor="@color/colorAccent"
         android:textAlignment="center"
         android:text="SILAKAN AMBIL ANTRIAN ANDA"
@@ -35,25 +35,21 @@
         android:text="Antrian Sekarang"
         android:layout_marginBottom="20dp"/>
 
-
     <LinearLayout
         android:id="@+id/Linier"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginBottom="75dp">
-
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@drawable/rectangle"
-            android:gravity="center">
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/rectangle">
 
         <TextView
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="100dp"
+            android:textSize="160dp"
             android:textColor="@color/colorWhite"
             android:text="7"
             android:id="@+id/textView4"/>
@@ -61,21 +57,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="100dp"
             android:textColor="@color/colorWhite"
             android:text="/"
-            android:textSize="35dp"
-            android:layout_below="@id/textView4"/>
+            android:textSize="40dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20"
-            android:textSize="35dp"
-            android:textColor="@color/colorWhite" />
-        </LinearLayout>
+            android:textSize="40dp"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="130dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="100dp"/>
     </LinearLayout>
-
-
 
     <Button
         android:layout_width="240dp"
