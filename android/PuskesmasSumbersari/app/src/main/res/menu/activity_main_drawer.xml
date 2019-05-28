@@ -9,13 +9,13 @@
     <item android:title="Menu">
         <menu>
             <item
-                android:id="@+id/antrian_anda"
-                android:icon="@drawable/ic_queue_black_24dp"
-                android:title="@string/menu_antrian_anda" />
-            <item
                 android:id="@+id/antrian"
                 android:icon="@drawable/ic_antrian_black_24dp"
                 android:title="@string/menu_antrian" />
+            <item
+                android:id="@+id/antrian_anda"
+                android:icon="@drawable/ic_queue_black_24dp"
+                android:title="@string/menu_antrian_anda" />
         </menu>
     </item>
 
@@ -25,6 +25,12 @@
                 android:id="@+id/profil"
                 android:icon="@drawable/ic_account_circle_black_24dp"
                 android:title="@string/menu_profil"/>
+
+        </menu>
+    </item>
+
+    <item android:title="Keluar">
+        <menu>
             <item
                 android:id="@+id/logout"
                 android:icon="@drawable/logout"

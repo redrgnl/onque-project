@@ -56,7 +56,7 @@
             android:id="@+id/txtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="Nomor Index"
             android:textSize="15dp"
             android:inputType="text"
             android:textColor="@color/colorAccent"
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/validasiPassword"
-            android:hint="Password"
+            android:hint="NIK"
             android:inputType="textPassword"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorHint"
@@ -99,7 +99,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="65dp"
-        android:text="Login"
+        android:text="Masuk"
         android:textColor="@color/colorAccent" />
 
     <LinearLayout
