@@ -21,7 +21,6 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:textColor="@color/colorAccent"
-        android:textAlignment="center"
         android:text="SILAKAN AMBIL ANTRIAN ANDA"
         android:layout_marginBottom="30dp"/>
 
@@ -31,7 +30,6 @@
         android:layout_height="wrap_content"
         android:textSize="24dp"
         android:textColor="@color/colorAccent"
-        android:textAlignment="center"
         android:text="Antrian Sekarang"
         android:layout_marginBottom="20dp"/>
 

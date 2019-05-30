@@ -38,10 +38,6 @@ public class SessionManager {
     public static final String KEY_KELAMIN_PASIEN = "pas_kelamin";
     public static final String KEY_DARAH_PASIEN = "pas_darah";
     public static final String KEY_PEKERJAAN_PASIEN = "pas_pekerjaan";
-
-    // Nama pasien
-    //? private
-    //? password?
     public static final String KEY_NAMA_PASIEN = "pas_nama";
 
     // Constructor
