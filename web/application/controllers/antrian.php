@@ -30,7 +30,7 @@ class antrian extends CI_Controller {
             foreach($sekarang as $antrian){
                 $idantri = $antrian->id_antrian;
                 $nomorantri = $antrian->nomor_urut;
-                $poliantri = $antrian->poli;
+                $poliantri = $antrian->nama_poli;
             }
             
             if(empty($idantri)){
@@ -50,7 +50,7 @@ class antrian extends CI_Controller {
                 'daftar_antrian' => $daftar,
                 'permission' => $mission,
                 'breadcrumb' => "Tambah Antrian Baru",
-                'content' => 'admin/content/home'
+                'content' => 'admin/content/man_antrian'
                 ];
             $this->load->view("admin/index", $data);
         }

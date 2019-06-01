@@ -2,7 +2,7 @@
 <div class="card-body col-md-7">
   <div class="col-xl-12 col-sm-12 mb-12">
     <div class="card mb-3">
-      <div class="card-header bg-info" style="color: white">
+      <div class="card-header bg-primary" style="color: white">
         <i class="fas fa-table"></i>
           Tabel Pasien Terdaftar
       </div>

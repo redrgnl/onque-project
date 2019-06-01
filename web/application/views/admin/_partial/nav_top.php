@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-expand navbar-dark bg-info static-top">
+    <nav class="navbar navbar-expand navbar-dark bg-primary static-top">
       <a class="navbar-brand mr-1" href="<?php echo base_url('antrian')?>">Dashboard</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">

@@ -73,10 +73,21 @@
       </a>
     </div>
   </div>
-  <?php echo $info?>
 </div>
 <div class="row">
-  <div class="col-xl-12 col-sm-12 mb-12">
+  <div class="col-xl-12 col-sm-12 mb-3">
+    <?php echo $info?>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xl-12 col-sm-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" style="color: black">Data Daftar Admin Puskesmas Sumbersari</li>
+    </ol>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xl-12 col-sm-12 mb-3">
     <div class="card mb-3">
           <div class="card-header bg-success" style="color: white">
             <i class="fas fa-table"></i>

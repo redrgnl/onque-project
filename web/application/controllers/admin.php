@@ -71,7 +71,7 @@ class admin extends CI_Controller {
 			$data = [
                 'permission' => $mission,
                 'breadcrumb' => "Dashboard Antrian",
-                'content' => 'admin/content/home'
+                'content' => 'admin/content/man_antrian'
                 ];
             $this->load->view("admin/index", $data);
 		} 

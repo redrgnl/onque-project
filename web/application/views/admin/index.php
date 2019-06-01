@@ -19,13 +19,11 @@
               </ol>
             </div>
             <div class="col-md-2">
-              <ol class="breadcrumb bg-info">
-                  <?php if($permission == 'super')
-                        { 
+              <ol class="breadcrumb bg-primary">
+                  <?php if($permission == 'super'){ 
                             $privilege = 'super admin';
                         } 
-                        else if($permission == 'admin')
-                        {
+                        else if($permission == 'admin'){
                             $privilege = 'admin';
                         }
                   ?>
