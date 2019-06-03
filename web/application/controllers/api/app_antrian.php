@@ -29,13 +29,17 @@ class app_antrian extends REST_Controller {
             $antrian['running_nomor'] = "Antrian Tuntas";
             $antrian['running_poli'] = "Tidak Ada Antrian Pasien";
             $antrian['last_nomor'] = "Belum Ada Antrian";
-            echo json_encode($antrian);
+            
+            $this->response($antrian, 200);
+//            echo json_encode($antrian);
         }
         else {
             $antrian['running_nomor'] = $runnomor_urut;
             $antrian['running_poli'] = $runnama_poli;
             $antrian['last_nomor'] = $lastnomor_urut;
-            echo json_encode($antrian);
+            
+            $this->response($antrian, 200);
+//            echo json_encode($antrian);
         }
     }
 }

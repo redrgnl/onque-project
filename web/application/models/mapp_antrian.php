@@ -19,5 +19,12 @@ class mapp_antrian extends CI_Model{
         $sekarang = $this->db->query("SELECT nomor_urut,nama_poli FROM antrian WHERE status='antri' AND tanggal_antrian='$today' ORDER BY status ASC LIMIT 1")->result();
         return $sekarang;
     }
+    public function antrian_anda($id)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $today = date("Y-m-d");
+        $anda = $this->db->query("SELECT nomor_urut,nama_poli,status FROM antrian WHERE tanggal_antrian='$today' AND pas_index='$id'")->result();
+        return $anda;
+    }
 }
 ?>
