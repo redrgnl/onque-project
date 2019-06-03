@@ -19,7 +19,7 @@
 <div class="row">
   <div class="col-md-4 mb-3">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Masukkan Tanggal" aria-label="Search" aria-describedby="basic-addon2" data-provide="datepicker" data-date-format="yyyy-mm-dd" id="srcdaily" name="srcdaily">
+      <input type="text" class="form-control" placeholder="Pilih Tanggal" aria-label="Search" aria-describedby="basic-addon2" data-provide="datepicker" data-date-format="yyyy-mm-dd" id="srcdaily" name="srcdaily">
       <div class="input-group-addon">
         <span class="glyphicon glyphicon-th"></span>
 	  </div>

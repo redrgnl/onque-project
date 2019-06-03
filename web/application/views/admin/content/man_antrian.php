@@ -62,18 +62,18 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xl-9 col-sm-5 mb-3">
+  <div class="col-xl-9 col-sm-9 mb-3">
     <div class="card text-black o-hidden h-100">
       <div class="card-body">
         <div class="card-body-icon">
           <i class="fas fa-fw fa-chart-area"></i>
         </div>
-          <div class="mr-5"><h4>Antrian Pasien</h4></div>
-          <br>
-          <div class="mr-5">Panggilan Antrian / Antrian Terakhir</div>
-          <div class="mr-5"><h2><strong><?php echo $nomor?> / <?php echo $last_data?></strong></h2></div>
-          <br>
-          <div class="mr-5">Poli Tujuan - <strong><?php echo $poli?></strong></div>
+        <div class="mr-5"><h4>Antrian Pasien</h4></div>
+        <div class="mr-5">Panggilan Antrian / Antrian Terakhir</div>
+        <br>
+        <div class="mr-5"><h2><strong><?php echo $nomor?> / <?php echo $last_data?></strong></h2></div>
+        <br>
+        <div class="mr-5">Poli Tujuan - <strong><?php echo $poli?></strong></div>
       </div> 
       <div class="card-footer text-white clearfix small z-1">
         <div class="float-right">
@@ -84,7 +84,8 @@
     </div>
   </div>
   <div>
-    <time datetime="<?php echo date("Y-m-d")?>" class="date-as-calendar position-em size2x">
+    <?php date_default_timezone_set('Asia/Jakarta');?>
+    <time datetime="<?php echo date("Y-m-d")?>" class="date-as-calendar position-em size2x mb-3">
       <span class="weekday"><?php echo date("l")?></span>
       <span class="day"><?php echo date("d")?></span>
       <span class="month"><?php echo date("F")?></span>

@@ -14,6 +14,14 @@ function optionpasien($pasienindex,$pasiennama,$pasienalamat){
 }
 </script>
 
+<script>    
+$("#srcmonthly").datepicker( {
+    format: "yyyy-mm",
+    viewMode: "months", 
+    minViewMode: "months"
+});
+</script>
+
 <!-- Search Data Antrian -->
 <script>
 $(document).ready(function(){
