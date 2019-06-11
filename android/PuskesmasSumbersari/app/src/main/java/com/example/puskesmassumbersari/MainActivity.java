@@ -2,9 +2,7 @@ package com.example.puskesmassumbersari;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.os.Handler;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
@@ -13,17 +11,40 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.puskesmassumbersari.controllers.LoginActivity;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.puskesmassumbersari.config.Server;
 import com.example.puskesmassumbersari.controllers.SessionManager;
 
-public class MainActivity extends AppCompatActivity
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MainActivity<refresh> extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     SessionManager SessionManager;
+
+    TextView noAntrianSekarang, antrianTerakhir;
+    Button btnAmbilAntrian;
+
+    //URL REST API Antrian
+    public static String URL = Server.URL + "api/app_antrian/index_get";
+
+    Handler handler = new Handler();
+
+    Runnable refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +59,24 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        SessionManager = new SessionManager(getApplicationContext());
 
-        SessionManager.isLoggedIn();
+        // inisiasi variabel nomor antrean dan tombol ambil antrean
+        noAntrianSekarang = (TextView) findViewById(R.id.noAntrianSekarang);
+        antrianTerakhir = (TextView) findViewById(R.id.antrianTerakhir);
+        btnAmbilAntrian = (Button) findViewById(R.id.btnTambahAntrian);
 
-        SessionManager.checkLogin();
+
+
+        /*refresh = new Runnable() {
+            @Override
+            public void run() {
+                handler.postDelayed(refresh, 1000);
+            }
+        };
+        handler.post(refresh);*/
+
+        // nomor antrean
+
     }
 
     @Override
@@ -80,4 +114,12 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    // method nomor antrian
+    public void queue_num(final String noAntrianSekarang, final String antrianTerakhir){
+
+
+    }
+
+
 }

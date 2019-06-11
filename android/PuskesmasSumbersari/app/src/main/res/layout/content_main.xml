@@ -43,16 +43,15 @@
         android:background="@drawable/rectangle">
 
         <TextView
-
-
+            android:id="@+id/noAntrianSekarang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="160dp"
             android:textColor="@color/colorWhite"
-            android:text="7"
-            android:id="@+id/textView4"/>
+            android:text="7"/>
 
         <TextView
+            android:id="@+id/batasAntrian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -62,6 +61,7 @@
             android:textSize="40dp"/>
 
         <TextView
+            android:id="@+id/antrianTerakhir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20"
@@ -71,6 +71,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnTambahAntrian"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"

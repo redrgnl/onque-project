@@ -26,7 +26,7 @@ public class SessionManager {
     // All Shared Preferences Keys
     private static final String IS_LOGIN = "IsLoggedIn";
 
-    // ID Pasien (make variable public to access from outside class)
+    // Make variable public to access from outside class
     public static final String KEY_INDEX_PASIEN = "pas_index";
     public static final String KEY_NIK_PASIEN = "pas_nik";
     public static final String KEY_KK_PASIEN = "pas_kk";
@@ -47,20 +47,21 @@ public class SessionManager {
         editor = pref.edit();
     }
 
-
-
-
     /**
      * Create login session
      * */
-    public void createSession(String index_pasien, String nama_pasien, String nik_pasien, String kk_pasien, String alamat_pasien, String telepon_pasien, String lahir_pasien, String agama_pasien, String pendidikan_pasien, String kelamin_pasien, String darah_pasien, String pekerjaan_pasien){
+    public void createSession(String index_pasien, String nama_pasien, String nik_pasien,
+                              String kk_pasien, String alamat_pasien, String telepon_pasien,
+                              String lahir_pasien, String agama_pasien, String pendidikan_pasien,
+                              String kelamin_pasien, String darah_pasien, String pekerjaan_pasien){
+
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
-        // Storing id_pasien in pref
+        // Storing index_pasien in pref
         editor.putString(KEY_INDEX_PASIEN, index_pasien);
 
-        // Storing nama_pasien in pref
+        // Storing data profil pasien in pref
         editor.putString(KEY_NAMA_PASIEN, nama_pasien);
         editor.putString(KEY_NIK_PASIEN, nik_pasien);
         editor.putString(KEY_KK_PASIEN, kk_pasien);
@@ -99,17 +100,15 @@ public class SessionManager {
 
     }
 
-
-
     /**
      * Get stored session data
      * */
     public HashMap<String, String> getUserDetails(){
         HashMap<String, String> user = new HashMap<String, String>();
-        // id pasien
+        // index pasien
         user.put(KEY_INDEX_PASIEN, pref.getString(KEY_INDEX_PASIEN, null));
 
-        // password
+        // data profil pasien
         user.put(KEY_NAMA_PASIEN, pref.getString(KEY_NAMA_PASIEN, null));
         user.put(KEY_NIK_PASIEN, pref.getString(KEY_NIK_PASIEN, null));
         user.put(KEY_KK_PASIEN, pref.getString(KEY_KK_PASIEN, null));

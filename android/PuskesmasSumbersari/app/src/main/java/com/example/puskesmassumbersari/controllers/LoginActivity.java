@@ -110,7 +110,12 @@ public class LoginActivity extends AppCompatActivity {
                             String kelamin_pasien = jsonObject1.getString("pas_kelamin").trim();
                             String darah_pasien = jsonObject1.getString("pas_darah").trim();
                             String pekerjaan_pasien = jsonObject1.getString("pas_pekerjaan").trim();
-                            sessionManager.createSession(username, nama_pasien, nik_pasien, kk_pasien, alamat_pasien, telepon_pasien, lahir_pasien, agama_pasien, pendidikan_pasien, kelamin_pasien, darah_pasien, pekerjaan_pasien);
+
+                            sessionManager.createSession(username, nama_pasien, nik_pasien, kk_pasien,
+                                                         alamat_pasien, telepon_pasien, lahir_pasien,
+                                                         agama_pasien, pendidikan_pasien, kelamin_pasien,
+                                                         darah_pasien, pekerjaan_pasien);
+
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
@@ -130,11 +135,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError { Map<String, String> params = new HashMap<>();
-            params.put("username", username);
-            // sesuaikan dengan $_POST pada PHP
-            params.put("password", password);
-            return params;
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("username", username);
+                // sesuaikan dengan $_POST pada PHP
+                params.put("password", password);
+                return params;
             }
         };
 
