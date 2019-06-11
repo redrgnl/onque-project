@@ -11,13 +11,12 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -36,8 +35,9 @@ public class MainActivity<refresh> extends AppCompatActivity
 
     SessionManager SessionManager;
 
-    TextView noAntrianSekarang, antrianTerakhir;
+    TextView noAntrianSekarang, noAntrianTerakhir;
     Button btnAmbilAntrian;
+    Button btnUpdateAntrian;
 
     //URL REST API Antrian
     public static String URL = Server.URL + "api/app_antrian/index_get";
@@ -62,10 +62,41 @@ public class MainActivity<refresh> extends AppCompatActivity
 
         // inisiasi variabel nomor antrean dan tombol ambil antrean
         noAntrianSekarang = (TextView) findViewById(R.id.noAntrianSekarang);
-        antrianTerakhir = (TextView) findViewById(R.id.antrianTerakhir);
-        btnAmbilAntrian = (Button) findViewById(R.id.btnTambahAntrian);
+        noAntrianTerakhir = (TextView) findViewById(R.id.noAntrianTerakhir);
+        btnAmbilAntrian = (Button) findViewById(R.id.btnAmbilAntrian);
+        btnUpdateAntrian = (Button) findViewById(R.id.btnUpdateAntrian);
 
+        // memperbarui nomor antrian dari website
+        btnUpdateAntrian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String AntreanSekarang = jsonObject.getString("running_nomor");
+                            String AntreanTerakhir = jsonObject.getString("last_nomor");
 
+                            // set nomor antrean sekarang dan nomor antrean terakhir
+                            noAntrianSekarang.setText(AntreanSekarang);
+                            noAntrianTerakhir.setText(AntreanTerakhir);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(MainActivity.this, "Error message : " + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this, "Error message : " + error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+                    //?
+                };
+            }
+        });
 
         /*refresh = new Runnable() {
             @Override
@@ -74,8 +105,6 @@ public class MainActivity<refresh> extends AppCompatActivity
             }
         };
         handler.post(refresh);*/
-
-        // nomor antrean
 
     }
 
@@ -114,12 +143,5 @@ public class MainActivity<refresh> extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    // method nomor antrian
-    public void queue_num(final String noAntrianSekarang, final String antrianTerakhir){
-
-
-    }
-
 
 }

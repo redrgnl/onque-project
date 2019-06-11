@@ -14,71 +14,81 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/textViewAntrian1"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textColor="@color/colorAccent"
-        android:text="SILAKAN AMBIL ANTRIAN ANDA"
-        android:layout_marginBottom="30dp"/>
-
-    <TextView
-        android:id="@+id/textViewAntrian2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textColor="@color/colorAccent"
-        android:text="Antrian Sekarang"
-        android:layout_marginBottom="20dp"/>
-
-    <LinearLayout
-        android:id="@+id/Linier"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginBottom="55dp"
-        android:background="@drawable/rectangle">
-
         <TextView
-            android:id="@+id/noAntrianSekarang"
+            android:id="@+id/textViewAntrian1"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="160dp"
-            android:textColor="@color/colorWhite"
-            android:text="7"/>
-
+            android:textSize="20dp"
+            android:textColor="@color/colorAccent"
+            android:text="SILAKAN AMBIL ANTREAN ANDA"
+            android:layout_marginBottom="30dp"/>
+    
         <TextView
-            android:id="@+id/batasAntrian"
+            android:id="@+id/textViewAntrian2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="0dp"
-            android:textColor="@color/colorWhite"
-            android:text="/"
-            android:textSize="40dp"/>
+            android:textSize="24dp"
+            android:textColor="@color/colorAccent"
+            android:text="Antrean Sekarang"
+            android:layout_marginBottom="20dp"/>
 
-        <TextView
-            android:id="@+id/antrianTerakhir"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/Linier"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginBottom="55dp"
+            android:background="@drawable/rectangle">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="120dp"
+                android:textColor="@color/colorWhite"
+                android:text="00"
+                android:id="@+id/textView4"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="0dp"
+                android:textColor="@color/colorWhite"
+                android:text="/ "
+                android:textSize="40dp"/>
+
+            <TextView
+                android:id="@+id/noAntrianTerakhir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textSize="40dp"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="40dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnUpdateAntrian"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:text="20"
-            android:textSize="40dp"
-            android:textColor="@color/colorWhite"
-            android:layout_marginTop="40dp" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btnTambahAntrian"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:text="AMBIL ANTRIAN"
-        android:textSize="20dp"
-        android:background="#2298FF"
-        android:textColor="@color/colorWhite"/>
+            android:layout_marginBottom="30dp"
+            android:text="PERBARUI ANTREAN"
+            android:textSize="20dp"
+            android:background="#FF6F22"
+            android:textColor="@color/colorWhite" />
+    
+        <Button
+            android:id="@+id/btnAmbilAntrian"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="AMBIL ANTREAN"
+            android:textSize="20dp"
+            android:background="#2298FF"
+            android:textColor="@color/colorWhite"/>
     </LinearLayout>
 
 </ScrollView>
