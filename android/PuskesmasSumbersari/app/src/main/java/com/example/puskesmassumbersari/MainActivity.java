@@ -30,11 +30,13 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity<refresh> extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    // manajemen session untuk log in, log out dan manajemen data pasien
     SessionManager SessionManager;
 
+    // deklarasi variabel
     TextView noAntrianSekarang, noAntrianTerakhir;
     Button btnAmbilAntrian;
     Button btnUpdateAntrian;
@@ -66,38 +68,41 @@ public class MainActivity<refresh> extends AppCompatActivity
         btnAmbilAntrian = (Button) findViewById(R.id.btnAmbilAntrian);
         btnUpdateAntrian = (Button) findViewById(R.id.btnUpdateAntrian);
 
+        // get data dari website
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String no_antrean = jsonObject.getString("running_nomor");
+                    String no_last_antrean = jsonObject.getString("last_nomor");
+
+                    noAntrianSekarang.setText(no_antrean);
+                    noAntrianTerakhir.setText(no_last_antrean);
+                } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(MainActivity.this, "Pembaruan gagal", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(MainActivity.this, "Error message : " + error.toString(), Toast.LENGTH_SHORT) .show();
+                }
+            }) {
+
+        };
+
         // memperbarui nomor antrian dari website
         btnUpdateAntrian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String AntreanSekarang = jsonObject.getString("running_nomor");
-                            String AntreanTerakhir = jsonObject.getString("last_nomor");
-
-                            // set nomor antrean sekarang dan nomor antrean terakhir
-                            noAntrianSekarang.setText(AntreanSekarang);
-                            noAntrianTerakhir.setText(AntreanTerakhir);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(MainActivity.this, "Error message : " + e.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Error message : " + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                }){
-                    //?
-                };
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
+        // refresh activity
         /*refresh = new Runnable() {
             @Override
             public void run() {
