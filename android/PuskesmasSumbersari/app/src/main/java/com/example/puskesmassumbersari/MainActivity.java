@@ -13,10 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -24,10 +27,13 @@ import com.android.volley.toolbox.Volley;
 import com.example.puskesmassumbersari.config.Server;
 import com.example.puskesmassumbersari.controllers.SessionManager;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
@@ -37,12 +43,13 @@ public class MainActivity extends AppCompatActivity
     SessionManager SessionManager;
 
     // deklarasi variabel
-    TextView noAntrianSekarang, noAntrianTerakhir;
+    ListView listView;
+    private List<AntreanItem> antreanItemList;
     Button btnAmbilAntrian;
     Button btnUpdateAntrian;
 
     //URL REST API Antrian
-    public static String URL = Server.URL + "api/app_antrian/index_get";
+    public static final String URL = Server.URL + "api/app_antrian/index_get";
 
     Handler handler = new Handler();
 
@@ -61,37 +68,16 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        SessionManager.isLoggedIn();
+        SessionManager.checkLogin();
 
-        // inisiasi variabel nomor antrean dan tombol ambil antrean
-        noAntrianSekarang = (TextView) findViewById(R.id.noAntrianSekarang);
-        noAntrianTerakhir = (TextView) findViewById(R.id.noAntrianTerakhir);
-        btnAmbilAntrian = (Button) findViewById(R.id.btnAmbilAntrian);
-        btnUpdateAntrian = (Button) findViewById(R.id.btnUpdateAntrian);
+        // inisiasi nomor antrean
+        listView = findViewById(R.id.ViewNomor);
+        antreanItemList = new ArrayList<>();
 
-        // get data dari website
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    String no_antrean = jsonObject.getString("running_nomor");
-                    String no_last_antrean = jsonObject.getString("last_nomor");
-
-                    noAntrianSekarang.setText(no_antrean);
-                    noAntrianTerakhir.setText(no_last_antrean);
-                } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(MainActivity.this, "Pembaruan gagal", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(MainActivity.this, "Error message : " + error.toString(), Toast.LENGTH_SHORT) .show();
-                }
-            }) {
-
-        };
+        // tampilkan nomor antrean
+        loadNomor();
 
         // memperbarui nomor antrian dari website
         btnUpdateAntrian.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +99,41 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    private void loadNomor() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    // Ambil data JSON
+                    JSONObject object = new JSONObject(response);
+                    JSONArray antreanArray = object.getJSONArray("result");
+                    for (int i = 0; i < antreanArray.length(); i++) {
+                        JSONObject antreanObject = antreanArray.getJSONObject(i);
+                        AntreanItem antreanItem = new AntreanItem(
+                                antreanObject.getString("running_nomor"),
+                                antreanObject.getString("last_nomor")
+                        );
+
+                        antreanItemList.add(antreanItem);
+                    }
+
+                    ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapter(antreanItemList, getApplicationContext());
+                    listView.setAdapter(adapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
@@ -122,8 +143,6 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
