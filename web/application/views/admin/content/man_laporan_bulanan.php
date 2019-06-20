@@ -19,7 +19,7 @@
 <div class="row">
   <div class="col-md-4 mb-3">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Pilih Bulan" aria-label="Search" data-date-format="yyyy-mm" id="srcmonthly" name="srcmonthly">
+      <input type="text" class="form-control" placeholder="Pilih Bulan" aria-label="Search" data-date-format="yyyy-mm" id="srcmonthly" name="srcmonthly" readonly>
       <div class="input-group-addon">
         <span class="glyphicon glyphicon-th"></span>
 	  </div>
