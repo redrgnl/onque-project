@@ -14,6 +14,12 @@ function optionpasien($pasienindex,$pasiennama,$pasienalamat){
 }
 </script>
 
+<script>
+    $(".readonly").keydown(function(e){
+        e.preventDefault();
+    });
+</script>
+
 <script>    
 $("#srcmonthly").datepicker( {
     format: "yyyy-mm",
