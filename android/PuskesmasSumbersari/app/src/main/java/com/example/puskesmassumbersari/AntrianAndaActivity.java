@@ -1,6 +1,7 @@
 package com.example.puskesmassumbersari;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -9,13 +10,46 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.puskesmassumbersari.config.Server;
 import com.example.puskesmassumbersari.controllers.SessionManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class AntrianAndaActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
+    //URL REST API Antrian
+    public static final String URL1 = Server.URL + "api/app_antrian/index_get";
+    public static final String URL2 = Server.URL + "api/app_antrian_anda/index_get";
+
+    // manajemen session untuk log in, log out dan manajemen data pasien
     SessionManager SessionManager;
+
+    // deklarasi variabel
+    ListView listView, listViewAntreanAnda;
+    private List<AntreanItem> antreanItemList;
+    private List<AntreanAndaItem> antreanAndaItemList;
+
+    String index_pasien;
+
+    // variabel handler dan refresh untuk menangani refresh nomor antrean
+    Handler handler = new Handler();
+    Runnable refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +65,32 @@ public class AntrianAndaActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+        SessionManager = new SessionManager(getApplicationContext());
+        SessionManager.checkLogin();
+
+        //menampilkan user data
+        HashMap<String, String> user = SessionManager.getUserDetails();
+        index_pasien = user.get(SessionManager.KEY_INDEX_PASIEN);
+
+        // refresh activity
+        refresh = new Runnable() {
+            @Override
+            public void run() {
+                // inisiasi nomor antrean
+                listView = findViewById(R.id.ViewNomor);
+                listViewAntreanAnda = findViewById(R.id.ViewAntrianAnda);
+                antreanItemList = new ArrayList<>();
+                antreanAndaItemList = new ArrayList<>();
+
+                // tampilkan nomor antrean
+                loadNomor();
+                loadAntreanAnda(index_pasien);
+                handler.postDelayed(refresh, 1000);
+            }
+        };
+
+        handler.post(refresh);
+
     }
 
     @Override
@@ -42,8 +102,6 @@ public class AntrianAndaActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -69,5 +127,69 @@ public class AntrianAndaActivity extends AppCompatActivity
         return true;
     }
 
+    public void loadNomor() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL1, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    // Ambil data JSON
+                    JSONObject object = new JSONObject(response);
+                    JSONArray antreanArray = object.getJSONArray("result");
+                    JSONObject antreanObject = antreanArray.getJSONObject(0);
+                    AntreanItem antreanItem = new AntreanItem(
+                            antreanObject.getString("running_nomor"),
+                            antreanObject.getString("last_nomor")
+                    );
+
+                    antreanItemList.add(antreanItem);
+
+                    android.widget.ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapter(antreanItemList, getApplicationContext());
+                    listView.setAdapter(adapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    public void loadAntreanAnda(String index_pasien) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL2, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    // Ambil data JSON
+                    JSONObject object = new JSONObject(response);
+                    JSONArray antreanArray = object.getJSONArray("result");
+                    JSONObject antreanObject = antreanArray.getJSONObject(0);
+                    AntreanAndaItem antreanAndaItem = new AntreanAndaItem(
+                            antreanObject.getString("anda_nomor")
+                    );
+
+                    antreanAndaItemList.add(antreanAndaItem);
+
+                    android.widget.ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapterAntrianAnda(antreanAndaItemList, getApplicationContext());
+                    listView.setAdapter(adapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
 
 }

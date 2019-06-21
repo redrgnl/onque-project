@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -48,8 +49,8 @@ public class MainActivity extends AppCompatActivity
     // manajemen session untuk log in, log out dan manajemen data pasien
     SessionManager SessionManager;
 
+    // variabel handler dan refresh untuk menangani refresh nomor antrean
     Handler handler = new Handler();
-
     Runnable refresh;
 
     @Override
@@ -70,14 +71,15 @@ public class MainActivity extends AppCompatActivity
         SessionManager.checkLogin();
         SessionManager.isLoggedIn();
 
-        // refresh activity
-        /*refresh = new Runnable() {
+        // Button ambil antrean
+        btnAmbilAntrian = (Button) findViewById(R.id.btnAmbilAntrean);
+        btnAmbilAntrian.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                handler.postDelayed(refresh, 1000);
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AntrianAndaActivity.class);
+                startActivity(intent);
             }
-        };
-        handler.post(refresh);*/
+        });
 
         // refresh activity
         refresh = new Runnable() {
@@ -89,7 +91,7 @@ public class MainActivity extends AppCompatActivity
 
                 // tampilkan nomor antrean
                 loadNomor();
-                handler.postDelayed(refresh, 5000);
+                handler.postDelayed(refresh, 1000);
             }
         };
 
@@ -130,7 +132,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void loadNomor() {
+    public void loadNomor() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

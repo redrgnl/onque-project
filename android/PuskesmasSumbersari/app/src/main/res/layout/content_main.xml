@@ -44,14 +44,15 @@
         </ListView>
     
         <Button
-            android:id="@+id/btnAmbilAntrian"
+            android:id="@+id/btnAmbilAntrean"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:text="AMBIL ANTREAN"
             android:textSize="20dp"
             android:background="#2298FF"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite"
+            android:onClick="ambilAntreanBtn"/>
     </LinearLayout>
 
 </ScrollView>
