@@ -82,9 +82,6 @@ public class ProfilActivity extends AppCompatActivity
         textViewGolonganDarah.setText(Html.fromHtml(Darah));
         textViewPekerjaan.setText(Html.fromHtml(Pekerjaan));
 
-
-
-
     }
     @Override
     public void onBackPressed() {
@@ -95,8 +92,6 @@ public class ProfilActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

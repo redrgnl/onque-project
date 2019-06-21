@@ -47,7 +47,7 @@
             android:id="@+id/cardViewAntrian"
             android:layout_marginBottom="20dp">
             <ListView
-                android:id="@+id/ViewAntrianAnda"
+                android:id="@+id/viewAntrianAnda"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:gravity="center_horizontal"
@@ -71,7 +71,7 @@
             android:id="@+id/cardViewAntrianAnda"
             android:layout_marginBottom="20dp">
             <ListView
-                android:id="@+id/ViewAntrianAnda2"
+                android:id="@+id/viewAntrianAnda2"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:gravity="center_horizontal"
@@ -90,7 +90,7 @@
             />
 
         <ListView
-            android:id="@+id/ViewTanggalCheckIn"
+            android:id="@+id/viewTanggalCheckIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewCheckIn"

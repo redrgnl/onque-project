@@ -34,7 +34,7 @@
             android:layout_marginBottom="20dp"/>
 
         <ListView
-            android:id="@+id/ViewNomor"
+            android:id="@+id/viewNomor"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:gravity="center"

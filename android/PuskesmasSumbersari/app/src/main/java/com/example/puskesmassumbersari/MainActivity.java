@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity
     ListView listView;
     private List<AntreanItem> antreanItemList;
     Button btnAmbilAntrian;
-    Button btnUpdateAntrian;
 
     // manajemen session untuk log in, log out dan manajemen data pasien
     SessionManager SessionManager;
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void run() {
                 // inisiasi nomor antrean
-                listView = findViewById(R.id.ViewNomor);
+                listView = findViewById(R.id.viewNomor);
                 antreanItemList = new ArrayList<>();
 
                 // tampilkan nomor antrean

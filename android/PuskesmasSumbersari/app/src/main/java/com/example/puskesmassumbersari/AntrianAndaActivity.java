@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -29,13 +30,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AntrianAndaActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     //URL REST API Antrian
     public static final String URL1 = Server.URL + "api/app_antrian/index_get";
-    public static final String URL2 = Server.URL + "api/app_antrian_anda/index_get";
+    public static final String URL2 = Server.URL + "api/app_antrian_anda/index_post";
 
     // manajemen session untuk log in, log out dan manajemen data pasien
     SessionManager SessionManager;
@@ -77,8 +79,8 @@ public class AntrianAndaActivity extends AppCompatActivity
             @Override
             public void run() {
                 // inisiasi nomor antrean
-                listView = findViewById(R.id.ViewNomor);
-                listViewAntreanAnda = findViewById(R.id.ViewAntrianAnda);
+                listView = findViewById(R.id.viewAntrianAnda);
+                listViewAntreanAnda = findViewById(R.id.viewAntrianAnda2);
                 antreanItemList = new ArrayList<>();
                 antreanAndaItemList = new ArrayList<>();
 
@@ -160,7 +162,7 @@ public class AntrianAndaActivity extends AppCompatActivity
         requestQueue.add(stringRequest);
     }
 
-    public void loadAntreanAnda(String index_pasien) {
+    public void loadAntreanAnda(final String index_pasien) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL2, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -186,7 +188,15 @@ public class AntrianAndaActivity extends AppCompatActivity
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        }){
+            // Mengirim data yang sudah diringkas dengan teknik Hashing dengan method post
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("session_index", index_pasien);
+                return params;
+            }
+        };
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
