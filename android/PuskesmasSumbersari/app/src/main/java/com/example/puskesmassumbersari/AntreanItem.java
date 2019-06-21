@@ -12,10 +12,10 @@ public class AntreanItem implements Serializable {
 
     public String getRunning_nomor() { return running_nomor; }
 
-    public String getLast_nomor() { return getLast_nomor(); }
+    public String getLast_nomor() { return last_nomor; }
 
     @Override
     public String toString() {
-        return "AntreanItem('" + running_nomor + '\'' + " dari " + '\'' + last_nomor + '\'' + ')';
+        return "AntreanItem(" + "running_nomor='" + running_nomor + '\'' + ", last_nomor='" + last_nomor + '\'' + ')';
     }
 }

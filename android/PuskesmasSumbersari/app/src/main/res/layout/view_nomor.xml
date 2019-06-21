@@ -19,15 +19,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="00"
-            android:textColor="#aaaaaa"
-            android:textSize="100dp" />
+            android:textColor="#ffffff"
+            android:textSize="60dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="dari"
-            android:textColor="#aaaaaa"
+            android:textColor="#ffffff"
             android:textSize="40dp" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="00"
-            android:textColor="#aaaaaa"
+            android:textColor="#ffffff"
             android:textSize="40dp" />
 
     </LinearLayout>

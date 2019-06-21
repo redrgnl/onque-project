@@ -11,7 +11,6 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -32,15 +31,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    // manajemen session untuk log in, log out dan manajemen data pasien
-    SessionManager SessionManager;
+    //URL REST API Antrian
+    public static final String URL = Server.URL + "api/app_antrian/index_get";
 
     // deklarasi variabel
     ListView listView;
@@ -48,8 +45,8 @@ public class MainActivity extends AppCompatActivity
     Button btnAmbilAntrian;
     Button btnUpdateAntrian;
 
-    //URL REST API Antrian
-    public static final String URL = Server.URL + "api/app_antrian/index_get";
+    // manajemen session untuk log in, log out dan manajemen data pasien
+    SessionManager SessionManager;
 
     Handler handler = new Handler();
 
@@ -68,25 +65,10 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        SessionManager sessionManager = new SessionManager(getApplicationContext());
-        SessionManager.isLoggedIn();
+
+        SessionManager = new SessionManager(getApplicationContext());
         SessionManager.checkLogin();
-
-        // inisiasi nomor antrean
-        listView = findViewById(R.id.ViewNomor);
-        antreanItemList = new ArrayList<>();
-
-        // tampilkan nomor antrean
-        loadNomor();
-
-        // memperbarui nomor antrian dari website
-        btnUpdateAntrian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        SessionManager.isLoggedIn();
 
         // refresh activity
         /*refresh = new Runnable() {
@@ -97,41 +79,21 @@ public class MainActivity extends AppCompatActivity
         };
         handler.post(refresh);*/
 
-    }
-
-    private void loadNomor() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+        // refresh activity
+        refresh = new Runnable() {
             @Override
-            public void onResponse(String response) {
-                try {
-                    // Ambil data JSON
-                    JSONObject object = new JSONObject(response);
-                    JSONArray antreanArray = object.getJSONArray("result");
-                    for (int i = 0; i < antreanArray.length(); i++) {
-                        JSONObject antreanObject = antreanArray.getJSONObject(i);
-                        AntreanItem antreanItem = new AntreanItem(
-                                antreanObject.getString("running_nomor"),
-                                antreanObject.getString("last_nomor")
-                        );
+            public void run() {
+                // inisiasi nomor antrean
+                listView = findViewById(R.id.ViewNomor);
+                antreanItemList = new ArrayList<>();
 
-                        antreanItemList.add(antreanItem);
-                    }
-
-                    ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapter(antreanItemList, getApplicationContext());
-                    listView.setAdapter(adapter);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                // tampilkan nomor antrean
+                loadNomor();
+                handler.postDelayed(refresh, 5000);
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        handler.post(refresh);
     }
 
     @Override
@@ -166,6 +128,39 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void loadNomor() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    // Ambil data JSON
+                    JSONObject object = new JSONObject(response);
+                    JSONArray antreanArray = object.getJSONArray("result");
+                    JSONObject antreanObject = antreanArray.getJSONObject(0);
+                    AntreanItem antreanItem = new AntreanItem(
+                            antreanObject.getString("running_nomor"),
+                            antreanObject.getString("last_nomor")
+                    );
+
+                    antreanItemList.add(antreanItem);
+
+                    ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapter(antreanItemList, getApplicationContext());
+                    listView.setAdapter(adapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
 }

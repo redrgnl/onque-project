@@ -114,7 +114,6 @@ public class ProfilActivity extends AppCompatActivity
             case R.id.antrian:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_profil);
