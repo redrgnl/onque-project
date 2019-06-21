@@ -23,7 +23,7 @@ class mapp_antrian extends CI_Model{
     {
         date_default_timezone_set('Asia/Jakarta');
         $today = date("Y-m-d");
-        $anda = $this->db->query("SELECT nomor_urut,nama_poli,status FROM antrian WHERE tanggal_antrian='$today' AND pas_index='$id'")->result();
+        $anda = $this->db->query("SELECT nomor_urut,tanggal_antrian,nama_poli,status FROM antrian WHERE tanggal_antrian='$today' AND pas_index='$id'")->result();
         return $anda;
     }
 }

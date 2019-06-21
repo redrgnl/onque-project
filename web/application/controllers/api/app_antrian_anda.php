@@ -33,6 +33,7 @@ class app_antrian_anda extends REST_Controller {
             $andanomor_urut = $anda->nomor_urut;
             $andanama_poli = $anda->nama_poli;
             $andastatus = $anda->status;
+            $andatanggal = $anda->tanggal_antrian;
         }
         //jika antrian yang sedang berjalan tidak ada
         if (empty($runnomor_urut)){
@@ -43,11 +44,13 @@ class app_antrian_anda extends REST_Controller {
                 $antrian['anda_nomor'] = "-";
                 $antrian['anda_poli'] = "-";
                 $antrian['anda_status'] = "-";
+                $antrian['antrian_tanggal'] = "-";
             }
             else {
                 $antrian['anda_nomor'] = $andanomor_urut;
                 $antrian['anda_poli'] = $andanama_poli;
                 $antrian['anda_status'] = $andastatus;
+                $antrian['antrian_tanggal'] = $andatanggal;
             }
                 
 //            $this->response($antrian, 200);
@@ -62,11 +65,13 @@ class app_antrian_anda extends REST_Controller {
                 $antrian['anda_nomor'] = "-";
                 $antrian['anda_poli'] = "-";
                 $antrian['anda_status'] = "-";
+                $antrian['antrian_tanggal'] = "-";
             }
             else {
                 $antrian['anda_nomor'] = $andanomor_urut;
                 $antrian['anda_poli'] = $andanama_poli;
                 $antrian['anda_status'] = $andastatus;
+                $antrian['antrian_tanggal'] = $andatanggal;
             }
             
 //            $this->response($antrian, 200);
