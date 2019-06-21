@@ -36,8 +36,8 @@
         </div>
         <div class="mr-5">Pasien</div>
       </div> 
-      <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url("pasien")?>">
-        <span class="float-left">Manajemen Pasien</span>
+      <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url("pasien/form_tambah")?>">
+        <span class="float-left">Tambah Pasien Baru</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>
         </span>

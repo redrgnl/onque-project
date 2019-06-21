@@ -3,8 +3,8 @@
   <div class="col-xl-12 col-sm-12 mb-12">
     <div class="card mb-3">
       <div class="card-header bg-primary" style="color: white">
-        <i class="fas fa-table"></i>
-          Tabel Pasien Terdaftar
+        <i class="fas fa-user"></i>
+          Pilih Pasien
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -13,7 +13,7 @@
               <tr>
                 <th>Nama</th>
                 <th>Alamat</th>
-                <th style="width: 50px">Tambah</th>
+                <th style="width: 50px">Pilih</th>
               </tr>
             </thead>
             <tbody>
@@ -22,9 +22,9 @@
                 <td><?php echo $pass->pas_nama?></td>
                 <td><?php echo $pass->pas_alamat?></td>
                 <td>
-                  <button class="btn btn-primary" 
+                  <button class="btn btn-success" 
                     onclick="optionpasien('<?php echo $pass->pas_index?>','<?php echo $pass->pas_nama?>','<?php echo $pass->pas_alamat?>')">
-                      <i class="fas fa-plus"></i>
+                      <i class="fas fa-share"></i>
                   </button>  
                 </td>
               </tr>
@@ -42,7 +42,8 @@
     <div class="form-row">
       <div class="col-md-9">
         <h5>Puskesmas Sumbersari</h5>
-          <span>- Form Penambahan Antrian Baru -</span>
+          <span>- Form Penambahan Antrian Baru -</span> <br><br>
+          <span><i class="fa fa-asterisk" style="color: red"></i> Pilih Pasien Pada Tabel</span>
       </div>
     </div>
   </div>
@@ -61,7 +62,7 @@
     <div class="form-row">
       <div class="col-md-12">
         <div class="form-label-group">
-          <input type="text" id="pasIndex" name="pasIndex" class="form-control" autocomplete="off" placeholder="Nomor Index" required="required" value="" maxlength="30" readonly>
+          <input type="text" id="pasIndex" name="pasIndex" class="form-control readonly" autocomplete="off" placeholder="Nomor Index" required="required" value="" maxlength="30" >
           <label for="pasIndex">Nomor Index</label>
         </div>
       </div>
@@ -71,7 +72,7 @@
     <div class="form-row">
       <div class="col-md-12">
         <div class="form-label-group">
-          <input type="text" id="pasNama" name="pasNama" autocomplete="off" class="form-control" placeholder="Nama" required="required" value="" maxlength="30" readonly>
+          <input type="text" id="pasNama" name="pasNama" autocomplete="off" class="form-control readonly" placeholder="Nama" required="required" value="" maxlength="30" >
           <label for="pasNama">Nama</label>
         </div>
       </div>
@@ -81,7 +82,7 @@
     <div class="form-row">
       <div class="col-md-12">
         <div class="form-label-group">
-          <input type="text" id="pasAlamat" name="pasAlamat" class="form-control" autocomplete="off" placeholder="Alamat" required="required" value="" maxlength="30" readonly>
+          <input type="text" id="pasAlamat" name="pasAlamat" class="form-control readonly" autocomplete="off" placeholder="Alamat" required="required" value="" maxlength="30" >
           <label for="pasAlamat">Alamat</label>
         </div>
       </div>
@@ -91,7 +92,7 @@
     <div class="form-row">
       <div class="col-md-12">
         <div class="form-label-group">
-          <select type="text" id="poliTujuan" name="poliTujuan" class="form-control" required="required" value="" style="height: 50px;">
+          <select type="text" id="poliTujuan" name="poliTujuan" class="form-control readonly" required="required" value="" style="height: 50px;">
             <option value="">-- Poli Tujuan --</option>
             <option>Poli Gigi</option>
 			<option>Poli Mata</option>
