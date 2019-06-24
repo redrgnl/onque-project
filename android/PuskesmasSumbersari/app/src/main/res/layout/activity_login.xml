@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_below="@id/imageView"
-        android:text="Sistem Informasi Antrian"
+        android:text="Sistem Informasi Antrean"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorWhite"
@@ -139,7 +139,7 @@
             android:id="@+id/txtQ1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Apakah Anda Belum Mendaftar? "
+            android:text="Apakah Anda belum terdaftar? "
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorWhite" />
 

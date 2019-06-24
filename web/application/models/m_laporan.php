@@ -10,7 +10,8 @@ class m_laporan extends CI_Model {
       {
        $this->db->like('tanggal_antrian', $query);
       }
-      $this->db->order_by('nomor_urut', 'ASC');
+      $this->db->order_by('tanggal_antrian', 'ASC');
       return $this->db->get();
      }
+    
 }

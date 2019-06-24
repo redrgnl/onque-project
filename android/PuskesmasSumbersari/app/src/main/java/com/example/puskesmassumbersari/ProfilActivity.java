@@ -22,7 +22,7 @@ public class ProfilActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView textViewNoIndex, textViewNama, textViewNIK, textViewKepalaKeluarga, textViewAlamat, textViewTelepon, textViewTanggalLahir, textViewAgama, textViewPendidikan, textViewJenisKelamin, textViewGolonganDarah, textViewPekerjaan;
-    SessionManager SessionManager;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class ProfilActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Session
-        SessionManager = new SessionManager(getApplicationContext());
+        sessionManager = new SessionManager(getApplicationContext());
 
         textViewNoIndex = (TextView) findViewById(R.id.textViewNoIndex);
         textViewNama = (TextView) findViewById(R.id.textViewNama);
@@ -54,20 +54,20 @@ public class ProfilActivity extends AppCompatActivity
         textViewGolonganDarah = (TextView) findViewById(R.id.textViewGolonganDarah);
         textViewPekerjaan = (TextView) findViewById(R.id.textViewPekerjaan);
 
-        //menampilkan user data
-        HashMap<String, String> user = SessionManager.getUserDetails();
-        String NoIndex = user.get(SessionManager.KEY_INDEX_PASIEN);
-        String Nama = user.get(SessionManager.KEY_NAMA_PASIEN);
-        String NIK = user.get(SessionManager.KEY_NIK_PASIEN);
-        String KK = user.get(SessionManager.KEY_KK_PASIEN);
-        String Alamat = user.get(SessionManager.KEY_ALAMAT_PASIEN);
-        String Telepon = user.get(SessionManager.KEY_TELEPON_PASIEN);
-        String Lahir = user.get(SessionManager.KEY_LAHIR_PASIEN);
-        String Agama = user.get(SessionManager.KEY_AGAMA_PASIEN);
-        String Pendidikan = user.get(SessionManager.KEY_PENDIDIKAN_PASIEN);
-        String Kelamin = user.get(SessionManager.KEY_KELAMIN_PASIEN);
-        String Darah = user.get(SessionManager.KEY_DARAH_PASIEN);
-        String Pekerjaan = user.get(SessionManager.KEY_PEKERJAAN_PASIEN);
+        //menampilkan user data dari session
+        HashMap<String, String> user = sessionManager.getUserDetails();
+        String NoIndex = user.get(sessionManager.KEY_INDEX_PASIEN);
+        String Nama = user.get(sessionManager.KEY_NAMA_PASIEN);
+        String NIK = user.get(sessionManager.KEY_NIK_PASIEN);
+        String KK = user.get(sessionManager.KEY_KK_PASIEN);
+        String Alamat = user.get(sessionManager.KEY_ALAMAT_PASIEN);
+        String Telepon = user.get(sessionManager.KEY_TELEPON_PASIEN);
+        String Lahir = user.get(sessionManager.KEY_LAHIR_PASIEN);
+        String Agama = user.get(sessionManager.KEY_AGAMA_PASIEN);
+        String Pendidikan = user.get(sessionManager.KEY_PENDIDIKAN_PASIEN);
+        String Kelamin = user.get(sessionManager.KEY_KELAMIN_PASIEN);
+        String Darah = user.get(sessionManager.KEY_DARAH_PASIEN);
+        String Pekerjaan = user.get(sessionManager.KEY_PEKERJAAN_PASIEN);
 
         textViewNoIndex.setText(Html.fromHtml(NoIndex));
         textViewNama.setText(Html.fromHtml(Nama));
@@ -82,9 +82,6 @@ public class ProfilActivity extends AppCompatActivity
         textViewGolonganDarah.setText(Html.fromHtml(Darah));
         textViewPekerjaan.setText(Html.fromHtml(Pekerjaan));
 
-
-
-
     }
     @Override
     public void onBackPressed() {
@@ -96,17 +93,15 @@ public class ProfilActivity extends AppCompatActivity
         }
     }
 
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.logout:
-                SessionManager.logoutUser();
+                sessionManager.logoutUser();
                 break;
             case R.id.antrian_anda:
-                startActivity(new Intent(this, AntrianAndaActivity.class));
+                startActivity(new Intent(this, AntreanAndaActivity.class));
                 break;
             case R.id.profil:
                 startActivity(new Intent(this, ProfilActivity.class));
@@ -114,7 +109,6 @@ public class ProfilActivity extends AppCompatActivity
             case R.id.antrian:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_profil);

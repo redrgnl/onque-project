@@ -24,7 +24,7 @@
         <div class="mr-5">Antrian</div>
       </div>
       <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url("antrian")?>">
-        <span class="float-left">Antrian</span>
+        <span class="float-left">Manajemen Antrian</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>
         </span>
@@ -49,9 +49,16 @@
   </div>
 </div>
 <div class="row">
+  <div class="col-xl-12 col-sm-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" style="color: black">Daftar Pasien terdaftar Puskesmas Sumbersari</li>
+    </ol>
+  </div>
+</div>
+<div class="row">
   <div class="col-xl-12 col-sm-12 mb-12">
     <div class="card mb-3">
-          <div class="card-header bg-info" style="color: white">
+          <div class="card-header bg-primary" style="color: white">
             <i class="fas fa-table"></i>
               Tabel Pasien Terdaftar
           </div>

@@ -13,14 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".AmbilAntreanActivity"></activity>
         <activity
             android:name=".ProfilActivity"
             android:label="@string/menu_profil"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AntrianAndaActivity"
+            android:name=".AntreanAndaActivity"
             android:label="@string/menu_antrian_anda"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"

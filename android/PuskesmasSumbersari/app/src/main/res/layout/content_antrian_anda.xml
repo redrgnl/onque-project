@@ -4,129 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AntrianAndaActivity"
+    tools:context=".AntreanAndaActivity"
     android:layout_marginTop="50dp">
 
-    <RelativeLayout
+    <ListView
+        android:id="@+id/ViewAntrianAnda"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp">
+        android:layout_height="wrap_content">
 
-         <android.support.v7.widget.CardView
-             android:layout_width="match_parent"
-             android:layout_height="50dp"
-             android:id="@+id/cardViewPoli"
-             android:layout_marginBottom="20dp"
-             >
-
-             <TextView
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:text="Poli Gigi"
-                 android:gravity="center"
-                 android:textSize="30dp"
-                 android:textColor="@color/colorWhite"
-                 android:background="@color/colorPrimary"
-                 />
-         </android.support.v7.widget.CardView>
-
-        <TextView
-            android:id="@+id/textViewNoAntrian"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cardViewPoli"
-            android:text="No. Antrian"
-            android:textSize="20dp"
-            android:layout_marginBottom="20dp"
-            />
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textViewNoAntrian"
-            android:id="@+id/cardViewAntrian"
-            android:layout_marginBottom="20dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:background="#11DE5C">
-                <TextView
-                    android:id="@+id/noAntrianSekarang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="7"
-                    android:textSize="120dp"
-                    android:textColor="@color/colorWhite"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="/"
-                    android:textSize="120dp"
-                    android:textColor="@color/colorWhite"/>
-                <TextView
-                    android:id="@+id/batasAntrian"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20"
-                    android:textSize="120dp"
-                    android:textColor="@color/colorWhite"/>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <TextView
-            android:id="@+id/textViewNoAntrianAnda"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cardViewAntrian"
-            android:text="No. Antrian anda"
-            android:textSize="20dp"
-            android:layout_marginBottom="20dp"
-            />
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textViewNoAntrianAnda"
-            android:id="@+id/cardViewAntrianAnda"
-            android:layout_marginBottom="20dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:background="#11DE5C">
-                <TextView
-                    android:id="@+id/noAntrianAnda"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12"
-                    android:textSize="120dp"
-                    android:textColor="@color/colorWhite"
-                    />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <TextView
-            android:id="@+id/textViewCheckIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cardViewAntrianAnda"
-            android:text="Tanggal Check In"
-            android:textSize="20dp"
-            android:layout_marginBottom="20dp"
-            />
-        <TextView
-            android:id="@+id/textViewTanggal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textViewCheckIn"
-            android:text="20 - 05 - 2019"
-            android:textSize="20dp"
-            android:layout_marginBottom="20dp"
-            />
-
-    </RelativeLayout>
+    </ListView>
 
 </ScrollView>

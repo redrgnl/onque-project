@@ -15,6 +15,7 @@ class pasien extends CI_Controller {
 			redirect(base_url("admin"));
 		}
         else if($this->session->userdata('status') == "login"){
+            //menampilkan status user
             $permission = $this->session->userdata('permission');
             foreach ($permission as $perm){
                 $mission = $perm->status;
@@ -35,6 +36,7 @@ class pasien extends CI_Controller {
 			redirect(base_url("admin"));
 		}
         else if($this->session->userdata('status') == "login"){
+            //menampilkan status user
             $permission = $this->session->userdata('permission');
             foreach ($permission as $perm){
                 $mission = $perm->status;
@@ -50,6 +52,7 @@ class pasien extends CI_Controller {
     //manajemen pasien
     function tambah_pasien()
     {
+        //save data baru pasien
         $modelpasien = $this->m_pasien;
         $modelpasien->save();
         
@@ -60,6 +63,7 @@ class pasien extends CI_Controller {
             $this->index();
         }
     }
+    //edit data pasien
     function edit_pasien($id)
     {
         if($this->session->userdata('status') != "login"){
@@ -67,6 +71,7 @@ class pasien extends CI_Controller {
 		}
         else if($this->session->userdata('status') == "login"){
           $where = array('pas_index' => $id);
+          //menampilkan status user
           $permission = $this->session->userdata('permission');
             foreach ($permission as $perm){
                 $mission = $perm->status;
@@ -82,6 +87,7 @@ class pasien extends CI_Controller {
     }
     function update_pasien()
     {
+        //update data pasien berdasarkan data baru
         $modelpasien = $this->m_pasien;
         $modelpasien->update();
         
@@ -94,6 +100,7 @@ class pasien extends CI_Controller {
     }
     function hapus_pasien($id=null)
     {
+        //hapus pasien
         if (!isset($id)) index();
         
         if ($this->m_pasien->delete($id)) {

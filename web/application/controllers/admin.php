@@ -20,19 +20,20 @@ class admin extends CI_Controller {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         
+        //check status admin aktif atau non-aktif
         $checkstatus = $this->m_admin->check_status($username)->num_rows();
         
+        //jika status aktif
         if($checkstatus > 0){
- 
+            //check status user admin
 			$checks = $this->m_admin->check_super($username);
         	$where = array(
             	'username' => $username,
             	'password' => $password
         	);
-        
+            //check post username password
         	$check = $this->m_login->check_login("admin",$where)->num_rows();
         	if($check > 0){
- 
 				$data_session = array(
                 	'permission' => $checks,
 					'username' => $username,
@@ -64,6 +65,7 @@ class admin extends CI_Controller {
 			redirect(base_url("admin"));
 		}
         else if($this->session->userdata('status') == "login"){
+            //menampilkan status user
             $permission = $this->session->userdata('permission');
             foreach ($permission as $perm){
                 $mission = $perm->status;
@@ -71,7 +73,7 @@ class admin extends CI_Controller {
 			$data = [
                 'permission' => $mission,
                 'breadcrumb' => "Dashboard Antrian",
-                'content' => 'admin/content/home'
+                'content' => 'admin/content/man_antrian'
                 ];
             $this->load->view("admin/index", $data);
 		} 
@@ -84,10 +86,12 @@ class admin extends CI_Controller {
             redirect(base_url("admin"));
         }
         else if($this->session->userdata('status') == "login"){
+            //menampilkan status user
             $permission = $this->session->userdata('permission');
             foreach ($permission as $perm){
                 $mission = $perm->status;
             }
+            //menampilkan data admin terdaftar
             $result = $this->m_admin->daftar_admin();
             $data = [   
                 'permission' => $mission,
@@ -107,6 +111,7 @@ class admin extends CI_Controller {
             redirect(base_url("admin"));
         }
         else if($this->session->userdata('status') == "login"){
+            //menampilkan status user
             $permission = $this->session->userdata('permission');
             foreach ($permission as $perm){
                 $mission = $perm->status;
@@ -123,6 +128,7 @@ class admin extends CI_Controller {
     //function tambah admin to database
     function tambah_admin()
     {
+        //save admin baru
         $modeladmin = $this->m_admin;
         $modeladmin->save();
         
@@ -134,17 +140,6 @@ class admin extends CI_Controller {
         }
     }
     
-    function redirect()
-    {
-        if($this->session->userdata('status') != "login"){
-            redirect(base_url("admin"));
-        }
-        else if($this->session->userdata('status') == "login"){
-            redirect(base_url("admin/manajemenadmin"));
-        }
-    }
-
-
     //form edit admin
     function formeditadmin($id)
     {
@@ -153,6 +148,7 @@ class admin extends CI_Controller {
 		}
         else if($this->session->userdata('status') == "login"){
             $where = array('id_admin' => $id);
+            //menampilkan status user
             $permission = $this->session->userdata('permission');
             foreach ($permission as $perm){
                 $mission = $perm->status;
@@ -170,6 +166,7 @@ class admin extends CI_Controller {
     //form edit admin
     function updateadmin()
     {
+        //save data admin yang sudah di edit
         $modeladmin = $this->m_admin;
         $modeladmin->update();
         
