@@ -15,7 +15,7 @@ public class ListAdapterAntrianAnda extends ArrayAdapter<AntreanAndaItem> {
     private Context context;
 
     public ListAdapterAntrianAnda(List<AntreanAndaItem> antreanAndaItemList, Context context) {
-        super(context, R.layout.view_antrian_anda2, antreanAndaItemList);
+        super(context, R.layout.view_antrian_anda, antreanAndaItemList);
         this.antreanAndaItemList = antreanAndaItemList;
         this.context = context;
     }
@@ -24,13 +24,22 @@ public class ListAdapterAntrianAnda extends ArrayAdapter<AntreanAndaItem> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View listViewItem = inflater.inflate(R.layout.view_nomor, parent, false);
+        View listViewItem = inflater.inflate(R.layout.view_antrian_anda, parent, false);
 
-        TextView noAntrianAnda = listViewItem.findViewById(R.id.noAntrianAnda);
+        TextView textViewPoliData = listViewItem.findViewById(R.id.textViewPoliData);
+        TextView textViewNoAntrianSekarang = listViewItem.findViewById(R.id.textViewNoAntrianSekarang);
+        TextView textViewNoAntrianTerakhir = listViewItem.findViewById(R.id.textViewNoAntrianTerakhir);
+        TextView textViewNoAntrianAndaData = listViewItem.findViewById(R.id.textViewNoAntrianAndaData);
+        TextView textViewStatusData = listViewItem.findViewById(R.id.textViewStatusData);
+        TextView textViewTanggalCheckIn = listViewItem.findViewById(R.id.tanggalCheckIn);
 
         AntreanAndaItem antreanAndaItem = this.antreanAndaItemList.get(position);
 
-        noAntrianAnda.setText(antreanAndaItem.getAnda_nomor());
+        textViewPoliData.setText(antreanAndaItem.getAnda_poli());
+        textViewNoAntrianSekarang.setText(antreanAndaItem.getRunning_nomor());
+        textViewNoAntrianTerakhir.setText(antreanAndaItem.getLast_nomor());
+        textViewNoAntrianAndaData.setText(antreanAndaItem.getAnda_nomor());
+        textViewStatusData.setText(antreanAndaItem.getAnda_status());
 
         return listViewItem;
     }

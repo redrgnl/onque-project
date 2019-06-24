@@ -1,39 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     android:padding="16dp"
     android:id="@+id/antreanAndaItem">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:background="#11DE5C">
-        <TextView
-            android:id="@+id/noAntrianSekarang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00"
-            android:textSize="120dp"
-            android:textColor="@color/colorWhite"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/"
-            android:textSize="120dp"
-            android:textColor="@color/colorWhite"/>
-        <TextView
-            android:id="@+id/batasAntrian"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00"
-            android:textSize="120dp"
-            android:textColor="@color/colorWhite"/>
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:padding="20dp">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textViewPoli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Poli Tujuan :"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardViewPoli"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textViewPoli"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/textViewPoliData"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Poli Gigi"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:textColor="@color/colorWhite"
+                android:background="@color/colorPrimary"
+                />
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewNoAntrian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardViewPoli"
+            android:text="No. Antrean :"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewNoAntrian"
+            android:id="@+id/cardViewAntrian"
+            android:layout_marginBottom="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#11DE5C"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/textViewNoAntrianSekarang"
+                        android:layout_width="138dp"
+                        android:layout_height="160dp"
+                        android:gravity="center_horizontal"
+                        android:text="00"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="110dp" />
+                    <TextView
+                        android:id="@+id/batas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:textColor="@color/colorWhite"
+                        android:text="/"
+                        android:textSize="110dp"
+                        android:gravity="center_horizontal" />
+                    <TextView
+                        android:id="@+id/textViewNoAntrianTerakhir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:textColor="@color/colorWhite"
+                        android:text="00"
+                        android:textSize="110dp"
+                        android:gravity="center_horizontal" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewNoAntrianAnda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardViewAntrian"
+            android:text="No. Antrean Anda :"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"
+            />
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewNoAntrianAnda"
+            android:id="@+id/cardViewAntrianAnda"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:id="@+id/textViewNoAntrianAndaData"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:textColor="@color/colorWhite"
+                android:text="00"
+                android:textSize="110dp"
+                android:gravity="center_horizontal"
+                android:background="#11DE5C" />
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardViewAntrianAnda"
+            android:text="Status :"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewStatusData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewStatus"
+            android:text="-"
+            android:textSize="20dp"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:id="@+id/textViewCheckIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewStatusData"
+            android:text="Tanggal Check In :"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:id="@+id/tanggalCheckIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewCheckIn"
+            android:text="dd-mm-yyyy"
+            android:textSize="20dp"
+            android:gravity="center_horizontal" />
+
+    </RelativeLayout>
+
+</ScrollView>

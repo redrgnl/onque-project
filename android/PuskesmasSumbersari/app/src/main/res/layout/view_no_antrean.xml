@@ -5,17 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:id="@+id/tanggalCheckIn">
+    android:id="@+id/nomorAntreanItem">
 
     <TextView
-        android:id="@+id/textViewTanggal"
+        android:id="@+id/textViewNoUrut"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:layout_below="@id/textViewCheckIn"
-        android:text="20 - 05 - 2019"
-        android:textSize="20dp"
-        android:layout_marginBottom="20dp"
-        />
+        android:text="-"/>
 
 </LinearLayout>

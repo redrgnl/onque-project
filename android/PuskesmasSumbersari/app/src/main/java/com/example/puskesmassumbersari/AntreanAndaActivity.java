@@ -32,19 +32,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AntrianAndaActivity extends AppCompatActivity
+public class AntreanAndaActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     //URL REST API Antrian
-    public static final String URL1 = Server.URL + "api/app_antrian/index_get";
-    public static final String URL2 = Server.URL + "api/app_antrian_anda/index_post";
+    public static final String URL = Server.URL + "api/app_antrian_anda/index_post";
 
     // manajemen session untuk log in, log out dan manajemen data pasien
     SessionManager SessionManager;
 
     // deklarasi variabel
-    ListView listView, listViewAntreanAnda;
-    private List<AntreanItem> antreanItemList;
+    ListView listViewAntreanAnda;
     private List<AntreanAndaItem> antreanAndaItemList;
 
     String index_pasien;
@@ -79,13 +77,10 @@ public class AntrianAndaActivity extends AppCompatActivity
             @Override
             public void run() {
                 // inisiasi nomor antrean
-                listView = findViewById(R.id.viewAntrianAnda);
-                listViewAntreanAnda = findViewById(R.id.viewAntrianAnda2);
-                antreanItemList = new ArrayList<>();
+                listViewAntreanAnda = findViewById(R.id.ViewAntrianAnda);
                 antreanAndaItemList = new ArrayList<>();
 
                 // tampilkan nomor antrean
-                loadNomor();
                 loadAntreanAnda(index_pasien);
                 handler.postDelayed(refresh, 1000);
             }
@@ -113,7 +108,7 @@ public class AntrianAndaActivity extends AppCompatActivity
                 SessionManager.logoutUser();
                 break;
             case R.id.antrian_anda:
-                startActivity(new Intent(this, AntrianAndaActivity.class));
+                startActivity(new Intent(this, AntreanAndaActivity.class));
                 break;
             case R.id.profil:
                 startActivity(new Intent(this, ProfilActivity.class));
@@ -129,41 +124,8 @@ public class AntrianAndaActivity extends AppCompatActivity
         return true;
     }
 
-    public void loadNomor() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL1, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    // Ambil data JSON
-                    JSONObject object = new JSONObject(response);
-                    JSONArray antreanArray = object.getJSONArray("result");
-                    JSONObject antreanObject = antreanArray.getJSONObject(0);
-                    AntreanItem antreanItem = new AntreanItem(
-                            antreanObject.getString("running_nomor"),
-                            antreanObject.getString("last_nomor")
-                    );
-
-                    antreanItemList.add(antreanItem);
-
-                    android.widget.ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapter(antreanItemList, getApplicationContext());
-                    listView.setAdapter(adapter);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
-
     public void loadAntreanAnda(final String index_pasien) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL2, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -172,13 +134,17 @@ public class AntrianAndaActivity extends AppCompatActivity
                     JSONArray antreanArray = object.getJSONArray("result");
                     JSONObject antreanObject = antreanArray.getJSONObject(0);
                     AntreanAndaItem antreanAndaItem = new AntreanAndaItem(
-                            antreanObject.getString("anda_nomor")
+                            antreanObject.getString("running_nomor"),
+                            antreanObject.getString("last_nomor"),
+                            antreanObject.getString("anda_nomor"),
+                            antreanObject.getString("anda_poli"),
+                            antreanObject.getString("anda_status")
                     );
 
                     antreanAndaItemList.add(antreanAndaItem);
 
                     android.widget.ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapterAntrianAnda(antreanAndaItemList, getApplicationContext());
-                    listView.setAdapter(adapter);
+                    listViewAntreanAnda.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

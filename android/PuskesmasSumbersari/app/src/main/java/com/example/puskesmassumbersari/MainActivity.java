@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity
         btnAmbilAntrian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AntrianAndaActivity.class);
+                Intent intent = new Intent(MainActivity.this, AmbilAntreanActivity.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void run() {
                 // inisiasi nomor antrean
-                listView = findViewById(R.id.viewNomor);
+                listView = findViewById(R.id.ViewNomor);
                 antreanItemList = new ArrayList<>();
 
                 // tampilkan nomor antrean
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity
                 SessionManager.logoutUser();
                 break;
             case R.id.antrian_anda:
-                startActivity(new Intent(this, AntrianAndaActivity.class));
+                startActivity(new Intent(this, AntreanAndaActivity.class));
                 break;
             case R.id.profil:
                 startActivity(new Intent(this, ProfilActivity.class));
