@@ -16,7 +16,7 @@ public class CustomOnItemSelectedListener implements OnItemSelectedListener {
 
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
-
+        Toast.makeText(arg0.getContext(), "Pilih Poli Tujuan", Toast.LENGTH_SHORT).show();
     }
 
 }

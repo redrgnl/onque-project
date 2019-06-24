@@ -152,7 +152,7 @@ public class AntreanAndaActivity extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         }){
             // Mengirim data yang sudah diringkas dengan teknik Hashing dengan method post
