@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="00"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorAccent"
             android:textSize="60dp" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="dari"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorAccent"
             android:textSize="40dp" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="00"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorAccent"
             android:textSize="40dp" />
 
     </LinearLayout>
