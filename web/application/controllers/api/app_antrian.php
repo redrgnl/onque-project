@@ -26,9 +26,9 @@ class app_antrian extends REST_Controller {
         }
         
         if (empty($runnomor_urut)){
-            $antrian['running_nomor'] = "Antrian Tuntas";
-            $antrian['running_poli'] = "Tidak Ada Antrian Pasien";
-            $antrian['last_nomor'] = "Belum Ada Antrian";
+            $antrian['running_nomor'] = "-";
+            $antrian['running_poli'] = "-";
+            $antrian['last_nomor'] = "-";
             
 //            $this->response($antrian, 200);
             $data['result'][0] = $antrian;
