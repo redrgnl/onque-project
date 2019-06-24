@@ -1,22 +1,19 @@
 package com.example.puskesmassumbersari;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ListAdapter;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -31,21 +28,24 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class AntreanAndaActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     //URL REST API Antrian
-    public static final String URL = Server.URL + "api/app_antrian/index_get";
-
-    // deklarasi variabel
-    ListView listView;
-    private List<AntreanItem> antreanItemList;
-    Button btnAmbilAntrian;
+    public static final String URL = Server.URL + "api/app_antrian_anda/index_post";
 
     // manajemen session untuk log in, log out dan manajemen data pasien
     SessionManager SessionManager;
+
+    // deklarasi variabel
+    ListView listViewAntreanAnda;
+    private List<AntreanAndaItem> antreanAndaItemList;
+
+    String index_pasien;
 
     // variabel handler dan refresh untuk menangani refresh nomor antrean
     Handler handler = new Handler();
@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_antrian_anda);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_antrian_anda);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -67,38 +67,32 @@ public class MainActivity extends AppCompatActivity
 
         SessionManager = new SessionManager(getApplicationContext());
         SessionManager.checkLogin();
-        SessionManager.isLoggedIn();
 
-        // Button ambil antrean
-        btnAmbilAntrian = (Button) findViewById(R.id.btnAmbilAntrean);
-        btnAmbilAntrian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AmbilAntreanActivity.class);
-                startActivity(intent);
-            }
-        });
+        //menampilkan user data
+        HashMap<String, String> user = SessionManager.getUserDetails();
+        index_pasien = user.get(SessionManager.KEY_INDEX_PASIEN);
 
         // refresh activity
         refresh = new Runnable() {
             @Override
             public void run() {
                 // inisiasi nomor antrean
-                listView = findViewById(R.id.ViewNomor);
-                antreanItemList = new ArrayList<>();
+                listViewAntreanAnda = findViewById(R.id.ViewAntrianAnda);
+                antreanAndaItemList = new ArrayList<>();
 
                 // tampilkan nomor antrean
-                loadNomor();
+                loadAntreanAnda(index_pasien);
                 handler.postDelayed(refresh, 1000);
             }
         };
 
         handler.post(refresh);
+
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_antrian_anda);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -125,13 +119,13 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_antrian_anda);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    public void loadNomor() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+    public void loadAntreanAnda(final String index_pasien) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -139,15 +133,18 @@ public class MainActivity extends AppCompatActivity
                     JSONObject object = new JSONObject(response);
                     JSONArray antreanArray = object.getJSONArray("result");
                     JSONObject antreanObject = antreanArray.getJSONObject(0);
-                    AntreanItem antreanItem = new AntreanItem(
+                    AntreanAndaItem antreanAndaItem = new AntreanAndaItem(
                             antreanObject.getString("running_nomor"),
-                            antreanObject.getString("last_nomor")
+                            antreanObject.getString("last_nomor"),
+                            antreanObject.getString("anda_nomor"),
+                            antreanObject.getString("anda_poli"),
+                            antreanObject.getString("anda_status")
                     );
 
-                    antreanItemList.add(antreanItem);
+                    antreanAndaItemList.add(antreanAndaItem);
 
-                    ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapter(antreanItemList, getApplicationContext());
-                    listView.setAdapter(adapter);
+                    android.widget.ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapterAntrianAnda(antreanAndaItemList, getApplicationContext());
+                    listViewAntreanAnda.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -157,7 +154,15 @@ public class MainActivity extends AppCompatActivity
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        }){
+            // Mengirim data yang sudah diringkas dengan teknik Hashing dengan method post
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("session_index", index_pasien);
+                return params;
+            }
+        };
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);

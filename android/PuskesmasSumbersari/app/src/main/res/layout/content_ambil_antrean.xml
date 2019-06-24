@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorHint"
+    tools:context="com.example.puskesmassumbersari.ProfilActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp"
+                >
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+
+                    android:layout_marginTop="0dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:paddingLeft="25dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="No Urut              :"/>
+
+                                <ListView
+                                    android:id="@+id/ViewNoAntrean"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent">
+
+                                </ListView>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:paddingLeft="25dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="25dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="No Index            :"/>
+
+                                <TextView
+                                    android:id="@+id/textViewNoIndex"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="20dp"
+                                    android:text="Wiliam@gmail.com"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="25dp"
+                                android:orientation="horizontal"
+                                android:paddingLeft="25dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nama                 :"/>
+
+                                <TextView
+                                    android:id="@+id/textViewNama"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="20dp"
+                                    android:text="+266 225 225"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="25dp"
+                                android:orientation="horizontal"
+                                android:paddingLeft="25dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Alamat               :"/>
+
+                                <TextView
+                                    android:id="@+id/textViewAlamat"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="20dp"
+                                    android:text="Show all comments"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="25dp"
+                                android:orientation="horizontal"
+                                android:paddingLeft="25dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Poli Tujuan        :"/>
+
+                                <Spinner
+                                    android:id="@+id/spinner_poli"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:entries="@array/poli_array">
+
+                                </Spinner>
+                            </LinearLayout>
+                            <Button
+                                android:id="@+id/btnAntre"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="25dp"
+                                android:text="Antre"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="20dp"
+                                android:background="#47A24B" />
+                            <Button
+                                android:id="@+id/btnBatal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="25dp"
+                                android:text="Batal"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="20dp"
+                                android:background="#F44336"
+                                />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+
