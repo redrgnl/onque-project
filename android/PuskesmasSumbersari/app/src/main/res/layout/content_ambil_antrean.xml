@@ -131,8 +131,7 @@
                                 <Spinner
                                     android:id="@+id/spinner_poli"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:entries="@array/poli_array">
+                                    android:layout_height="wrap_content">
 
                                 </Spinner>
                             </LinearLayout>
