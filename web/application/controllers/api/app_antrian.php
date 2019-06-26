@@ -30,7 +30,7 @@ class app_antrian extends REST_Controller {
             $antrian['running_poli'] = "-";
             $antrian['last_nomor'] = "-";
             
-//            $this->response($antrian, 200);
+//          $this->response($antrian, 200);
             $data['result'][0] = $antrian;
             echo json_encode($data);
         }
@@ -39,7 +39,7 @@ class app_antrian extends REST_Controller {
             $antrian['running_poli'] = $runnama_poli;
             $antrian['last_nomor'] = $lastnomor_urut;
             
-//            $this->response($antrian, 200);
+//          $this->response($antrian, 200);
             $data['result'][0] = $antrian;
             echo json_encode($data);
         }
