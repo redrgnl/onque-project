@@ -36,8 +36,7 @@ public class AmbilAntreanActivity extends Activity implements AdapterView.OnItem
     private Spinner spinnerPoli;
     private Button btnAntre, btnBatal;
     private TextView textViewNoAntrean, textViewNoIndex, textViewNama, textViewAlamat;
-    int intLastNomor, intNomorUrut;
-    private String nomorUrut;
+    private String nomor;
     private String NoIndex, Nama, Alamat, Poli;
 
     // Inisialisasi variabel arrPoli
@@ -45,8 +44,8 @@ public class AmbilAntreanActivity extends Activity implements AdapterView.OnItem
             "Poli Umum", "Poli Kandungan"};
 
     //URL REST API Antrian
-    public static final String URL = Server.URL + "api/app_antrian/index_get"; // Ambil data antrean
-    public static final String URL_Antre = ""; // Kirim data pasien
+    public static final String URL = Server.URL + "api/app_daftar_antrian/index_get"; // Ambil data antrean
+    public static final String URL_Antre = Server.URL + "api/app_daftar_antrian/index_post"; // Daftar data pasien
 
     // Session untuk mengambil data pasien
     SessionManager sessionManager;
@@ -130,19 +129,10 @@ public class AmbilAntreanActivity extends Activity implements AdapterView.OnItem
                     JSONObject object = new JSONObject(response);
                     JSONArray antreanArray = object.getJSONArray("result");
                     JSONObject antreanObject = antreanArray.getJSONObject(0);
-                    String lastNomor = antreanObject.getString("last_nomor");
+                    nomor = antreanObject.getString("nomor");
 
-                    if (lastNomor == "-") {
-                        lastNomor = "1";
-                        intLastNomor = Integer.valueOf(lastNomor);
-                        nomorUrut = String.valueOf(intLastNomor);
-                    } else {
-                        intLastNomor = Integer.valueOf(lastNomor);
-                        intNomorUrut = ++intLastNomor;
-                        nomorUrut = String.valueOf(intNomorUrut);
-                    }
                     textViewNoAntrean = (TextView) findViewById(R.id.textViewNoAntrean);
-                    textViewNoAntrean.setText(nomorUrut);
+                    textViewNoAntrean.setText(nomor);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -160,16 +150,7 @@ public class AmbilAntreanActivity extends Activity implements AdapterView.OnItem
     }
 
     private void addAntrrean() {
-        /*
-        spinnerPoli = (Spinner) findViewById(R.id.spinner_poli);
-        btnAntre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(AmbilAntreanActivity.this, "OnClickListener : " +
-                        "\nPoli : " + String.valueOf(spinnerPoli.getSelectedItem()), Toast.LENGTH_SHORT).show();
-            }
-        });*/
-        StringRequest stringRequest = new StringRequest(StringRequest.Method.GET, URL_Antre, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(StringRequest.Method.POST, URL_Antre, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -182,6 +163,10 @@ public class AmbilAntreanActivity extends Activity implements AdapterView.OnItem
                         Intent intent = new Intent(AmbilAntreanActivity.this, AntreanAndaActivity.class);
                         startActivity(intent);
                     }
+                    else if (success.equals("0")) {
+                        Toast.makeText(AmbilAntreanActivity.this, "Gagal mendaftar antrean!\nAnda mungkin telah mendaftar antrean atau hubungi administrasi Puskesmas Sumbersari",
+                                Toast.LENGTH_LONG).show();
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(AmbilAntreanActivity.this, "Gagal mendaftar antrean : " + e.toString(),
@@ -191,20 +176,23 @@ public class AmbilAntreanActivity extends Activity implements AdapterView.OnItem
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError e) {
-                Toast.makeText(AmbilAntreanActivity.this, "Gagal mendaftar antrean : " + e.toString(),
+                Toast.makeText(AmbilAntreanActivity.this, "Silakan pilih Poli",
                         Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
             protected Map<String, String> getParams () throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("", nomorUrut);
-                params.put("pas_index", NoIndex);
-                params.put("pas_nama", Nama);
-                params.put("pas_alamat", Alamat);
-                params.put("pas_poli", Poli);
+                params.put("session_nomor", nomor);
+                params.put("session_index", NoIndex);
+                params.put("session_nama", Nama);
+                params.put("session_alamat", Alamat);
+                params.put("session_poli", Poli);
                 return params;
             }
         };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 }
