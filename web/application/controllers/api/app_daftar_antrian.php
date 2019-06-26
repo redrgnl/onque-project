@@ -10,6 +10,7 @@ class app_daftar_antrian extends REST_Controller {
     function __construct($config = 'rest') {
         parent::__construct($config);
         $this->load->model('mapp_daftar');
+        $this->load->model('m_antrian');
     }
 
     //api antrian terakhir
@@ -35,12 +36,15 @@ class app_daftar_antrian extends REST_Controller {
         $tanggal = $today;
         $poli = $post["session_poli"];
         $status = "antri";
-        $result = $this->db->query("INSERT INTO antrian (id_antrian,nomor_urut,pas_index,pas_nama,pas_alamat,tanggal_antrian,nama_poli,status) VALUES (DEFAULT,'$nomor','$index','$nama','$alamat','$tanggal','$poli','$status')");
         
-        if ($result) {
+        $check = $this->m_antrian->checkantrian($index);
+        if(empty($check)){
+            $result = $this->db->query("INSERT INTO antrian (id_antrian,nomor_urut,pas_index,pas_nama,pas_alamat,tanggal_antrian,nama_poli,status) VALUES (DEFAULT,'$nomor','$index','$nama','$alamat','$tanggal','$poli','$status')");
+            //success
             $data['success'] = "1";
             echo json_encode($data);
         } else {
+            //failed
             $data['success'] = "0";
             echo json_encode($data);
         }
