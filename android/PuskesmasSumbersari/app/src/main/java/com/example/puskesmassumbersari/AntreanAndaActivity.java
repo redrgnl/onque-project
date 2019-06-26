@@ -138,7 +138,8 @@ public class AntreanAndaActivity extends AppCompatActivity
                             antreanObject.getString("last_nomor"),
                             antreanObject.getString("anda_nomor"),
                             antreanObject.getString("anda_poli"),
-                            antreanObject.getString("anda_status")
+                            antreanObject.getString("anda_status"),
+                            antreanObject.getString("antrian_tanggal")
                     );
 
                     antreanAndaItemList.add(antreanAndaItem);

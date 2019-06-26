@@ -31,17 +31,17 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     // deklarasi objek
-    TextInputLayout validasiUsername, validasiPassword;
-    EditText txtUsername, txtPassword;
+    TextInputLayout validasiIndexPasien, validasiNIK;
+    EditText txtIndexPasien, txtNIK;
     Button btnLogin;
     TextView txtRegistrasi;
 
     // deklarasi variabel
-    String username, password;
+    String IndexPasien, NIK;
 
     // deklarasi variabel alamat host
     // setting terlebih dahulu supaya antara laptop dan android jadi satu jaringan
-    public static String URL = Server.URL + "app_login/index_login";
+    public static String URL = Server.URL + "api/app_login/index_login";
 
     SessionManager sessionManager;
 
@@ -53,10 +53,10 @@ public class LoginActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
 
         // inisialisasi variabel objek
-        validasiUsername = findViewById(R.id.validasiUsername);
-        validasiPassword = findViewById(R.id.validasiPassword);
-        txtUsername = findViewById(R.id.txtUsername);
-        txtPassword = findViewById(R.id.txtPassword);
+        validasiIndexPasien = findViewById(R.id.validasiIndexPasien);
+        validasiNIK = findViewById(R.id.validasiNIK);
+        txtIndexPasien = findViewById(R.id.txtIndexPasien);
+        txtNIK = findViewById(R.id.txtNIK);
         btnLogin = findViewById(R.id.btnLogin);
         txtRegistrasi = findViewById(R.id.txtRegister);
 
@@ -64,15 +64,15 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                username = txtUsername.getText().toString().trim();
-                password = txtPassword.getText().toString().trim();
+                IndexPasien = txtIndexPasien.getText().toString().trim();
+                NIK = txtNIK.getText().toString().trim();
 
-                if ( username.isEmpty() ) {
-                    validasiUsername.setError("Username harus diisi!");
-                } else if ( password.isEmpty() ) {
-                    validasiPassword.setError("Password harus diisi!");
+                if ( IndexPasien.isEmpty() ) {
+                    validasiIndexPasien.setError("Index harus diisi!");
+                } else if ( NIK.isEmpty() ) {
+                    validasiNIK.setError("NIK harus diisi!");
                 } else {
-                    auth_pasien(username, password);
+                    auth_pasien(IndexPasien, NIK);
                 }
             }
         });
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // method login
-    private void auth_pasien(final String username, final String password){
+    private void auth_pasien(final String IndexPasien, final String NIK){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                             String darah_pasien = jsonObject1.getString("pas_darah").trim();
                             String pekerjaan_pasien = jsonObject1.getString("pas_pekerjaan").trim();
 
-                            sessionManager.createSession(username, nama_pasien, nik_pasien, kk_pasien,
+                            sessionManager.createSession(IndexPasien, nama_pasien, nik_pasien, kk_pasien,
                                                          alamat_pasien, telepon_pasien, lahir_pasien,
                                                          agama_pasien, pendidikan_pasien, kelamin_pasien,
                                                          darah_pasien, pekerjaan_pasien);
@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     } else {
-                        Toast.makeText(LoginActivity.this, "Username dan Password tidak ditemukan! ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Index dan NIK tidak ditemukan! ", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -137,9 +137,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("username", username);
+                params.put("username", IndexPasien);
                 // sesuaikan dengan $_POST pada PHP
-                params.put("password", password);
+                params.put("password", NIK);
                 return params;
             }
         };

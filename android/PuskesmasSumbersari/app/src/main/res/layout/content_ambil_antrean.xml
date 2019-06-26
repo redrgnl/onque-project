@@ -49,12 +49,12 @@
                                     android:layout_height="wrap_content"
                                     android:text="No Urut              :"/>
 
-                                <ListView
-                                    android:id="@+id/ViewNoAntrean"
+                                <TextView
+                                    android:id="@+id/textViewNoAntrean"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent">
 
-                                </ListView>
+                                </TextView>
                             </LinearLayout>
                             <LinearLayout
                                 android:orientation="horizontal"
@@ -131,8 +131,7 @@
                                 <Spinner
                                     android:id="@+id/spinner_poli"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:entries="@array/poli_array">
+                                    android:layout_height="wrap_content">
 
                                 </Spinner>
                             </LinearLayout>

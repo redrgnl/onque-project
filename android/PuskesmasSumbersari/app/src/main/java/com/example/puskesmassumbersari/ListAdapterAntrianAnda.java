@@ -40,6 +40,7 @@ public class ListAdapterAntrianAnda extends ArrayAdapter<AntreanAndaItem> {
         textViewNoAntrianTerakhir.setText(antreanAndaItem.getLast_nomor());
         textViewNoAntrianAndaData.setText(antreanAndaItem.getAnda_nomor());
         textViewStatusData.setText(antreanAndaItem.getAnda_status());
+        textViewTanggalCheckIn.setText(antreanAndaItem.getAntrean_tanggal());
 
         return listViewItem;
     }
