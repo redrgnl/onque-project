@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // deklarasi variabel alamat host
     // setting terlebih dahulu supaya antara laptop dan android jadi satu jaringan
-    public static String URL = Server.URL + "app_login/index_login";
+    public static String URL = Server.URL + "api/app_login/index_login";
 
     SessionManager sessionManager;
 
