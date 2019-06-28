@@ -82,7 +82,7 @@ public class AntreanAndaActivity extends AppCompatActivity
 
                 // tampilkan nomor antrean
                 loadAntreanAnda(index_pasien);
-                handler.postDelayed(refresh, 1000);
+                handler.postDelayed(refresh, 5000);
             }
         };
 

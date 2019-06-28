@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity
 
                 // tampilkan nomor antrean
                 loadNomor();
-                handler.postDelayed(refresh, 1000);
+                handler.postDelayed(refresh, 5000);
             }
         };
 
