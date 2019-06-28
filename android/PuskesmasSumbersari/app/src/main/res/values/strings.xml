@@ -25,13 +25,5 @@
     <string name="menu_antrian_anda">Antrian Anda</string>
     <string name="menu_logout">Keluar</string>
     <string name="menu_antrian">Antrian</string>
-    
-    <string-array name="poli_array">
-        <item>-- Pilih Poli Tujuan --</item>
-        <item>Poli Gigi</item>
-        <item>Poli Mata</item>
-        <item>Poli Umum</item>
-        <item>Poli Kandungan</item>
-    </string-array>
 
 </resources>

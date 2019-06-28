@@ -39,7 +39,6 @@ class m_antrian extends CI_Model {
       date_default_timezone_set('Asia/Jakarta');
       $today = date("Y-m-d");
       $post = $this->input->post();
-      $idantri = $post["idAntrian"];
       $nomor = $post["nomorUrut"];
       $index = $post["pasIndex"];
       $nama = $post["pasNama"];
