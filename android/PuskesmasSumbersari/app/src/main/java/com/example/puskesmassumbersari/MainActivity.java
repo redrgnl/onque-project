@@ -13,8 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -30,9 +29,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,9 +36,8 @@ public class MainActivity extends AppCompatActivity
     public static final String URL = Server.URL + "api/app_antrian/index_get";
 
     // deklarasi variabel
-    ListView listView;
-    private List<AntreanItem> antreanItemList;
     Button btnAmbilAntrian;
+    TextView textViewNo, jumlahAntrean;
 
     // manajemen session untuk log in, log out dan manajemen data pasien
     SessionManager SessionManager;
@@ -79,14 +74,10 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        // refresh activity
+        // refresh
         refresh = new Runnable() {
             @Override
             public void run() {
-                // inisiasi nomor antrean
-                listView = findViewById(R.id.ViewNomor);
-                antreanItemList = new ArrayList<>();
-
                 // tampilkan nomor antrean
                 loadNomor();
                 handler.postDelayed(refresh, 5000);
@@ -139,15 +130,15 @@ public class MainActivity extends AppCompatActivity
                     JSONObject object = new JSONObject(response);
                     JSONArray antreanArray = object.getJSONArray("result");
                     JSONObject antreanObject = antreanArray.getJSONObject(0);
-                    AntreanItem antreanItem = new AntreanItem(
-                            antreanObject.getString("running_nomor"),
-                            antreanObject.getString("last_nomor")
-                    );
+                    String running_nomor = antreanObject.getString("running_nomor");
+                    String last_nomor = antreanObject.getString("last_nomor");
 
-                    antreanItemList.add(antreanItem);
+                    textViewNo = (TextView) findViewById(R.id.textViewNo);
+                    jumlahAntrean = (TextView) findViewById(R.id.jumlahAntrean);
 
-                    ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapter(antreanItemList, getApplicationContext());
-                    listView.setAdapter(adapter);
+                    textViewNo.setText(running_nomor);
+                    jumlahAntrean.setText(last_nomor);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

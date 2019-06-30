@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,9 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class AntreanAndaActivity extends AppCompatActivity
@@ -41,11 +39,9 @@ public class AntreanAndaActivity extends AppCompatActivity
     // manajemen session untuk log in, log out dan manajemen data pasien
     SessionManager SessionManager;
 
-    // deklarasi variabel
-    ListView listViewAntreanAnda;
-    private List<AntreanAndaItem> antreanAndaItemList;
-
     String index_pasien;
+    TextView textViewPoliData, textViewNoAntrianSekarang, textViewNoAntrianTerakhir,
+            textViewNoAntrianAndaData, textViewStatusData, tanggalCheckIn;
 
     // variabel handler dan refresh untuk menangani refresh nomor antrean
     Handler handler = new Handler();
@@ -76,10 +72,6 @@ public class AntreanAndaActivity extends AppCompatActivity
         refresh = new Runnable() {
             @Override
             public void run() {
-                // inisiasi nomor antrean
-                listViewAntreanAnda = findViewById(R.id.ViewAntrianAnda);
-                antreanAndaItemList = new ArrayList<>();
-
                 // tampilkan nomor antrean
                 loadAntreanAnda(index_pasien);
                 handler.postDelayed(refresh, 5000);
@@ -133,18 +125,27 @@ public class AntreanAndaActivity extends AppCompatActivity
                     JSONObject object = new JSONObject(response);
                     JSONArray antreanArray = object.getJSONArray("result");
                     JSONObject antreanObject = antreanArray.getJSONObject(0);
-                    AntreanAndaItem antreanAndaItem = new AntreanAndaItem(
-                            antreanObject.getString("running_nomor"),
-                            antreanObject.getString("last_nomor"),
-                            antreanObject.getString("anda_nomor"),
-                            antreanObject.getString("anda_poli"),
-                            antreanObject.getString("anda_status")
-                    );
+                    String running_nomor = antreanObject.getString("running_nomor");
+                    String last_nomor = antreanObject.getString("last_nomor");
+                    String anda_nomor = antreanObject.getString("anda_nomor");
+                    String anda_poli = antreanObject.getString("anda_poli");
+                    String anda_status = antreanObject.getString("anda_status");
+                    String antrean_tanggal = antreanObject.getString("antrian_tanggal");
 
-                    antreanAndaItemList.add(antreanAndaItem);
+                    textViewPoliData = (TextView) findViewById(R.id.textViewPoliData);
+                    textViewNoAntrianSekarang = (TextView) findViewById(R.id.textViewNoAntrianSekarang);
+                    textViewNoAntrianTerakhir = (TextView) findViewById(R.id.textViewNoAntrianTerakhir);
+                    textViewNoAntrianAndaData = (TextView) findViewById(R.id.textViewNoAntrianAndaData);
+                    textViewStatusData = (TextView) findViewById(R.id.textViewStatusData);
+                    tanggalCheckIn = (TextView) findViewById(R.id.tanggalCheckIn);
 
-                    android.widget.ListAdapter adapter = new com.example.puskesmassumbersari.ListAdapterAntrianAnda(antreanAndaItemList, getApplicationContext());
-                    listViewAntreanAnda.setAdapter(adapter);
+                    textViewPoliData.setText(anda_poli);
+                    textViewNoAntrianSekarang.setText(running_nomor);
+                    textViewNoAntrianTerakhir.setText(last_nomor);
+                    textViewNoAntrianAndaData.setText(anda_nomor);
+                    textViewStatusData.setText(anda_status);
+                    tanggalCheckIn.setText(antrean_tanggal);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

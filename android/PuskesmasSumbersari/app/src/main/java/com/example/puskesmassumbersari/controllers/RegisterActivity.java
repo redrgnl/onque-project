@@ -1,10 +1,13 @@
 package com.example.puskesmassumbersari.controllers;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -22,7 +25,10 @@ import com.example.puskesmassumbersari.config.Server;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -33,17 +39,21 @@ public class RegisterActivity extends AppCompatActivity {
             validasiAlamat, validasiNoTelp, validasiTglLahir, validasiAgama, validasiPendidikan,
             validasiJenisKelamin, validasiGolDarah, validasiPekerjaan;
     private ProgressBar loading;
-    private Button btnRegister;
+    private Button btnRegister, btDatePicker;
 
     private static String URL = Server.URL + "app_register/index_post";
 
     private String indexPasien, NIK, nama, kepalaKeluarga, alamat, noTelp, tglLahir, agama,
             pendidikan, jenisKelamin, golDarah, pekerjaan;
+    private DatePickerDialog datePickerDialog;
+    private SimpleDateFormat dateFormatter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
         // Inisiasi variabel-variabel edit text dengan id edit text dari layout activity_register.xml
         txtIndexPasien = findViewById(R.id.txtIndexPasien);
@@ -73,8 +83,16 @@ public class RegisterActivity extends AppCompatActivity {
         validasiGolDarah = findViewById(R.id.validasiGolDarah);
         validasiPekerjaan = findViewById(R.id.validasiPekerjaan);
 
+
         btnRegister = findViewById(R.id.btnRegister);
         loading = findViewById(R.id.loading);
+
+        txtTglLahir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDateDialog();
+            }
+        });
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +103,8 @@ public class RegisterActivity extends AppCompatActivity {
                 kepalaKeluarga = txtKepalaKeluarga.getText().toString().trim();
                 alamat = txtAlamat.getText().toString().trim();
                 noTelp = txtNoTelp.getText().toString().trim();
+
+
                 tglLahir = txtTglLahir.getText().toString().trim();
                 agama = txtAgama.getText().toString().trim();
                 pendidikan = txtPendidikan.getText().toString().trim();
@@ -121,6 +141,23 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    private void  showDateDialog(){
+        Calendar newCalendar = Calendar.getInstance();
+
+        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+
+                txtTglLahir.setText(dateFormatter.format(newDate.getTime()));
+            }
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+        datePickerDialog.show();
+    }
+
+
     private void Registrasi() {
         loading.setVisibility(View.VISIBLE);
         btnRegister.setVisibility(View.GONE);
@@ -144,7 +181,7 @@ public class RegisterActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
 
-                    if( success.equals("1") ) {
+                    if ( success.equals("1") ) {
                         Toast.makeText(RegisterActivity.this, "Registrasi Sukses!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
@@ -183,8 +220,11 @@ public class RegisterActivity extends AppCompatActivity {
             }
         };
 
+
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
+
 
     }
 

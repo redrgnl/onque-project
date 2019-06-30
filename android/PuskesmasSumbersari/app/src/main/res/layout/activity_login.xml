@@ -58,7 +58,7 @@
             tools:ignore="VectorDrawableCompat" />
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/validasiUsername"
+            android:id="@+id/validasiIndexPasien"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtJudul1"
@@ -67,7 +67,7 @@
             app:errorEnabled="true">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/txtUsername"
+                android:id="@+id/txtIndexPasien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nomor Index"
@@ -90,10 +90,10 @@
             app:srcCompat="@drawable/ic_lock_black_24dp"
             tools:ignore="VectorDrawableCompat" />
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/validasiPassword"
+            android:id="@+id/validasiNIK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/validasiUsername"
+            android:layout_below="@+id/validasiIndexPasien"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
             app:errorEnabled="true"
@@ -101,10 +101,10 @@
             app:passwordToggleTint="@color/colorAccent">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/txtPassword"
+                android:id="@+id/txtNIK"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/validasiPassword"
+                android:layout_alignStart="@+id/validasiNIK"
                 android:hint="NIK"
                 android:inputType="textPassword"
                 android:textColor="@color/colorAccent"
