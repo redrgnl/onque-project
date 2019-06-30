@@ -17,6 +17,13 @@
   </div>
 </div>
 <div class="row">
+  <div class="col-xl-12 col-sm-12">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" style="color: black"><i class="fa fa-home" style="color: red"></i> <b>Laporan Harian</b> - Puskesmas Sumbersari</li>
+    </ol>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-4 mb-3">
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Pilih Tanggal" aria-label="Search" aria-describedby="basic-addon2" data-provide="datepicker" data-date-format="yyyy-mm-dd" id="srcdaily" name="srcdaily" readonly>
@@ -39,20 +46,30 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xl-12 col-sm-12">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active" style="color: black"><i class="fa fa-asterisk" style="color: red"></i> Laporan Harian - Puskesmas Sumbersari</li>
-    </ol>
-  </div>
-</div>
-<div class="row">
   <div class="col-xl-12 col-sm-12 mb-3">
     <div class="card mb-3">
       <div class="card-header bg-danger" style="color: white">
         <i class="fas fa-table"></i>
           Riwayat Antrian Pasien Terbaru
       </div>
-      <div id="result"></div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>No. Urut</th>
+                <th>Index</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Tanggal Antri</th>
+                <th>Poli</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="result"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -56,28 +56,12 @@ class laporan extends CI_Controller {
        $query = $this->input->post('query');
       }
       $data = $this->m_laporan->fetch_data($query);
-      $output .= '
-      <div class="card-body">
-      <div class="table-responsive">
-         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>No. Urut</th>
-              <th>Index</th>
-              <th>Nama</th>
-              <th>Alamat</th>
-              <th>Tanggal Antri</th>
-              <th>Poli</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-      ';
+      $output .= '';
       if($data->num_rows() > 0)
       {
        foreach($data->result() as $row)
        {
         $output .= '
-          <tbody>
             <tr>
               <td>'.$row->nomor_urut.'</td>
               <td>'.$row->pas_index.'</td>
@@ -87,25 +71,18 @@ class laporan extends CI_Controller {
               <td>'.$row->nama_poli.'</td>
               <td>'.$row->status.'</td>
             </tr>
-          </tbody>
         ';
        }
       }
       else
       {
        $output .= '
-         <tbody>
            <tr>
              <td colspan="7" style="text-align: center">No Data Found</td>
            </tr>
-         </tbody>
        ';
       }
-      $output .= '
-            </table>
-          </div>
-        </div>
-      ';
+      $output .= '';
       echo $output;
      }
 }
