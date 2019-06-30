@@ -1,19 +1,23 @@
 <div class="row">
   <div class="col-md-3 col-sm-6 mb-3">
     <div class="card text-white o-hidden h-100" style="background-color: orange">
-      <div class="card-body">
+      <a class="card-body text-white clearfix z-1" style="text-decoration: none" href="<?php echo base_url('laporan')?>">
         <div class="card-body-icon">
           <i class="fas fa-fw fa-user"></i>
         </div>
         <div class="mr-5">Laporan Hari Ini</div>
-      </div> 
-      <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('laporan')?>">
-        <span class="float-left">Selengkapnya</span>
-        <span class="float-right">
-          <i class="fas fa-angle-right"></i>
-        </span>
       </a>
     </div>
+  </div>
+  <div class="col-md-9 col-sm-6 mb-9">
+      <h4><i class="fas fa-arrow-circle-left" style="color: orange"></i> Halaman Laporan Hari Ini</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xl-12 col-sm-12">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" style="color: black"><i class="fa fa-home" style="color: red"></i> <b>Laporan Bulanan</b> - Puskesmas Sumbersari</li>
+    </ol>
   </div>
 </div>
 <div class="row">
@@ -39,20 +43,30 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xl-12 col-sm-12">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active" style="color: black">Daftar Riwayat Antrian Bulanan Puskesmas Sumbersari</li>
-    </ol>
-  </div>
-</div>
-<div class="row">
   <div class="col-xl-12 col-sm-12 mb-3">
     <div class="card mb-3">
       <div class="card-header bg-danger" style="color: white">
         <i class="fas fa-table"></i>
           Riwayat Antrian Pasien
       </div>
-      <div id="result-monthly"></div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>No. Urut</th>
+                <th>Index</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Tanggal Antri</th>
+                <th>Poli</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="result-monthly"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
