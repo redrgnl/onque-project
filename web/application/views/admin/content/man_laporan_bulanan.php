@@ -9,6 +9,9 @@
       </a>
     </div>
   </div>
+  <div class="col-md-9 col-sm-6 mb-9">
+      <h4><i class="fas fa-arrow-circle-left" style="color: orange"></i> Halaman Laporan Hari Ini</h4>
+  </div>
 </div>
 <div class="row">
   <div class="col-xl-12 col-sm-12">
