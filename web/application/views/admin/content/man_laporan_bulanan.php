@@ -41,7 +41,7 @@
 <div class="row">
   <div class="col-xl-12 col-sm-12">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active" style="color: black">Daftar Riwayat Antrian Bulanan Puskesmas Sumbersari</li>
+      <li class="breadcrumb-item active" style="color: black"><i class="fa fa-asterisk" style="color: red"></i> Laporan Harian - Puskesmas Sumbersari</li>
     </ol>
   </div>
 </div>

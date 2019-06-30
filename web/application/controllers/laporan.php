@@ -21,7 +21,7 @@ class laporan extends CI_Controller {
             }
             $data = [   
                 'permission' => $mission,
-                'breadcrumb' => "Laporan Riwayat Antrian",
+                'breadcrumb' => "Laporan Riwayat Antrian Harian",
                 'content' => 'admin/content/man_laporan'
                 ];
             $this->load->view("admin/index", $data);
