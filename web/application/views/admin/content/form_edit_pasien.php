@@ -39,7 +39,7 @@
     <div class="form-row">
       <div class="col-md-6">
         <div class="form-label-group">
-          <input type="text" id="edpasiennik" name="edpasiennik" autocomplete="off" class="form-control" placeholder="Nomor Induk Kependudukan" required="required" value="<?php echo $data->pas_nik?>" maxlength="17">
+          <input type="number" id="edpasiennik" name="edpasiennik" autocomplete="off" class="form-control" placeholder="Nomor Induk Kependudukan" required="required" value="<?php echo $data->pas_nik?>" maxlength="17">
           <label for="edpasiennik">Nomor Induk Kependudukan</label>
         </div>
       </div>
@@ -167,7 +167,7 @@
     <div class="form-row">
       <div class="col-md-6">
         <div class="form-label-group">
-          <input type="text" id="edpasientelepon" name="edpasientelepon" autocomplete="off" class="form-control" placeholder="Telepon / HP" required="required" value="<?php echo $data->pas_telepon?>" maxlength="15">
+          <input type="number" id="edpasientelepon" name="edpasientelepon" autocomplete="off" class="form-control" placeholder="Telepon / HP" required="required" value="<?php echo $data->pas_telepon?>" maxlength="15">
           <label for="edpasientelepon">Telepon / HP</label>
         </div>
       </div>
