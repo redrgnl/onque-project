@@ -121,7 +121,7 @@
     <div class="form-row">
       <div class="col-md-6">
         <div class="form-label-group">
-          <input type="text" id="pasientelepon" name="pasientelepon" autocomplete="off" class="form-control" placeholder="Telepon / HP" required="required" value="" maxlength="15">
+          <input type="number" id="pasientelepon" name="pasientelepon" autocomplete="off" class="form-control" placeholder="Telepon / HP" required="required" value="" maxlength="15">
           <label for="pasientelepon">Telepon / HP</label>
         </div>
       </div>

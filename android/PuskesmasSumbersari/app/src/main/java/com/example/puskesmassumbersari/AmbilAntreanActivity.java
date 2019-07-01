@@ -55,7 +55,7 @@ public class AmbilAntreanActivity extends Activity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ambil_antrean);
 
-        spinnerPoli = (Spinner) findViewById(R.id.spinner_poli);
+        spinnerPoli = findViewById(R.id.spinner_poli);
         spinnerPoli.setOnItemSelectedListener(this);
 
         // Memasukkan array arrPoli ke dalam spinner
