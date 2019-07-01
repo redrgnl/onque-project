@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressBar loading;
     private Button btnRegister;
 
-    private static String URL = Server.URL + "app_register/index_post";
+    private static String URL = Server.URL + "api/app_register/index_post";
 
     private String indexPasien, NIK, nama, kepalaKeluarga, alamat, noTelp, tglLahir, agama,
             pendidikan, jenisKelamin, golDarah, pekerjaan;
