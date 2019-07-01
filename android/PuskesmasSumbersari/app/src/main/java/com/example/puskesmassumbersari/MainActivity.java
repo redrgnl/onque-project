@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity
             public void run() {
                 // tampilkan nomor antrean
                 loadNomor();
-                handler.postDelayed(refresh, 5000);
+                handler.postDelayed(refresh, 1000);
             }
         };
 
