@@ -34,13 +34,15 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class RegisterActivity extends AppCompatActivity{
 
     private Spinner spinnerAgama, spinnerPendidikan, spinnerJenisKelamin, spinnerGolDarah, spinnerPekerjaan;
 
     private String[]
-            arrAgama = {"-- Pilih Agama --", "Islam", "Kristen", "Hindu", "Budha", "Katolik", "Konghucu"},
+
             arrPendidikan = {"-- Pilih Pendidikan --", "Tidak Sekolah", "TK", "SD/MI", "SMP/MTs", "SMA/MA/SMK", "S1/D4", "S2", "S3"},
+            arrAgama = {"-- Pilih Agama --", "Islam", "Kristen", "Hindu", "Budha", "Katolik", "Konghucu"},
+
             arrJenisKelamin = {"-- Pilih Jenis Kelamin --", "Laki - laki", "Perempuan"},
             arrGolDarah = {"-- Pilih Golongan Darah --", "AB", "A", "B", "O"},
             arrPekerjaan = {"-- Pilih Pekerjaan Anda --", "Guru/Dosen", "Wiraswasta"};
@@ -61,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     private SimpleDateFormat dateFormatter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
@@ -98,22 +100,99 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
         btnRegister = findViewById(R.id.btnRegister);
         loading = findViewById(R.id.loading);
+        spinnerPendidikan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        spinnerAgama.setOnItemSelectedListener(this);
-        spinnerPendidikan.setOnItemSelectedListener(this);
-        spinnerJenisKelamin.setOnItemSelectedListener(this);
-        spinnerGolDarah.setOnItemSelectedListener(this);
-        spinnerPekerjaan.setOnItemSelectedListener(this);
+                if (position!=0) {
+                    pendidikan = arrPendidikan[position];
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                // sometimes you need nothing here
+            }
+        });
+        spinnerAgama.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position!=0) {
+                    agama = arrAgama[position];
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                // sometimes you need nothing here
+            }
+        });
+
+        spinnerJenisKelamin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position!=0) {
+                    jenisKelamin = arrJenisKelamin[position];
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                // sometimes you need nothing here
+            }
+        });
+        spinnerGolDarah.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position!=0) {
+                    golDarah = arrGolDarah[position];
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                // sometimes you need nothing here
+            }
+        });
+        spinnerPekerjaan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position!=0) {
+                    pekerjaan = arrPekerjaan[position];
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                // sometimes you need nothing here
+            }
+        });
+
+        ArrayAdapter<String> arrayPendidikan = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arrPendidikan);
+        arrayPendidikan.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerPendidikan.setAdapter(arrayPendidikan);
 
         ArrayAdapter<String> arrayAgama = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arrAgama);
         arrayAgama.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAgama.setAdapter(arrayAgama);
 
-        ArrayAdapter<String> arrayPendidikan = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arrPendidikan);
-        arrayPendidikan.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerPendidikan.setAdapter(arrayPendidikan);
+
 
         ArrayAdapter<String> arrayJenisKelamin = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arrJenisKelamin);
@@ -147,11 +226,11 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                 alamat = txtAlamat.getText().toString().trim();
                 noTelp = txtNoTelp.getText().toString().trim();
                 tglLahir = txtTglLahir.getText().toString().trim();
-                agama = spinnerAgama.getOnItemSelectedListener().toString().trim();
-                pendidikan = spinnerPendidikan.getOnItemSelectedListener().toString().trim();
-                jenisKelamin = spinnerJenisKelamin.getOnItemSelectedListener().toString().trim();
-                golDarah = spinnerGolDarah.getOnItemSelectedListener().toString().trim();
-                pekerjaan = spinnerPekerjaan.getOnItemSelectedListener().toString().trim();
+//                agama = spinnerAgama.getOnItemSelectedListener().toString().trim();
+//                pendidikan = spinnerPendidikan.getOnItemSelectedListener().toString().trim();
+//                jenisKelamin = spinnerJenisKelamin.getOnItemSelectedListener().toString().trim();
+//                golDarah = spinnerGolDarah.getOnItemSelectedListener().toString().trim();
+//                pekerjaan = spinnerPekerjaan.getOnItemSelectedListener().toString().trim();
 
                 if ( indexPasien.isEmpty() ) {
                     validasiIndexPasien.setError("Index pasien harus diisi!");
@@ -182,6 +261,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         });
     }
 
+
+
     private void  showDateDialog(){
         Calendar newCalendar = Calendar.getInstance();
 
@@ -209,11 +290,11 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         alamat = txtAlamat.getText().toString().trim();
         noTelp = txtNoTelp.getText().toString().trim();
         tglLahir = txtTglLahir.getText().toString().trim();
-        agama = spinnerAgama.getOnItemSelectedListener().toString().trim();
-        pendidikan = spinnerPendidikan.getOnItemSelectedListener().toString().trim();
-        jenisKelamin = spinnerJenisKelamin.getOnItemSelectedListener().toString().trim();
-        golDarah = spinnerGolDarah.getOnItemSelectedListener().toString().trim();
-        pekerjaan = spinnerPekerjaan.getOnItemSelectedListener().toString().trim();
+//        agama = spinnerAgama.getOnItemSelectedListener().toString().trim();
+//        pendidikan = spinnerPendidikan.getOnItemSelectedListener().toString().trim();
+//        jenisKelamin = spinnerJenisKelamin.getOnItemSelectedListener().toString().trim();
+//        golDarah = spinnerGolDarah.getOnItemSelectedListener().toString().trim();
+//        pekerjaan = spinnerPekerjaan.getOnItemSelectedListener().toString().trim();
 
         StringRequest stringRequest = new StringRequest(StringRequest.Method.POST, URL, new Response.Listener<String>() {
             @Override
@@ -269,13 +350,5 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 }

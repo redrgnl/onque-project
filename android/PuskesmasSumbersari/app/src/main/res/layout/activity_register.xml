@@ -261,6 +261,7 @@
                                 android:layout_below="@+id/validasiTglLahir"
                                 android:layout_alignParentStart="true"
                                 android:layout_alignParentLeft="true"
+
                                 android:textColor="@color/colorAccent"
                                 android:textColorHint="@color/colorAccent"
                                 app:errorEnabled="true">
