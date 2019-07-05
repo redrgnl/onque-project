@@ -40,8 +40,8 @@ public class RegisterActivity extends AppCompatActivity{
 
     private String[]
 
-            arrPendidikan = {"-- Pilih Pendidikan --", "Tidak Sekolah", "TK", "SD/MI", "SMP/MTs", "SMA/MA/SMK", "S1/D4", "S2", "S3"},
-            arrAgama = {"-- Pilih Agama --", "Islam", "Kristen", "Hindu", "Budha", "Katolik", "Konghucu"},
+            arrPendidikan = {"-- Pilih Pendidikan --", "Sarjana", "SMA/MA/SMK", "SD/MI", "SMP/MTs",  "S1/D4", "S2", "S3"},
+            arrAgama = {"-- Pilih Agama --", "Islam", "Kristen", "Katolik", "Hindu", "Budha",  "Konghucu"},
 
             arrJenisKelamin = {"-- Pilih Jenis Kelamin --", "Laki - laki", "Perempuan"},
             arrGolDarah = {"-- Pilih Golongan Darah --", "AB", "A", "B", "O"},
@@ -103,82 +103,67 @@ public class RegisterActivity extends AppCompatActivity{
         spinnerPendidikan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                 if (position!=0) {
                     pendidikan = arrPendidikan[position];
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                // sometimes you need nothing here
             }
         });
         spinnerAgama.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                 if (position!=0) {
                     agama = arrAgama[position];
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                // sometimes you need nothing here
             }
         });
 
         spinnerJenisKelamin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                 if (position!=0) {
                     jenisKelamin = arrJenisKelamin[position];
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                // sometimes you need nothing here
             }
         });
         spinnerGolDarah.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                if (position!=0) {
+                if (position != 0) {
                     golDarah = arrGolDarah[position];
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                // sometimes you need nothing here
             }
         });
         spinnerPekerjaan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                 if (position!=0) {
                     pekerjaan = arrPekerjaan[position];
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                // sometimes you need nothing here
             }
         });
 
@@ -322,7 +307,8 @@ public class RegisterActivity extends AppCompatActivity{
                 loading.setVisibility(View.GONE);
                 btnRegister.setVisibility(View.VISIBLE);
             }
-        }) {
+        })
+        {
             @Override
             protected Map<String, String> getParams () throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
