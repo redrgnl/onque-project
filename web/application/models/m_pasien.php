@@ -58,8 +58,4 @@ class m_pasien extends CI_Model {
         $this->pas_pekerjaan = $post["edpasienpekerjaan"];
         $this->db->update($this->_table, $this, array('pas_index' => $post['edpasienindex']));
     }
-    public function delete($id)
-    {
-        return $this->db->delete($this->_table, array("pas_index" => $id));
-    }
 }

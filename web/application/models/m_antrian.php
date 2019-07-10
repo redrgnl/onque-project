@@ -25,7 +25,7 @@ class m_antrian extends CI_Model {
     {
         date_default_timezone_set('Asia/Jakarta');
         $today = date("Y-m-d");
-        return $result = $this->db->query("SELECT * FROM antrian WHERE tanggal_antrian='$today'")->result();
+        return $result = $this->db->query("SELECT antrian.id_antrian, antrian.nomor_urut, antrian.pas_index, pasien.pas_nama, pasien.pas_alamat, antrian.tanggal_antrian, antrian.nama_poli, antrian.status FROM antrian, pasien WHERE antrian.pas_index = pasien.pas_index AND tanggal_antrian='$today'")->result();
     }
     
     public function checkantrian($id){
@@ -41,12 +41,10 @@ class m_antrian extends CI_Model {
       $post = $this->input->post();
       $nomor = $post["nomorUrut"];
       $index = $post["pasIndex"];
-      $nama = $post["pasNama"];
-      $alamat = $post["pasAlamat"];
       $tanggal = $today;
       $poli = $post["poliTujuan"];
       $status = "antri";
-      $result = $this->db->query("INSERT INTO antrian (id_antrian,nomor_urut,pas_index,pas_nama,pas_alamat,tanggal_antrian,nama_poli,status) VALUES (DEFAULT,'$nomor','$index','$nama','$alamat','$tanggal','$poli','$status')");
+      $result = $this->db->query("INSERT INTO antrian (id_antrian,nomor_urut,pas_index,tanggal_antrian,nama_poli,status) VALUES (DEFAULT,'$nomor','$index','$tanggal','$poli','$status')");
     }   
 
     function autonumber()

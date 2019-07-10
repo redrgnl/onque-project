@@ -31,15 +31,13 @@ class app_daftar_antrian extends REST_Controller {
         $post = $this->input->post();
         $nomor = $post["session_nomor"];
         $index = $post["session_index"];
-        $nama = $post["session_nama"];
-        $alamat = $post["session_alamat"];
         $tanggal = $today;
         $poli = $post["session_poli"];
         $status = "antri";
         
         $check = $this->m_antrian->checkantrian($index);
         if(empty($check)){
-            $result = $this->db->query("INSERT INTO antrian (id_antrian,nomor_urut,pas_index,pas_nama,pas_alamat,tanggal_antrian,nama_poli,status) VALUES (DEFAULT,'$nomor','$index','$nama','$alamat','$tanggal','$poli','$status')");
+            $result = $this->db->query("INSERT INTO antrian (id_antrian,nomor_urut,pas_indextanggal_antrian,nama_poli,status) VALUES (DEFAULT,'$nomor','$index','$tanggal','$poli','$status')");
             //success
             $data['success'] = "1";
             echo json_encode($data);

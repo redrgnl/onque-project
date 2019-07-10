@@ -73,7 +73,7 @@
                     <th>Alamat</th>
                     <th>Tgl Lahir</th>
                     <th>Jenis Kelamin</th>
-                    <th style="width: 70px">Update</th>
+                    <th style="width: 40px">Update</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -84,7 +84,7 @@
                     <th>Alamat</th>
                     <th>Tgl Lahir</th>
                     <th>Jenis Kelamin</th>
-                    <th style="width: 70px">Update</th>
+                    <th style="width: 40px">Update</th>
                   </tr>
                 </tfoot>
                 <tbody>
@@ -96,9 +96,8 @@
                       <td><?php echo $data->pas_alamat?></td>
                       <td><?php echo $data->pas_lahir?></td>
                       <td><?php echo $data->pas_kelamin?></td>
-                      <td style="width: 70px">
-                          <a class="btn btn-info" href="<?php echo base_url('pasien/edit_pasien/'.$data->pas_index) ?>"><i class="fa fa-gear"></i></a>  
-                          <button class="btn btn-danger" onclick="deletepasien('<?php echo base_url('pasien/hapus_pasien/'.$data->pas_index) ?>')"><i class="fa fa-trash"></i></button>  
+                      <td style="width: 40px">
+                          <a class="btn btn-info" href="<?php echo base_url('pasien/edit_pasien/'.$data->pas_index) ?>"><i class="fa fa-gear"></i></a>
                       </td>
                     </tr>
                   <?php endforeach; ?>

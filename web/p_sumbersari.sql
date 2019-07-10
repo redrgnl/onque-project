@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2019 at 10:07 AM
+-- Generation Time: Jul 10, 2019 at 04:28 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -56,8 +56,6 @@ CREATE TABLE `antrian` (
   `id_antrian` int(11) NOT NULL,
   `nomor_urut` int(5) NOT NULL,
   `pas_index` varchar(20) NOT NULL,
-  `pas_nama` varchar(30) NOT NULL,
-  `pas_alamat` text NOT NULL,
   `tanggal_antrian` date NOT NULL,
   `nama_poli` varchar(30) NOT NULL,
   `status` varchar(10) NOT NULL
@@ -67,35 +65,10 @@ CREATE TABLE `antrian` (
 -- Dumping data for table `antrian`
 --
 
-INSERT INTO `antrian` (`id_antrian`, `nomor_urut`, `pas_index`, `pas_nama`, `pas_alamat`, `tanggal_antrian`, `nama_poli`, `status`) VALUES
-(65, 1, 'IN110661101', 'Ady Bagus Sugih Susanto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-05-31', 'Poli Gigi', 'antri'),
-(66, 2, 'IN110661102', 'Lita Putri Ayu Lestari', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-05-31', 'Poli Mata', 'antri'),
-(67, 3, 'IN110661103', 'Yulianto', 'Dsn Rogojampi Utara RT 3 RW 5', '2019-05-31', 'Poli Umum', 'antri'),
-(68, 1, 'IN110661101', 'Ady Bagus Sugih Susanto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-05-30', 'Poli Gigi', 'antri'),
-(69, 1, 'IN110661101', 'Ady Bagus Sugih Susanto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-01', 'Poli Gigi', 'selesai'),
-(70, 2, 'IN110661104', 'IN1106611', 'IN1106611', '2019-06-01', 'Poli Mata', 'selesai'),
-(71, 3, 'IN110661102', 'Lita Putri Ayu Lestari', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-01', 'Poli Mata', 'selesai'),
-(72, 4, 'IN110661103', 'Yulianto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-01', 'Poli Mata', 'selesai'),
-(73, 5, 'IN110661105', 'IN1106611', 'IN1106611', '2019-06-01', 'Poli Umum', 'selesai'),
-(74, 1, 'IN110661101', 'Ady Bagus Sugih Susanto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-02', 'Poli Gigi', 'selesai'),
-(75, 2, 'IN110661104', 'IN1106611', 'IN1106611', '2019-06-02', 'Poli Mata', 'selesai'),
-(76, 3, 'IN110661105', 'IN1106611', 'IN1106611', '2019-06-02', 'Poli Mata', 'selesai'),
-(77, 1, 'IN110661101', 'Ady Bagus Sugih Susanto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-03', 'Poli Mata', 'selesai'),
-(78, 2, 'IN110661102', 'Lita Putri Ayu Lestari', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-03', 'Poli Mata', 'selesai'),
-(79, 3, 'IN110661103', 'Yulianto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-03', 'Poli Mata', 'selesai'),
-(80, 4, 'IN110661105', 'IN1106611', 'IN1106611', '2019-06-03', 'Poli Gigi', 'antri'),
-(83, 1, 'IN110661101', 'Ady Bagus Sugih Susanto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-04', 'Poli Mata', 'antri'),
-(84, 1, 'IN110661101', 'Ady Bagus Sugih Susanto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-13', 'Poli Gigi', 'antri'),
-(85, 1, 'IN110661101', 'Ady Bagus Sugih Susanto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-20', 'Poli Gigi', 'antri'),
-(86, 2, 'IN110661104', 'IN1106611', 'IN1106611', '2019-06-20', 'Poli Mata', 'antri'),
-(87, 3, 'IN110661102', 'Lita Putri Ayu Lestari', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-20', 'Poli Gigi', 'antri'),
-(89, 1, 'IN110661101', 'Ady Bagus Sugih Susanto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-21', 'Poli Umum', 'selesai'),
-(90, 2, 'IN110661102', 'Lita Putri Ayu Lestari', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-21', 'Poli Gigi', 'selesai'),
-(91, 3, '123', 'a', 'b', '2019-06-21', 'Poli Gigi', 'antri'),
-(92, 1, 'IN110661101', 'Ady Bagus Sugih Susanto', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-26', 'Poli Gigi', 'antri'),
-(93, 2, 'IN110661102', 'Lita Putri Ayu Lestari', 'Dsn Rogojampi Utara RT 3 RW 5 Banyuwangi', '2019-06-26', 'Poli Umum', 'antri'),
-(94, 3, 'IN110661107', 'yulianto', 'rogojamppi', '2019-06-26', 'gigi', 'antri'),
-(95, 3, 'IN110661104', 'yulianto', 'rogojamppi', '2019-06-26', 'gigi', 'antri');
+INSERT INTO `antrian` (`id_antrian`, `nomor_urut`, `pas_index`, `tanggal_antrian`, `nama_poli`, `status`) VALUES
+(99, 1, 'IN110661101', '2019-07-10', 'Poli Gigi', 'selesai'),
+(100, 2, 'IN110661102', '2019-07-10', 'Poli Mata', 'selesai'),
+(101, 3, 'IN110661103', '2019-07-10', 'Poli Mata', 'selesai');
 
 -- --------------------------------------------------------
 
@@ -172,7 +145,7 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `antrian`
   ADD PRIMARY KEY (`id_antrian`),
-  ADD KEY `id_poli` (`nama_poli`);
+  ADD KEY `pas_index` (`pas_index`);
 
 --
 -- Indexes for table `backup`
@@ -200,7 +173,17 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `antrian`
 --
 ALTER TABLE `antrian`
-  MODIFY `id_antrian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id_antrian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `pasien`
+--
+ALTER TABLE `pasien`
+  ADD CONSTRAINT `pasien_ibfk_1` FOREIGN KEY (`pas_index`) REFERENCES `antrian` (`pas_index`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
