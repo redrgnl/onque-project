@@ -72,7 +72,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="20dp"
-                                android:text="Wiliam@gmail.com"/>
+                                android:text="IN110661101"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginTop="25dp"
@@ -92,7 +92,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="20dp"
-                                android:text="+266 225 225"/>
+                                android:text="Nama"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginTop="25dp"
@@ -112,7 +112,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="20dp"
-                                android:text="Add to group"/>
+                                android:text="3512345678900001"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginTop="25dp"
@@ -132,7 +132,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="20dp"
-                                android:text="Show all comments"/>
+                                android:text="Kepala Keluarga"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginTop="25dp"
@@ -152,7 +152,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="20dp"
-                                android:text="Show all comments"/>
+                                android:text="Alamat"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginTop="25dp"
@@ -172,7 +172,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="20dp"
-                                android:text="Show all comments"/>
+                                android:text="081234567890"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginTop="25dp"
@@ -192,7 +192,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="20dp"
-                                android:text="Show all comments"/>
+                                android:text="2019-09-08"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginTop="25dp"
@@ -212,7 +212,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="20dp"
-                                android:text="Show all comments"/>
+                                android:text="Agama"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginTop="25dp"
@@ -232,7 +232,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="20dp"
-                                android:text="Show all comments"/>
+                                android:text="Pendidikan"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginTop="25dp"

@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cardViewPoli"
-            android:text="No. Antrean :"
+            android:text="No. Antrean Sekarang :"
             android:textSize="20dp"
             android:layout_marginBottom="20dp"
             />

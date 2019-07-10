@@ -6,10 +6,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import android.support.design.widget.TextInputLayout;
@@ -31,17 +34,28 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity{
+
+    private Spinner spinnerAgama, spinnerPendidikan, spinnerJenisKelamin, spinnerGolDarah, spinnerPekerjaan;
+
+    private String[]
+
+            arrPendidikan = {"-- Pilih Pendidikan --", "Sarjana", "SMA/MA/SMK", "SD/MI", "SMP/MTs",  "S1/D4", "S2", "S3"},
+            arrAgama = {"-- Pilih Agama --", "Islam", "Kristen", "Katolik", "Hindu", "Budha",  "Konghucu"},
+
+            arrJenisKelamin = {"-- Pilih Jenis Kelamin --", "Laki - laki", "Perempuan"},
+            arrGolDarah = {"-- Pilih Golongan Darah --", "AB", "A", "B", "O"},
+            arrPekerjaan = {"-- Pilih Pekerjaan Anda --", "Guru/Dosen", "Wiraswasta"};
 
     private EditText txtIndexPasien, txtNIK, txtNama, txtKepalaKeluarga, txtAlamat, txtNoTelp,
-            txtTglLahir, txtAgama, txtPendidikan, txtJenisKelamin, txtGolDarah, txtPekerjaan;
+            txtTglLahir;
     private TextInputLayout validasiIndexPasien, validasiNIK, validasiNama, validasiKepalaKeluarga,
             validasiAlamat, validasiNoTelp, validasiTglLahir, validasiAgama, validasiPendidikan,
             validasiJenisKelamin, validasiGolDarah, validasiPekerjaan;
     private ProgressBar loading;
-    private Button btnRegister, btDatePicker;
+    private Button btnRegister;
 
-    private static String URL = Server.URL + "app_register/index_post";
+    private static String URL = Server.URL + "api/app_register/index_post";
 
     private String indexPasien, NIK, nama, kepalaKeluarga, alamat, noTelp, tglLahir, agama,
             pendidikan, jenisKelamin, golDarah, pekerjaan;
@@ -49,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
     private SimpleDateFormat dateFormatter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
@@ -63,11 +77,11 @@ public class RegisterActivity extends AppCompatActivity {
         txtAlamat = findViewById(R.id.txtAlamat);
         txtNoTelp = findViewById(R.id.txtNoTelp);
         txtTglLahir = findViewById(R.id.txtTglLahir);
-        txtAgama = findViewById(R.id.txtAgama);
-        txtPendidikan = findViewById(R.id.txtPendidikan);
-        txtJenisKelamin = findViewById(R.id.txtJenisKelamin);
-        txtGolDarah = findViewById(R.id.txtGolDarah);
-        txtPekerjaan = findViewById(R.id.txtPekerjaan);
+        spinnerAgama = findViewById(R.id.spinnerAgama);
+        spinnerPendidikan = findViewById(R.id.spinnerPendidikan);
+        spinnerJenisKelamin = findViewById(R.id.spinnerJenisKelamin);
+        spinnerGolDarah = findViewById(R.id.spinnerGolDarah);
+        spinnerPekerjaan = findViewById(R.id.spinnerPekerjaan);
 
         // Inisiasi variabel-variabel validasi dengan id validasi dari layout activity_register.xml
         validasiIndexPasien = findViewById(R.id.validasiIndexPasien);
@@ -86,6 +100,99 @@ public class RegisterActivity extends AppCompatActivity {
 
         btnRegister = findViewById(R.id.btnRegister);
         loading = findViewById(R.id.loading);
+        spinnerPendidikan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position!=0) {
+                    pendidikan = arrPendidikan[position];
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinnerAgama.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position!=0) {
+                    agama = arrAgama[position];
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinnerJenisKelamin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position!=0) {
+                    jenisKelamin = arrJenisKelamin[position];
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinnerGolDarah.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    golDarah = arrGolDarah[position];
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinnerPekerjaan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position!=0) {
+                    pekerjaan = arrPekerjaan[position];
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        ArrayAdapter<String> arrayPendidikan = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arrPendidikan);
+        arrayPendidikan.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerPendidikan.setAdapter(arrayPendidikan);
+
+        ArrayAdapter<String> arrayAgama = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arrAgama);
+        arrayAgama.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerAgama.setAdapter(arrayAgama);
+
+
+
+        ArrayAdapter<String> arrayJenisKelamin = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arrJenisKelamin);
+        arrayJenisKelamin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerJenisKelamin.setAdapter(arrayJenisKelamin);
+
+        ArrayAdapter<String> arrayGolDarah = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arrGolDarah);
+        arrayGolDarah.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGolDarah.setAdapter(arrayGolDarah);
+
+        ArrayAdapter<String> arrayPekerjaan = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arrPekerjaan);
+        arrayPekerjaan.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerPekerjaan.setAdapter(arrayPekerjaan);
 
         txtTglLahir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,14 +210,12 @@ public class RegisterActivity extends AppCompatActivity {
                 kepalaKeluarga = txtKepalaKeluarga.getText().toString().trim();
                 alamat = txtAlamat.getText().toString().trim();
                 noTelp = txtNoTelp.getText().toString().trim();
-
-
                 tglLahir = txtTglLahir.getText().toString().trim();
-                agama = txtAgama.getText().toString().trim();
-                pendidikan = txtPendidikan.getText().toString().trim();
-                jenisKelamin = txtJenisKelamin.getText().toString().trim();
-                golDarah = txtGolDarah.getText().toString().trim();
-                pekerjaan = txtPekerjaan.getText().toString().trim();
+//                agama = spinnerAgama.getOnItemSelectedListener().toString().trim();
+//                pendidikan = spinnerPendidikan.getOnItemSelectedListener().toString().trim();
+//                jenisKelamin = spinnerJenisKelamin.getOnItemSelectedListener().toString().trim();
+//                golDarah = spinnerGolDarah.getOnItemSelectedListener().toString().trim();
+//                pekerjaan = spinnerPekerjaan.getOnItemSelectedListener().toString().trim();
 
                 if ( indexPasien.isEmpty() ) {
                     validasiIndexPasien.setError("Index pasien harus diisi!");
@@ -141,6 +246,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void  showDateDialog(){
         Calendar newCalendar = Calendar.getInstance();
 
@@ -168,11 +275,11 @@ public class RegisterActivity extends AppCompatActivity {
         alamat = txtAlamat.getText().toString().trim();
         noTelp = txtNoTelp.getText().toString().trim();
         tglLahir = txtTglLahir.getText().toString().trim();
-        agama = txtAgama.getText().toString().trim();
-        pendidikan = txtPendidikan.getText().toString().trim();
-        jenisKelamin = txtJenisKelamin.getText().toString().trim();
-        golDarah = txtGolDarah.getText().toString().trim();
-        pekerjaan = txtPekerjaan.getText().toString().trim();
+//        agama = spinnerAgama.getOnItemSelectedListener().toString().trim();
+//        pendidikan = spinnerPendidikan.getOnItemSelectedListener().toString().trim();
+//        jenisKelamin = spinnerJenisKelamin.getOnItemSelectedListener().toString().trim();
+//        golDarah = spinnerGolDarah.getOnItemSelectedListener().toString().trim();
+//        pekerjaan = spinnerPekerjaan.getOnItemSelectedListener().toString().trim();
 
         StringRequest stringRequest = new StringRequest(StringRequest.Method.POST, URL, new Response.Listener<String>() {
             @Override
@@ -200,7 +307,8 @@ public class RegisterActivity extends AppCompatActivity {
                 loading.setVisibility(View.GONE);
                 btnRegister.setVisibility(View.VISIBLE);
             }
-        }) {
+        })
+        {
             @Override
             protected Map<String, String> getParams () throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
@@ -227,5 +335,6 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     }
+
 
 }

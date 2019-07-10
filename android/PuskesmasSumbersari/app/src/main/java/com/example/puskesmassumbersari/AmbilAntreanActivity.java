@@ -31,7 +31,7 @@ import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AmbilAntreanActivity extends Activity implements AdapterView.OnItemSelectedListener {
+public class AmbilAntreanActivity extends Activity  {
 
     private Spinner spinnerPoli;
     private Button btnAntre, btnBatal;
@@ -55,8 +55,20 @@ public class AmbilAntreanActivity extends Activity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ambil_antrean);
 
-        spinnerPoli = (Spinner) findViewById(R.id.spinner_poli);
-        spinnerPoli.setOnItemSelectedListener(this);
+        spinnerPoli = findViewById(R.id.spinner_poli);
+        spinnerPoli.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position!=0) {
+                    Poli = arrPoli[position];
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         // Memasukkan array arrPoli ke dalam spinner
 
@@ -107,18 +119,7 @@ public class AmbilAntreanActivity extends Activity implements AdapterView.OnItem
         });
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (position!=0) {
-            Toast.makeText(this, "Anda memilih : " + arrPoli[position], Toast.LENGTH_LONG).show();
-            Poli = arrPoli[position];
-        }
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        Toast.makeText(this, "Silakan pilih Poli", Toast.LENGTH_LONG).show();
-    }
 
     private void loadNomorUrut() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
@@ -176,7 +177,7 @@ public class AmbilAntreanActivity extends Activity implements AdapterView.OnItem
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError e) {
-                Toast.makeText(AmbilAntreanActivity.this, "Silakan pilih Poli",
+                Toast.makeText(AmbilAntreanActivity.this, "Silakan pilih Poli" + e.toString(),
                         Toast.LENGTH_SHORT).show();
             }
         }) {
