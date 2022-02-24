@@ -22,8 +22,9 @@ class admin extends CI_Controller {
         
         //check status admin aktif atau non-aktif
         $checkstatus = $this->m_admin->check_status($username)->num_rows();
+        var_dump($checkstatus > 0);
         
-        //jika status aktif
+        /*jika status aktif*/
         if($checkstatus > 0){
             //check status user admin
 			$checks = $this->m_admin->check_super($username);

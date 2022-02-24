@@ -13,7 +13,7 @@
     <link href="<?php echo base_url('assets/admin/vendor/fontawesome-free/css/all.min.css')?>" rel="stylesheet" type="text/css">
 
     <!-- Page level plugin CSS-->
-    <link href="<?php echo base_url('assets/admin/vendor/datatables/dataTables.bootstrap4.css')?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/admin/vendor/datatables/css/dataTables.bootstrap4.css')?>" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('assets/admin/css/sb-admin.css')?>" rel="stylesheet">
